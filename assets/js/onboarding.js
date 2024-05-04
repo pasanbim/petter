@@ -35,14 +35,14 @@ $(document).ready(function() {
 
     // Final step AJAX submission
     $('#final-step').click(function() {
-        if (validateStep(3)) { // Assuming this is the last step
-            var data = {
-                fullName: $('#fullName').val(),
-                petType: $('.interest-cards .selected').attr('id'),
-                breed: $('#breed').val(),
-                birthday: $('#birthday').val(),
-                sex: $('.sex').val()
-            };
+        if (validateStep(3)) {  // Assuming step 3 is the last step and has been validated
+            var formData = new FormData();
+            formData.append('fullName', $('#fullName').val());
+            formData.append('petType', $('.interest-cards .selected').attr('id'));
+            formData.append('breed', $('#breed').val());
+            formData.append('birthday', $('#birthday').val());
+            formData.append('sex', $('#sex').val());
+            formData.append('petImage', $('#petImage')[0].files[0]);
     
             // Show spinner and update button text
             $(this).find('.spinner-border').show();
@@ -50,25 +50,29 @@ $(document).ready(function() {
     
             $.ajax({
                 type: "POST",
-                url: "./process/onboarding-save.php",
-                data: data,
+                url: "./process/onboarding-save.php",  // Ensure this is the correct path to your server-side script
+                data: formData,
+                contentType: false,  // Must be false to correctly send FormData
+                processData: false,  // Must be false to prevent jQuery from converting the FormData into a string
                 success: function(response) {
                     $('#final-step').find('.spinner-border').hide();
                     $('#final-step').find('.button-text').text('Submit');
-                    alert(response);
+                    alert(response);  // Optionally replace with a more user-friendly success message or action
                     $('.container').html('<p class="text-success">Thank you for registering your pet!</p>');
                 },
                 error: function(xhr, status, error) {
                     $('#final-step').find('.spinner-border').hide();
                     $('#final-step').find('.button-text').text('Submit');
-                    alert('Error: ' + error);
+                    alert('Error: ' + error);  // Optionally replace with a more user-friendly error handling approach
                 }
             });
         } else {
         }
     });
-});
+    });
 
+    
+    
 function validateStep(stepNumber) {
     if (stepNumber === 1) {
         var fullName = $('#fullName').val();
@@ -85,12 +89,16 @@ function validateStep(stepNumber) {
             return false;
         }
     } else if (stepNumber === 3) {
-        var test = $('#test').val();  // Assuming you meant to validate sex here as it's a part of step 3
-        if (!test) {
-            alert("Please enter value for test field");
+
+    
+        if ($('#petImage').length > 0 && $('#petImage')[0].files.length > 0) {
+            var petImage = $('#petImage')[0].files[0];
+        } else {
+            alert("Please insert an image of your pet");
             return false;
         }
     }
+    
     return true;
 }
 

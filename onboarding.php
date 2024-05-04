@@ -46,8 +46,8 @@
             <div class="interests-container mt-4">
                 <label class="form-label fw-bold">Pet Type</label>
                 <div class="interest-cards">
-                    <div class="card" id="dog">
-                        <i class="fa-solid fa-dog fa-3x peticon"></i>
+                    <div class="card selected" id="dog">
+                        <i class="fa-solid selected fa-dog fa-3x peticon"></i>
                     </div>
                     <div class="card" id="cat">
                         <i class="fa-solid fa-cat fa-3x peticon"></i>
@@ -72,38 +72,51 @@
                     <input type="date" class="form-control" id="birthday">
                 </div>
             </div>
+
+            
             <label for="sex" class="form-label fw-bold">Sex</label>
 
-            <select class="form-select sex" id="sex">
+            <select class="form-select sex mb-3" id="sex">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
+            </select>
+            <label for="socialability " class="form-label fw-bold">Socialability </label>
+
+            <select class="form-select socialability" id="socialability ">
+                <option value="social">Social</option>
+                <option value="tolerant">Tolerant</option>
+                <option value="selective">Selective</option>
+                <option value="aggressive">Aggressive</option>
             </select>
 
             <div class="row">
                 <div class="col-md-3">
                     <button type="button" class="btn btn-primary w-100 prev-step">
-                        <i class="fa-solid fa-angle-left"></i>
+                        <i class="fa-solid fa-angle-left"></i> Back
                     </button>
                 </div>
                 <div class="col-md-9">
-                <button type="button" class="btn btn-primary w-100 next-step">Next Step</button>
+                    <button type="button" class="btn btn-primary w-100 next-step">Next Step</button>
 
 
                 </div>
             </div>
         </div>
 
-        <!-- Step 3: image -->
+        <!-- Step 3: test -->
         <div id="step3" class="form-section form-container p-1" style="display: none;" data-step="3">
             <h3 class="mb-2 text-center fw-bold">Pet Details</h3>
-            <p class="subtext mb-5 text-center">Please provide your pet's breed, sex and birthday</p>
+            <p class="subtext mb-5 text-center">Please upload your pet's recent photograph</p>
 
-
+            <div class="mb-4">
+                <label for="petImage" class="form-label fw-bold">Pet Image</label>
+                <input type="file" class="form-control" id="petImage" accept="image/*">
+            </div>
 
             <div class="row">
                 <div class="col-md-3">
                     <button type="button" class="btn btn-primary w-100 prev-step">
-                        <i class="fa-solid fa-angle-left"></i>
+                        <i class="fa-solid fa-angle-left"></i> Back
                     </button>
                 </div>
                 <div class="col-md-9">
