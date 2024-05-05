@@ -36,12 +36,35 @@ $(document).ready(function() {
 
     $(document).ready(function() {
         $('#dogAllergies').select2({
-            placeholder: "Select allergies",
+            placeholder: "Select or type allergies",
             allowClear: true,
-            width: '100%'  // Ensure Select2 spans the full container width
+            width: '100%',
+            tags: true, 
+            tokenSeparators: [',', ' '], 
+            createTag: function (params) {
+
+                if (params.term.trim() === '') {
+                    return null; 
+                }
+    
+                var term = params.term.trim().toLowerCase();
+                var options = $('#dogAllergies option').map(function() {
+                    return this.value.toLowerCase();
+                }).get();
+    
+                if (options.indexOf(term) > -1) {
+                    return null; 
+                }
+    
+                return {
+                    id: term,
+                    text: term,
+                    newTag: true 
+                };
+            }
         });
     });
-
+    
 
 
     // Final step AJAX submission
@@ -103,9 +126,11 @@ function validateStep(stepNumber) {
         }
     } else if (stepNumber === 2) {
         var breed = $('#breed').val();
-        var birthday = $('#birthday').val();
-        if (!breed.trim() || !birthday) {
-            alert("Please enter both the breed and the birthday of your pet");
+        var birthday = $('#birthyear').val();
+        var color = $('#color').val();
+        var weight = $('#weight').val();
+        if (!breed.trim() || !birthday || !color.trim() || !weight.trim()){
+            alert("Please fill all the fields in this step");
             return false;
         }
     } else if (stepNumber === 3) {

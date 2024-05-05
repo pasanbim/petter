@@ -1,5 +1,6 @@
 <?php
 
+include '../process/send-mail.php'; 
 $uploadDir = '../uploads/';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -15,6 +16,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $uploadPath = $uploadDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $uploadPath)) {
+
+
+                $to = 'pasantaxila@gmail.com';
+                $subject = 'Your Pet has been successfully onboarded!';
+                $message = 'Thank you for signing up! Your account has been successfully created.';
+
+                // Send email
+                if (sendEmail($to, $subject, $message)) {
+                    echo 'Email sent successfully!';
+                } else {
+                    echo 'Failed to send email.';
+                }
+
+
                 echo "File uploaded successfully: $uploadPath";
             } else {
                 echo "There was an error moving the uploaded file.";

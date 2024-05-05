@@ -67,11 +67,11 @@
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <label for="breed" class="form-label fw-bold">Breed</label>
-                    <input type="text" class="form-control" id="breed" placeholder="German Shepherd">
+                    <input type="text" class="form-control" id="breed" placeholder="Labrador">
                 </div>
                 <div class="col-md-6 mb-4">
-                    <label for="birthday" class="form-label fw-bold">Birthday</label>
-                    <input type="date" class="form-control" id="birthday">
+                    <label for="birthyear" class="form-label fw-bold">Birth Year</label>
+                    <input type="number" class="form-control" id="birthyear" placeholder="2021">
                 </div>
             </div>
             <div class="row">
@@ -135,6 +135,7 @@
                     <option value="Beef">Beef</option>
                     <option value="Soy">Soy</option>
                     <option value="Dairy">Dairy</option>
+
                 </select>
             </div>
             <div class="mb-4">
