@@ -33,16 +33,36 @@ $(document).ready(function() {
         }
     });
 
+
+    $(document).ready(function() {
+        $('#dogAllergies').select2({
+            placeholder: "Select allergies",
+            allowClear: true,
+            width: '100%'  // Ensure Select2 spans the full container width
+        });
+    });
+
+
+
     // Final step AJAX submission
     $('#final-step').click(function() {
         if (validateStep(3)) {  // Assuming step 3 is the last step and has been validated
             var formData = new FormData();
-            formData.append('fullName', $('#fullName').val());
-            formData.append('petType', $('.interest-cards .selected').attr('id'));
+            formData.append('name', $('#name').val());
+            formData.append('type', $('.pettype-cards .selected').attr('id'));
             formData.append('breed', $('#breed').val());
+            formData.append('color', $('#color').val());
+            formData.append('weight', $('#weight').val());
             formData.append('birthday', $('#birthday').val());
             formData.append('sex', $('#sex').val());
-            formData.append('petImage', $('#petImage')[0].files[0]);
+            formData.append('socialability', $('#socialability').val());
+            formData.append('petImage', $('#petImage')[0].files[0]);        
+            
+            $('#dogAllergies').find(':selected').each(function() {
+                formData.append('allergies[]', $(this).val()); // Use array notation for multiple values
+            });
+
+
     
             // Show spinner and update button text
             $(this).find('.spinner-border').show();
@@ -75,8 +95,8 @@ $(document).ready(function() {
     
 function validateStep(stepNumber) {
     if (stepNumber === 1) {
-        var fullName = $('#fullName').val();
-        var petTypeSelected = $('.interest-cards .selected').length > 0;
+        var fullName = $('#name').val();
+        var petTypeSelected = $('.pettype-cards .selected').length > 0;
         if (!fullName.trim() || !petTypeSelected) {
             alert("Please enter the pet's name and select a pet type");
             return false;
@@ -101,6 +121,7 @@ function validateStep(stepNumber) {
     
     return true;
 }
+
 
 
 function showStep(stepNumber) {
