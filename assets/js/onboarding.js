@@ -76,7 +76,7 @@ $(document).ready(function() {
             formData.append('breed', $('#breed').val());
             formData.append('color', $('#color').val());
             formData.append('weight', $('#weight').val());
-            formData.append('birthday', $('#birthday').val());
+            formData.append('birthyear', $('#birthyear').val());
             formData.append('sex', $('#sex').val());
             formData.append('socialability', $('#socialability').val());
             formData.append('petImage', $('#petImage')[0].files[0]);        
@@ -121,7 +121,11 @@ function validateStep(stepNumber) {
         var fullName = $('#name').val();
         var petTypeSelected = $('.pettype-cards .selected').length > 0;
         if (!fullName.trim() || !petTypeSelected) {
-            alert("Please enter the pet's name and select a pet type");
+
+            erroralert("Please enter the name and select a type");
+            
+            
+
             return false;
         }
     } else if (stepNumber === 2) {
@@ -130,7 +134,8 @@ function validateStep(stepNumber) {
         var color = $('#color').val();
         var weight = $('#weight').val();
         if (!breed.trim() || !birthday || !color.trim() || !weight.trim()){
-            alert("Please fill all the fields in this step");
+
+            erroralert("Please fill all the fields in this step");
             return false;
         }
     } else if (stepNumber === 3) {
@@ -139,7 +144,7 @@ function validateStep(stepNumber) {
         if ($('#petImage').length > 0 && $('#petImage')[0].files.length > 0) {
             var petImage = $('#petImage')[0].files[0];
         } else {
-            alert("Please insert an image of your pet");
+            erroralert("Please insert an image of your pet");
             return false;
         }
     }
