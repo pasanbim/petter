@@ -82,31 +82,47 @@ $(document).ready(function() {
             formData.append('petImage', $('#petImage')[0].files[0]);        
             
             $('#dogAllergies').find(':selected').each(function() {
-                formData.append('allergies[]', $(this).val()); // Use array notation for multiple values
+                formData.append('allergies[]', $(this).val()); 
             });
 
-
-    
             // Show spinner and update button text
             $(this).find('.spinner-border').show();
             $(this).find('.button-text').text('Processing...');
     
             $.ajax({
                 type: "POST",
-                url: "./process/onboarding-save.php",  // Ensure this is the correct path to your server-side script
+                url: "./process/onboarding-save.php",  
                 data: formData,
                 contentType: false,  // Must be false to correctly send FormData
                 processData: false,  // Must be false to prevent jQuery from converting the FormData into a string
                 success: function(response) {
                     $('#final-step').find('.spinner-border').hide();
                     $('#final-step').find('.button-text').text('Submit');
-                    alert(response);  // Optionally replace with a more user-friendly success message or action
-                    $('.container').html('<p class="text-success">Thank you for registering your pet!</p>');
+                    if (response === 'Invalid file type or size too large') {
+                        erroralert(response);
+                    }
+                    else if (response === 'There was an error moving the uploaded file') {
+                        erroralert(response);
+                    } 
+                    else if (response === 'There was an error moving the uploaded file') {
+                        erroralert(response);
+                    } 
+                    else if (response === 'Error in uploading file') {
+                        erroralert(response);
+                    }
+                    else if (response === 'No file uploaded') {
+                        erroralert(response);
+                    }
+                    else if (response === 'Pet onboarded successfully') {
+                        successalert(response);
+                    }
+                    
+                    
                 },
                 error: function(xhr, status, error) {
                     $('#final-step').find('.spinner-border').hide();
                     $('#final-step').find('.button-text').text('Submit');
-                    alert('Error: ' + error);  // Optionally replace with a more user-friendly error handling approach
+                    erroralert('Error: ' + error);  // Optionally replace with a more user-friendly error handling approach
                 }
             });
         } else {
@@ -123,19 +139,21 @@ function validateStep(stepNumber) {
         if (!fullName.trim() || !petTypeSelected) {
 
             erroralert("Please enter the name and select a type");
-            
-            
 
             return false;
         }
     } else if (stepNumber === 2) {
         var breed = $('#breed').val();
-        var birthday = $('#birthyear').val();
+        var birthyear = $('#birthyear').val();
         var color = $('#color').val();
         var weight = $('#weight').val();
-        if (!breed.trim() || !birthday || !color.trim() || !weight.trim()){
-
+        if (!breed.trim() || !birthyear || !color.trim() || !weight.trim()){
             erroralert("Please fill all the fields in this step");
+            return false;
+        }
+
+        else if (birthyear>new Date().getFullYear()) {
+            erroralert("Birthyear cannot be in the future");
             return false;
         }
     } else if (stepNumber === 3) {

@@ -20,7 +20,6 @@
 </head>
 
 <body>
-
     <div class="container mt-5">
         <div class="text-center mb-4">
         <img src="./assets/images/logo.svg" alt="Petter Logo" width="175">
@@ -90,7 +89,6 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-6">
                     <label for="sex" class="form-label fw-bold">Sex</label>
@@ -109,10 +107,6 @@
                     </select>
                 </div>
             </div>
-
-
-
-
 
             <div class="row">
                 <div class="col-md-3">

@@ -29,17 +29,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
     
                 } else {
-                    echo "There was an error moving the uploaded file.";
+                    echo "There was an error moving the uploaded file";
+                    exit;
                 }
             } else {
-                echo "Invalid file type or size too large.";
+                echo "Invalid file type or size too large";
+                exit;
             }
         } else {
-            echo "Error in uploading file. Error code: " . $_FILES['petImage']['error'];
+            echo "Error in uploading file";
+            exit;
         }
     } 
     else {
-        echo "No file uploaded.";
+        echo "No file uploaded";
+        exit;
     }
 
 
@@ -51,33 +55,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $birthyear = isset($_POST['birthyear']) ? $conn->real_escape_string($_POST['birthyear']) : '';
     $sex = isset($_POST['sex']) ? $conn->real_escape_string($_POST['sex']) : '';
     $socialability = isset($_POST['socialability']) ? $conn->real_escape_string($_POST['socialability']) : ''; 
+
     if (isset($_POST['allergies']) && is_array($_POST['allergies'])) {
         $allergyArray = array_map(function($item) use ($conn) {
             return $conn->real_escape_string($item);
         }, $_POST['allergies']);
         $allergies = implode(',', $allergyArray);
     }
-
-    echo "Name: " . $name . "<br>";
-    echo "Type: " . $type . "<br>";
-    echo "Breed: " . $breed . "<br>";
-    echo "Color: " . $color . "<br>";
-    echo "Weight: " . $weight . "<br>";
-    echo "Birth Year: " . $birthyear . "<br>";
-    echo "Sex: " . $sex . "<br>";
-    echo "Social Ability: " . $socialability . "<br>";
-    echo "Allergies: " . $allergies . "<br>";
+    else {
+        $allergies = '';
+    }
+   $user = "Pasantaxila@gmail.com";
 
 
+    $sql = "INSERT INTO pets (name, type, breed, color, weight, birthday, sex, socialability, petImage, allergies, user) 
+           VALUES ('$name', '$type', '$breed', '$color', '$weight', '$birthyear', '$sex', '$socialability', '$newFileName', '$allergies', '$user')";
 
-    // // SQL to insert new record
-    // $sql = "INSERT INTO pets (fullName, petType, breed, birthday, sex, allergies) VALUES ('$fullName', '$petType', '$breed', '$birthday', '$sex', '$allergies')";
+    if ($conn->query($sql) === TRUE) {
+        echo "Pet onboarded successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 
-    // if ($conn->query($sql) === TRUE) {
-    //     echo "New record created successfully";
-    // } else {
-    //     echo "Error: " . $sql . "<br>" . $conn->error;
-    // }
 } else {
     // Not a POST request
     echo "Invalid request";
