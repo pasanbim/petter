@@ -25,29 +25,31 @@
             <div class="col-12 col-md-8 background-image d-none d-md-block"></div>
             <div class="col-12 col-md-4 d-flex align-items-center">
                 <div class="signup-form">
-                <img src="./assets/images/logo.svg" alt="Petter Logo" width="150" class="mx-auto d-block mb-3 mt-2">
+                    <img src="./assets/images/logo.svg" alt="Petter Logo" width="150" class="mx-auto d-block mb-3 mt-2">
                     <h3 class="text-center mb-4 title">Create an account</h3>
-                    <form action="submit_form.php" method="post">
+                    <div class="input-fields-wrapper">
                         <div class="form-group">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" required>
+                            <input type="text" class="form-control name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" required>
+                            <input type="email" class="form-control email" name="email" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group password-field">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" name="password" required>
+                            <input type="password" class="form-control password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Sign up</button>
-                    </form>
-                    <p class="text-center mt-4 signup-footer">
+
+                        <button type="submit" class="btn btn-primary w-100 signup mb-3">Sign up</button>
+                    </div>
+                    <!-- <p class="text-center mt-4 signup-footer">
                         By clicking the "Sign up" button, you are creating a petter account and therefore you agree to
-                        Cineplex Company's Terms of Use and Privacy Policy.
-                    </p>
+                        petter Company's Terms of Use and Privacy Policy.
+                    </p> -->
                     <p class="text-center mt-2 alreadyhave">
-                        Already have an account? <span class="alreadyhavespan">Log in</span>
+                        Already have an account? <a style="text-decoration:none" href="./login.php"><span
+                                class="alreadyhavespan">Log in</span></a>
                     </p>
                 </div>
             </div>
