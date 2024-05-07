@@ -5,7 +5,6 @@ $(document).ready(function() {
             erroralert("Invalid Email");
             return;
         }
-        $('.email').prop('disabled', true);
 
         var name = $('.name').val();
         var email = $('.email').val();
@@ -53,6 +52,8 @@ $(document).ready(function() {
 
                         var otpField = '<div class="form-group"><label for="otp" class="form-label mt-2">OTP</label><input type="number" class="form-control otp" name="otp" required></div>';
                         $('.password-field').append(otpField);
+                        $('.email').prop('disabled', true);
+
                         
                         if (response.status=="sent") {
                             successalert("5 Digit OTP Sent to your email");

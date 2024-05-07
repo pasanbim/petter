@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashedpassword')";
             if ($conn->query($sql) === TRUE) {
+                signupsuccess($email, $name);
                 $response = [
                     'status' => 1,
                     
