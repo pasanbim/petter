@@ -19,15 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $uploadPath = $uploadDir . $newFileName;
     
                 if (move_uploaded_file($fileTmpPath, $uploadPath)) {
-    
 
-    
-                    // $to = 'pasantaxila@gmail.com';
-                    // $petname = 'Allen';
-    
-                    // onboardingemail($to, $petname);
-                
-    
                 } else {
                     echo "There was an error moving the uploaded file";
                     exit;
@@ -72,7 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            VALUES ('$name', '$type', '$breed', '$color', '$weight', '$birthyear', '$sex', '$socialability', '$newFileName', '$allergies', '$user')";
 
     if ($conn->query($sql) === TRUE) {
+        
         echo "Pet onboarded successfully";
+        
+    $to = 'pasantaxila@gmail.com';
+    $petname = $name;
+    onboardingemail($to, $petname);
+    
+
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

@@ -57,8 +57,8 @@ function onboardingemail($to, $petname) {
     <div class="content">
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi there</p>
-        <p>Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.</p>
-        <a href="http://htmlemail.io" target="_blank" class="btn">Call To Action</a>
+        <p>Your Pet, $petname has been successfully onboarded to our platform</p>
+        <a href="" target="_blank" class="btn">Visit Dashboard</a>
         <p>This is a really simple email template. It's sole purpose is to get the recipient to click the button with no distractions.</p>
         <p>Good luck! Hope it works.</p>
     </div>
