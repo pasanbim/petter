@@ -45,6 +45,8 @@ $(document).ready(function() {
                 
                 if (response.status == 1) {
                     successalert("Signup Successful");
+                    window.location = './onboarding.php'; 
+
                 } else if (response.status == 0) {
                     erroralert("Invalid OTP");
                 } else if (response.status == 2) {
