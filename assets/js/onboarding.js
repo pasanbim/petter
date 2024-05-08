@@ -66,7 +66,6 @@ $(document).ready(function() {
     });
     
 
-
     // Final step AJAX submission
     $('#final-step').click(function() {
         if (validateStep(3)) {  // Assuming step 3 is the last step and has been validated

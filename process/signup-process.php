@@ -2,7 +2,8 @@
 
 session_start(); 
 
-include '../process/send-mail.php';
+include '../process/send-mail.php'; 
+include '../process/functions.php'; 
 include '../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -16,50 +17,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $conn->real_escape_string($password);
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
+    if (!validateText($name)) {
+        sendJsonResponse(3, "Invalid name");
+    }
+    if (!validateEmail($email)) {
+        sendJsonResponse(4, "Invalid email");
+    }
+    if (!validatePassword($password)) {
+        sendJsonResponse(5, "Password must be at least 5 characters long");
+    }
+
 
     if ($otp === null) {
 
         $_SESSION['otp'] = rand(pow(10, 5-1), pow(10, 5)-1);
 
         if (otpemail($email, $name, $_SESSION['otp'])) {
-            $response = [
-                'status' => "sent",
-            ];
+            sendJsonResponse(6, "sent");
         } else {
-            $response = [
-                'status' => "notsent",
-            ];
+            sendJsonResponse(7, "notsent");
         }
-
-        header('Content-Type: application/json');
-        echo json_encode($response);
 
     } else {
         $otp = $conn->real_escape_string($otp);
         if ($otp == $_SESSION['otp']) {
 
             $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashedpassword')";
-            if ($conn->query($sql) === TRUE) {
+            if ($conn->query($sql) === TRUE) 
+            {
                 signupsuccess($email, $name);
-                $response = [
-                    'status' => 1,
-                    
-                ];
-            } else {
-                $response = [
-                    'status' => 2,
-                    'message' => "Error: " . $sql . "<br>" . $conn->error
-                ];
-            }
-        } else {
-            $response = [
-                'status' => 0,
-                'message' => "Invalid OTP"
-            ];
-        }
+                sendJsonResponse(1, "Signup successful");
+            } 
+            else 
+            {
 
-        header('Content-Type: application/json');
-        echo json_encode($response);
+                sendJsonResponse(2, "Error: " . $sql . "<br>" . $conn->error);
+            }
+        } 
+        else 
+        {
+            sendJsonResponse(0, "Invalid OTP");
+        }
     }
 }
 

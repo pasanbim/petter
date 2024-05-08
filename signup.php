@@ -41,7 +41,10 @@
                             <input type="password" class="form-control password" name="password" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 signup mb-3">Sign up</button>
+                        <button type="submit" class="btn btn-primary w-100 signup mb-3">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                            <span class="button-text">Sign up</span>
+                        </button>
                     </div>
                     <!-- <p class="text-center mt-4 signup-footer">
                         By clicking the "Sign up" button, you are creating a petter account and therefore you agree to

@@ -31,3 +31,17 @@ function successalert(message) {
   var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
   return emailReg.test($email);
  }
+
+ function validatetext($text) {
+    var textReg = /^[A-Za-z\s]+$/;
+    return textReg.test($text);
+  }
+  
+ 
+ function validatepassword($password) {
+    if ($password.length < 5) {
+        return false;
+        
+    }
+    return true;
+ }
