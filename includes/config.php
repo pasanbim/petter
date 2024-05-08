@@ -1,4 +1,12 @@
 <?php
+
+
+// $servername = "localhost";
+// $username = "u765950664_petter";
+// $password = "2Dvc2QTxnJpC3hT";
+// $dbname = "u765950664_petter";
+
+
 $servername = "localhost";
 $username = "root";
 $password = "";
