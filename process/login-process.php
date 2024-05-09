@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             sendJsonResponse(1, "Login successful");
         } else {
-            sendJsonResponse(0, "Invalid password");
+            sendJsonResponse(0, "Invalid Credentials");
         }
     } else {
         sendJsonResponse(2, "User not found");
