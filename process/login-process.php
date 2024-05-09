@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $email = $conn->real_escape_string($email);
     $password = $conn->real_escape_string($password);
-    $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
     if (!validateEmail($email)) {
         sendJsonResponse(4, "Invalid email");
@@ -24,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        if (password_verify($hashedpassword, $row['password'])) {
+        if (password_verify($password, $row['password'])) {
 
             $_SESSION['email'] = $email;
             $_SESSION['name'] = $row['name'];
