@@ -6,7 +6,7 @@ html {
 }
 
 .background-image {
-    background-image: url(/petter/assets/images/signup-dog-background.jpg);
+    background-image: url(/assets/images/signup-dog-background.jpg);
     background-size: cover;
     filter: brightness(50%);
 }
