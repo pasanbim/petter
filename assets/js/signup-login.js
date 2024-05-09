@@ -87,7 +87,7 @@ $(document).ready(function() {
         }
          else if (validateemail(email) == false) {
             erroralert("Invalid Email");
-            return;
+            return
         } 
 
 
