@@ -228,7 +228,7 @@ EMAIL;
 
 
 
-function loginemail($to, $name, $time, $date, $device, $ip) {
+function loginemail($to, $name, $time, $date, $device, $ip, $location) {
 
     $subject = 'Security Alert | '.$date.' '.$time.'';
     $headers = "From: Petter <noreply@petter.pasanb.me>\r\n";
@@ -290,7 +290,18 @@ function loginemail($to, $name, $time, $date, $device, $ip) {
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi $name,</p>
         <p>Your Petter Account was successfully signed in from a new $device device at $time on $date.</p>
-       <p>IP Address: $ip</p>
+        <p>
+        <img width = "20" src="https://i.ibb.co/dWWwpWQ/pin-1.png" alt="">
+        <b>Near:</b> $location, Sri Lanka
+      </p>
+        <p>
+        <img width = "20" src="https://i.ibb.co/CHqNt4k/aim.png" alt="">
+        <b>IP Address:</b> $ip
+      </p>
+    <p>
+    If you didn’t recognise this log in, check your recent activity and change your password immediately.</p>
+     <a class="btn" href="petter.pasanb.me/reset.php" target="_blank" style="text-decoration: none;">Reset Password</a>
+
 
     </div>
 </div>
