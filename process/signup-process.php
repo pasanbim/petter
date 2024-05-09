@@ -9,11 +9,17 @@ include '../includes/config.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? '';
     $email = $_POST['email'] ?? '';
+    $address = $_POST['address'] ?? '';
+    $latitude = $_POST['latitude'] ?? '';
+    $longitude = $_POST['longitude'] ?? '';
     $password = $_POST['password'] ?? '';
     $otp = $_POST['otp'] ?? null; 
 
     $name = $conn->real_escape_string($name);
     $email = $conn->real_escape_string($email);
+    $address = $conn->real_escape_string($address);
+    $latitude = $conn->real_escape_string($latitude);
+    $longitude = $conn->real_escape_string($longitude);
     $password = $conn->real_escape_string($password);
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -46,8 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Check if the email matches the one stored in the session
             if ($otp == $_SESSION['otp'] && $email == $_SESSION['otp_email']) {
-                $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashedpassword')";
+                $sql = "INSERT INTO users (name, email, address, latitude, longitude,  password) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$hashedpassword')";
                 if ($conn->query($sql) === TRUE) {
+
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
+                    
                     signupsuccess($email, $name);
                     sendJsonResponse(1, "Signup successful");
                 } else {

@@ -37,6 +37,11 @@ function successalert(message) {
     return textReg.test($text);
   }
   
+//  function validateaddress($address) {
+//     var addressReg = /^[A-Za-z0-9\s]+$/;
+//     return addressReg.test($address);
+//   }
+  
  
  function validatepassword($password) {
     if ($password.length < 5) {

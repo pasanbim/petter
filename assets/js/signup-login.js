@@ -1,21 +1,55 @@
+function initAutocomplete() {
+
+    const options = {
+        types: ['geocode'],
+        componentRestrictions: { country: 'LK' }
+    };
+    
+    const autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById('autocomplete'), options);
+
+
+    autocomplete.addListener('place_changed', function() {
+        const place = autocomplete.getPlace();
+
+        if (!place.geometry) {
+            console.log("Returned place contains no geometry");
+            return;
+        }
+
+        const latitude = place.geometry.location.lat();
+        const longitude = place.geometry.location.lng();
+
+        document.getElementById('latitude').value = latitude;
+        document.getElementById('longitude').value = longitude;
+    });
+}
+
+
 $(document).ready(function() {
     $('.signup').click(function() {
         var $button = $(this);  // Reference to the button clicked
         var name = $('.name').val();
         var email = $('.email').val();
+        var address = $('.address').val();
+        var latitude = $('.latitude').val();
+        var longitude = $('.longitude').val();
         var password = $('.password').val();
         var otp = $('.otp').val();
 
-        if (name === '' || email === '' || password === '' || (otp === '' && $('.otp').length > 0)) {
+        if (name === '' || email === '' || address === '' || password === '' || (otp === '' && $('.otp').length > 0)) {
             erroralert("Please fill all fields");
             return;
-        } else if (validatetext(name) == false) {
+        } 
+        else if (validatetext(name) == false) {
             erroralert("Name should contain only letters");
             return;
-        } else if (validateemail(email) == false) {
+        } 
+        else if (validateemail(email) == false) {
             erroralert("Invalid Email");
             return;
-        } else if (validatepassword(password) == false) {
+        }
+         else if (validatepassword(password) == false) {
             erroralert("Password should be at least 5 characters long");
             return;
         }
@@ -24,6 +58,9 @@ $(document).ready(function() {
         var formData = new FormData();
         formData.append('name', name);
         formData.append('email', email);
+        formData.append('address', address);
+        formData.append('latitude', latitude);
+        formData.append('longitude', longitude);
         formData.append('password', password);
         if ($('.otp').length && otp !== '') {
             formData.append('otp', otp);

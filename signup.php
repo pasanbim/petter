@@ -12,6 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv1WxQIx06rjpy0X4oZyqdOsDeW9mflvI&libraries=places&callback=initAutocomplete"></script>
+
+    </script>
+
     <link rel="stylesheet" href="./assets/css/signup-login.css">
     <link rel="stylesheet" href="./assets/css/global.css">
     <script src="./assets/js/global.js"></script>
@@ -25,7 +29,7 @@
             <div class="col-12 col-md-8 background-image d-none d-md-block"></div>
             <div class="col-12 col-md-4 d-flex align-items-center">
                 <div class="signup-form">
-                    <img src="./assets/images/logo.svg" alt="Petter Logo" width="150" class="mx-auto d-block mb-3 mt-2">
+                    <img src="./assets/images/logo.svg" alt="Petter Logo" width="150" class="mx-auto d-block mb-3">
                     <h3 class="text-center mb-4 title">Create an account</h3>
                     <div class="input-fields-wrapper">
                         <div class="form-group">
@@ -36,13 +40,20 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control email" name="email" required>
                         </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control address" id="autocomplete" placeholder="" autocomplete="off">
+                            <input type="text" class="latitude" id="latitude" hidden readonly>
+                            <input type="text" class="longitude" id="longitude" hidden readonly>
+                        </div>
                         <div class="form-group password-field">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control password" name="password" required>
+                            <input type="password" class="form-control password" name="password" autocomplete="off"
+                                required>
                         </div>
-
                         <button type="submit" class="btn btn-primary w-100 signup mb-3">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                                style="display: none;"></span>
                             <span class="button-text">Sign up</span>
                         </button>
                     </div>
