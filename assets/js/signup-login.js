@@ -49,7 +49,7 @@ $(document).ready(function() {
 
                 } 
                 else if (response.status == 0) {
-                    erroralert("Invalid OTP");
+                    erroralert("Invalid OTP or email mismatch");
                 } 
                 else if (response.status == 8) {
                     erroralert("User Already Exists");
@@ -64,13 +64,14 @@ $(document).ready(function() {
                         $('.password-field').append(otpField);
                         $('.email').prop('disabled', true);
 
-                        if (response.message == "sent") {
+                        if (response.status == 6) {
                             successalert("5 Digit OTP Sent to your email");
                         }
                     } 
-                    else {
+                    else if (response.status == 7) {
                         erroralert("Invalid OTP, Please try again");
-                    }
+                        
+                    } 
                 }
             },
             error: function(xhr, status, error) {
