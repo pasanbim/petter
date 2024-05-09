@@ -24,14 +24,10 @@
         <div class="row h-100">
             <div class="col-12 col-md-8 background-image d-none d-md-block"></div>
             <div class="col-12 col-md-4 d-flex align-items-center">
-                <div class="signup-form">
+                <div class="login-form">
                     <img src="./assets/images/logo.svg" alt="Petter Logo" width="150" class="mx-auto d-block mb-3 mt-2">
-                    <h3 class="text-center mb-4 title">Create an account</h3>
+                    <h3 class="text-center mb-4 title">Login</h3>
                     <div class="input-fields-wrapper">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control name" name="name" required>
-                        </div>
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control email" name="email" required>
@@ -41,18 +37,14 @@
                             <input type="password" class="form-control password" name="password" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 signup mb-3">
+                        <button type="submit" class="btn btn-primary w-100 login mb-3">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                            <span class="button-text">Sign up</span>
+                            <span class="button-text">Login</span>
                         </button>
                     </div>
-                    <!-- <p class="text-center mt-4 signup-footer">
-                        By clicking the "Sign up" button, you are creating a petter account and therefore you agree to
-                        petter Company's Terms of Use and Privacy Policy.
-                    </p> -->
                     <p class="text-center mt-2 alreadyhave">
-                        Already have an account? <a style="text-decoration:none" href="./login.php"><span
-                                class="alreadyhavespan">Log in</span></a>
+                     Don't you have an account? <a style="text-decoration:none" href="./signup.php"><span
+                                class="alreadyhavespan">Sign up</span></a>
                     </p>
                 </div>
             </div>

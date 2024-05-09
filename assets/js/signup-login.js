@@ -72,3 +72,66 @@ $(document).ready(function() {
         });
     });
 });
+
+
+$(document).ready(function() {
+    $('.login').click(function() {
+        
+        var $button = $(this);  // Reference to the button clicked
+        var email = $('.email').val();
+        var password = $('.password').val();
+
+        if (email === '' || password === '') {
+            erroralert("Please fill all fields");
+            return;
+        }
+         else if (validateemail(email) == false) {
+            erroralert("Invalid Email");
+            return;
+        } 
+
+
+        // Prepare form data for AJAX
+        var formData = new FormData();
+        formData.append('email', email);
+        formData.append('password', password);
+        
+        $button.find('.spinner-border').show();
+        $button.find('.button-text').text('Processing...');
+
+        // AJAX request to the server
+        $.ajax({
+            url: './process/login-process.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                $button.find('.spinner-border').hide();
+                $button.find('.button-text').text('Login');
+                
+                if (response.status == 0) {
+                    erroralert("Invalid Credentials");
+
+                } 
+                else if (response.status == 1) {
+                    successalert("Login Successful");
+
+                } 
+                 else if (response.status == 2) {
+                    erroralert("User Not Found");
+                }
+
+                 else if (response.status == 4) {
+                    erroralert("Invalid Email");
+                }
+
+            },
+            error: function(xhr, status, error) {
+                $button.find('.spinner-border').hide();
+                $button.find('.button-text').text('Login');
+                console.error("AJAX error:", error);
+            }
+        });
+    });
+});

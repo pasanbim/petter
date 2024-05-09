@@ -11,7 +11,7 @@ html {
     filter: brightness(50%);
 }
 
-.signup-form {
+.signup-form, .login-form {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px;
@@ -69,7 +69,7 @@ html {
         min-height: 100%;
     }
 
-    .signup-form {
+    .signup-form, .login-form {
         max-width: 350px;
     }
 }
