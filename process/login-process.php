@@ -28,6 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $email;
             $_SESSION['name'] = $row['name'];
             $_SESSION['id'] = $row['id'];
+
+
+
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $device = detectdevice();
+            $time = date('h:i A', time());
+            $date = date("Y/m/d");
+
+            loginemail($email, $_SESSION['name'], $time, $date, $device, $ip);
             
             sendJsonResponse(1, "Login successful");
         } else {

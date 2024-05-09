@@ -1,4 +1,4 @@
-function initAutocomplete() {
+function addressAutocomplete() {
 
     const options = {
         types: ['geocode'],

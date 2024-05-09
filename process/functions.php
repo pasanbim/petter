@@ -21,4 +21,27 @@ function sendJsonResponse($status, $message) {
     echo json_encode(['status' => $status, 'message' => $message]);
     exit;
 }
+
+
+function detectdevice(){
+  $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile")); 
+  $isTab = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "tablet")); 
+ 
+    $isWin = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "windows")); 
+    $isAndroid = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "android")); 
+    $isIPhone = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "iphone")); 
+    $isIPad = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "ipad")); 
+    $isIOS = $isIPhone || $isIPad; 
+    
+    if($isIOS){ 
+        return 'iOS';
+    }
+    elseif($isAndroid){ 
+        return 'Android'; 
+    }
+    elseif($isWin){ 
+        return 'Windows'; 
+    }
+
+}
 ?>
