@@ -10,7 +10,6 @@ function onboardingemail($to, $petname) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple HTML Email</title>
 <style>
     body, html {
         margin: 0;
@@ -87,7 +86,6 @@ function otpemail($to, $name, $otp) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple HTML Email</title>
 <style>
     body, html {
         margin: 0;
@@ -160,7 +158,6 @@ function signupsuccess($to, $name) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple HTML Email</title>
 <style>
     body, html {
         margin: 0;
