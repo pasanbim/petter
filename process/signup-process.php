@@ -28,6 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
+    $check_email = "SELECT * FROM users WHERE email = '$email'";
+    $result = $conn->query($check_email);
+    
+    if ($result -> num_rows > 0) {
+        sendJsonResponse(8, "Email already exists");
+    }
+
+    else {
+        
     if ($otp === null) {
 
         $_SESSION['otp'] = rand(pow(10, 5-1), pow(10, 5)-1);
@@ -59,6 +68,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             sendJsonResponse(0, "Invalid OTP");
         }
     }
+    }
+
+
+
+
 }
 
 ?>
