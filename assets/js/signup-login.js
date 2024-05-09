@@ -47,19 +47,28 @@ $(document).ready(function() {
                     successalert("Signup Successful");
                     window.location = './onboarding.php'; 
 
-                } else if (response.status == 0) {
+                } 
+                else if (response.status == 0) {
                     erroralert("Invalid OTP");
-                } else if (response.status == 2) {
+                } 
+                else if (response.status == 8) {
+                    erroralert("User Already Exists");
+                } 
+                else if (response.status == 2) {
                     erroralert("Something went wrong");
-                } else {
+                } 
+                else {
+
                     if (!$('.otp').length) {
                         var otpField = '<div class="form-group"><label for="otp" class="form-label mt-2">OTP</label><input type="number" class="form-control otp" name="otp" required></div>';
                         $('.password-field').append(otpField);
                         $('.email').prop('disabled', true);
+
                         if (response.message == "sent") {
                             successalert("5 Digit OTP Sent to your email");
                         }
-                    } else {
+                    } 
+                    else {
                         erroralert("Invalid OTP, Please try again");
                     }
                 }
