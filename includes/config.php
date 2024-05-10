@@ -1,16 +1,21 @@
 <?php
 
 
-// $servername = "localhost";
-// $username = "u765950664_petter";
-// $password = "2Dvc2QTxnJpC3hT";
-// $dbname = "u765950664_petter";
+if($_SERVER['SERVER_NAME']=="localhost"){
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "petter";
 
+}
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "petter";
+else{
+    $servername = "localhost";
+    $username = "u765950664_petter";
+    $password = "2Dvc2QTxnJpC3hT";
+    $dbname = "u765950664_petter";
+}
+
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
