@@ -95,6 +95,9 @@ $(document).ready(function() {
                 else if (response.status == 8) {
                     erroralert("User Already Exists");
                 } 
+                else if (response.status == 9) {
+                    erroralert("Please select a valid address");
+                } 
                 else if (response.status == 2) {
                     erroralert("Something went wrong");
                 } 

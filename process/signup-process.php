@@ -29,8 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!validateEmail($email)) {
         sendJsonResponse(4, "Invalid email");
     }
+
     if (!validatePassword($password)) {
         sendJsonResponse(5, "Password must be at least 5 characters long");
+    }
+
+    if (!validateaddress($address)) {
+        sendJsonResponse(9, "Please select a valid address");
     }
 
     $check_email = "SELECT * FROM users WHERE email = '$email'";
@@ -40,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         if ($otp === null) {
             $_SESSION['otp'] = rand(pow(10, 5-1), pow(10, 5)-1);
+            $_SESSION['otp_email'] = $email;  // Store the email when sending the OTP
             $_SESSION['otp_email'] = $email;  // Store the email when sending the OTP
 
             if (otpemail($email, $name, $_SESSION['otp'])) {

@@ -15,6 +15,10 @@ function validatePassword($password) {
     return strlen($password) >= 5;
 }
 
+function validateaddress($address) {
+    return preg_match("/^[A-Za-z0-9\s]+$/", $address);
+}
+
 
 function sendJsonResponse($status, $message) {
     header('Content-Type: application/json');
