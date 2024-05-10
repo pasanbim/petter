@@ -16,8 +16,9 @@ function validatePassword($password) {
 }
 
 function validateaddress($address) {
-    return preg_match("/^[A-Za-z0-9\s]+$/", $address);
+    return preg_match("/^[A-Za-z0-9\s.,-]+$/", $address);
 }
+
 
 
 function sendJsonResponse($status, $message) {
