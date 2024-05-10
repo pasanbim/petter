@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         sendJsonResponse(8, "Email already exists");
     } else {
         if ($otp === null) {
-            $_SESSION['otp'] = 1234;
+            $_SESSION['otp'] = rand(pow(10, 5-1), pow(10, 5)-1);
             $_SESSION['otp_email'] = $email;  // Store the email when sending the OTP
 
             if (otpemail($email, $name, $_SESSION['otp'])) {

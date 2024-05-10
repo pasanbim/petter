@@ -45,6 +45,10 @@ $(document).ready(function() {
             erroralert("Name should contain only letters");
             return;
         } 
+        else if (latitude === '' || longitude === '') {
+            erroralert("Please select your address from the dropdown");
+            return;
+        }
         else if (validateemail(email) == false) {
             erroralert("Invalid Email");
             return;

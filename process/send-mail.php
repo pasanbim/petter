@@ -271,6 +271,7 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
         text-decoration: none;
         border-radius: 5px;
         font-weight: bold;
+        
     }
     .footer {
         font-size: 12px;
@@ -282,6 +283,9 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
         text-decoration: none;
         
     }
+    .ii a[href] {
+    color: #ffffff !important;
+}
 </style>
 </head>
 <body>
@@ -292,7 +296,7 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
         <p>Your Petter Account was successfully signed in from a new $device device at $time on $date.</p>
         <p>
         <img width = "20" src="https://i.ibb.co/dWWwpWQ/pin-1.png" alt="">
-        <b>Near:</b> $location, Sri Lanka
+        <b>Near:</b> $location
       </p>
         <p>
         <img width = "20" src="https://i.ibb.co/CHqNt4k/aim.png" alt="">
@@ -300,7 +304,7 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
       </p>
     <p>
     If you didn’t recognise this log in, check your recent activity and change your password immediately.</p>
-     <a class="btn" href="petter.pasanb.me/reset.php" target="_blank" style="text-decoration: none;">Reset Password</a>
+     <a class="btn anchor" href="petter.pasanb.me/reset.php" target="_blank" style="text-decoration:none;">Reset Password</a>
 
 
     </div>

@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control address" id="autocomplete" placeholder="" autocomplete="off">
+                            <input type="text" class="form-control address" id="autocomplete" placeholder="" autocomplete="off" >
                             <input type="text" class="latitude" id="latitude" hidden readonly>
                             <input type="text" class="longitude" id="longitude" hidden readonly>
                         </div>

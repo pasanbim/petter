@@ -1,5 +1,8 @@
 <?php
 
+session_start(); 
+
+
 include '../process/send-mail.php'; 
 include '../includes/config.php'; 
 $uploadDir = '../uploads/';
