@@ -314,10 +314,10 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
 
 EMAIL;
 
-    if (mail($to, $subject, $message, $headers)) {
-        return true;
-    } else {
-        return false;
-    }
+    // if (mail($to, $subject, $message, $headers)) {
+    //     return true;
+    // } else {
+    //     return false;
+    // }
 }
 ?>
