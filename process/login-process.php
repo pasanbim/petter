@@ -1,7 +1,4 @@
 <?php 
-
-session_start(); 
-
 include '../process/send-mail.php'; 
 include '../process/functions.php'; 
 include '../includes/config.php';
@@ -45,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $date = date("Y/m/d");
 
             loginemail($email, $_SESSION['name'], $time, $date, $device, $ip, $location);
-            
             sendJsonResponse(1, "Login successful");
+            
         } else {
             sendJsonResponse(0, "Invalid Credentials");
         }

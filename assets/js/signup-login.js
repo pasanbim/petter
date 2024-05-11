@@ -170,6 +170,7 @@ $(document).ready(function() {
                 } 
                 else if (response.status == 1) {
                     successalert("Login Successful");
+                    window.location = './dashboard.php';
 
                 } 
                  else if (response.status == 2) {

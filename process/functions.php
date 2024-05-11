@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 // Function to validate email
 function validateEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
@@ -18,9 +20,6 @@ function validatePassword($password) {
 function validateaddress($address) {
     return preg_match("/^[A-Za-z0-9\s.,-]{10,}$/", $address);
 }
-
-
-
 
 function sendJsonResponse($status, $message) {
     header('Content-Type: application/json');
@@ -49,5 +48,12 @@ function detectdevice(){
         return 'Windows'; 
     }
 
+}
+
+
+function sessionvalidation(){
+    if (!isset($_SESSION['email']) || !isset($_SESSION['name'])) {
+        header("Location: ./login.php");
+    }
 }
 ?>
