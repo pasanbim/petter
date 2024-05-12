@@ -69,7 +69,8 @@
                     <p class="small text-muted mb-0">Accumsan Consulting</p>
                     <p class="small">
                     <span class="badge badge-dark">'.$row['breed'].'</span>
-                    <span class="badge badge-light text-muted">New York, USA</span>
+                    <!-- <span class="badge badge-light text-muted">New York, USA</span> -->
+
                     </p>
                   </div>
                 </div>
