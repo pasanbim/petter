@@ -7696,7 +7696,11 @@ select {
   width: 48px; }
 
 .avatar-lg img {
-  width: 64px; }
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%; }
 
 .avatar-xl img {
   width: 110px; }
