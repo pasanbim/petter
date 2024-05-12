@@ -58,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $allergies = '';
     }
    $user = $_SESSION['email'];
+   $username = $_SESSION['name'];
 
 
     $sql = "INSERT INTO pets (name, type, breed, color, weight, birthday, sex, socialability, petImage, allergies, user) 
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($conn->query($sql) === TRUE) {
         
         echo "Pet onboarded successfully";
-        onboardingemail($user, $name);
+        onboardingemail($username,$user, $name);
     
 
     } else {

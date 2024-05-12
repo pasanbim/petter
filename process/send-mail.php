@@ -1,6 +1,7 @@
 <?php
+$domain = 'petter.pasanb.me';
 
-function onboardingemail($to, $petname) {
+function onboardingemail($username,$to, $petname) {
     $subject = 'Your Pet '.$petname.' has been successfully onboarded!';
     $headers = "From: Petter <noreply@petter.pasanb.me>\r\n";
     $headers .= "Content-type: text/html\r\n";
@@ -59,9 +60,9 @@ function onboardingemail($to, $petname) {
 <div class="container">
     <div class="content">
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
-        <p>Hi there</p>
+        <p>Hi $username</p>
         <p>Your Pet, $petname has been successfully onboarded to our platform</p>
-        <a href="./dashboard.php" target="_blank" class="btn">Visit Dashboard</a>
+        <a href="$domain/dashboard.php" target="_blank" class="btn">Visit Dashboard</a>
         
     </div>
 </div>
@@ -204,6 +205,10 @@ function signupsuccess($to, $name) {
         text-decoration: none;
         
     }
+
+    .ii a[href] {
+        color: #ffffff !important;
+    }
 </style>
 </head>
 <body>
@@ -212,7 +217,7 @@ function signupsuccess($to, $name) {
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi $name,</p>
         <p>Your Petter Account has been successfully created! </p>
-       <a href="" target="_blank" class="btn anchor">Login to account</a>
+       <a href="$domain/login.php" target="_blank" class="btn anchor">Login to account</a>
        <p>Thank you for being part of the petter community </p>
 
     </div>
@@ -307,7 +312,7 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
       </p>
     <p>
     If you didn’t recognise this log in, check your recent activity and change your password immediately.</p>
-     <a class="btn anchor" href="petter.pasanb.me/reset.php" target="_blank" style="text-decoration:none;">Reset Password</a>
+     <a class="btn anchor" href="$domain/reset.php" target="_blank" style="text-decoration:none;">Reset Password</a>
 
 
     </div>
