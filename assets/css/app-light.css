@@ -1798,6 +1798,7 @@ textarea.form-control {
   text-align: center;
   vertical-align: middle;
   user-select: none;
+  border: none ;
   background-color: transparent;
   padding: 0.375rem 0.75rem;
   font-size: 0.875rem;
@@ -7374,7 +7375,15 @@ button:focus {
   font-size: 0.75rem; }
 
 .dropdown-toggle.more-vertical::after {
-  content: "\e9a5"; }
+  content: "\e9a5";
+  background-color: #FF7C00;
+  color: white;
+  border-radius: 3px;
+  width: 17px;
+  height: 20px;
+
+
+}
 
 .dropdown-toggle.more-horizontal::after {
   content: "\e9a4"; }
