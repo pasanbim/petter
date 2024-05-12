@@ -116,7 +116,7 @@ $(document).ready(function() {
                         successalert(response);
                         setTimeout(function() {
                             window.location.href = "./dashboard.php";
-                        }, 1000); // Redirect to dashboard after 1 seconds
+                        }, 4000); // Redirect to dashboard after 1 seconds
                         
                     
                     }

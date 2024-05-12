@@ -1,5 +1,4 @@
 <?php
-$domain = 'petter.pasanb.me';
 
 function onboardingemail($username,$to, $petname) {
     $subject = 'Your Pet '.$petname.' has been successfully onboarded!';
@@ -62,7 +61,7 @@ function onboardingemail($username,$to, $petname) {
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi $username</p>
         <p>Your Pet, $petname has been successfully onboarded to our platform</p>
-        <a href="$domain/dashboard.php" target="_blank" class="btn">Visit Dashboard</a>
+        <a href="petter.pasanb.me/dashboard.php" target="_blank" class="btn">Visit Dashboard</a>
         
     </div>
 </div>
@@ -217,7 +216,7 @@ function signupsuccess($to, $name) {
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi $name,</p>
         <p>Your Petter Account has been successfully created! </p>
-       <a href="$domain/login.php" target="_blank" class="btn anchor">Login to account</a>
+       <a href="petter.pasanb.me/login.php" target="_blank" class="btn anchor">Login to account</a>
        <p>Thank you for being part of the petter community </p>
 
     </div>
@@ -312,7 +311,7 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
       </p>
     <p>
     If you didn’t recognise this log in, check your recent activity and change your password immediately.</p>
-     <a class="btn anchor" href="$domain/reset.php" target="_blank" style="text-decoration:none;">Reset Password</a>
+     <a class="btn anchor" href="petter.pasanb.me/reset.php" target="_blank" style="text-decoration:none;">Reset Password</a>
 
 
     </div>
