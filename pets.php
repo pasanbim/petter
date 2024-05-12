@@ -65,10 +65,10 @@
                     </a>
                   </div>
                   <div class="card-text my-2">
-                    <strong class="card-title my-0">'.$row['name'].'</strong>
-                    <p class="small text-muted mb-0">Accumsan Consulting</p>
+                    <h4 class="card-title mt-3 my-0">'.ucwords($row['name']).' </h4>
+                    <p class="small text-muted mb-0">'.ucwords($row['sex']).'  '.ucwords($row['socialability']).' '.ucwords($row['type']).' Born in '.ucwords($row['birthday']).'</p>
                     <p class="small">
-                    <span class="badge badge-dark">'.$row['breed'].'</span>
+                    <span class="badge badge-primary" style="font-size:90%;">'.ucwords($row['breed']).'</span>
                     <!-- <span class="badge badge-light text-muted">New York, USA</span> -->
 
                     </p>
