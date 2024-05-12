@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($conn->query($sql) === TRUE) {
         
         echo "Pet onboarded successfully";
-        onboardingemail($to, $name);
+        onboardingemail($user, $name);
     
 
     } else {
