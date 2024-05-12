@@ -230,7 +230,8 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button; }
+  -webkit-appearance: button; 
+  appearance: button; }
 
 button:not(:disabled),
 [type="button"]:not(:disabled),
@@ -283,7 +284,8 @@ progress {
 
 [type="search"] {
   outline-offset: -2px;
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+appearance: none; }
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -7609,7 +7611,8 @@ button:focus {
 
 /* form element */
 select {
-  -webkit-border-radius: 0px; }
+  -webkit-border-radius: 0px;
+  border-radius: 0px; }
 
 /* custom card height */
 .card.eq-card {
@@ -8668,7 +8671,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
  * The MIT License
  * Copyright (c) 2012 Matias Meno <m@tias.me>
  */
-@-webkit-keyframes "passing-through" {
+@-webkit-keyframes passing-through {
   0% {
     opacity: 0;
     -webkit-transform: translateY(40px);
@@ -8691,7 +8694,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     -o-transform: translateY(-40px);
     transform: translateY(-40px); } }
 
-@-moz-keyframes "passing-through" {
+@-moz-keyframes passing-through {
   0% {
     opacity: 0;
     -webkit-transform: translateY(40px);
@@ -8714,7 +8717,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     -o-transform: translateY(-40px);
     transform: translateY(-40px); } }
 
-@keyframes "passing-through" {
+@keyframes passing-through {
   0% {
     opacity: 0;
     -webkit-transform: translateY(40px);
@@ -8737,7 +8740,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     -o-transform: translateY(-40px);
     transform: translateY(-40px); } }
 
-@-webkit-keyframes "slide-in" {
+@-webkit-keyframes slide-in {
   0% {
     opacity: 0;
     -webkit-transform: translateY(40px);
@@ -8753,7 +8756,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     -o-transform: translateY(0px);
     transform: translateY(0px); } }
 
-@-moz-keyframes "slide-in" {
+@-moz-keyframes slide-in {
   0% {
     opacity: 0;
     -webkit-transform: translateY(40px);
@@ -8769,7 +8772,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     -o-transform: translateY(0px);
     transform: translateY(0px); } }
 
-@keyframes "slide-in" {
+@keyframes slide-in {
   0% {
     opacity: 0;
     -webkit-transform: translateY(40px);
@@ -8785,7 +8788,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     -o-transform: translateY(0px);
     transform: translateY(0px); } }
 
-@-webkit-keyframes "pulse" {
+@-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -8805,7 +8808,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     -o-transform: scale(1);
     transform: scale(1); } }
 
-@-moz-keyframes "pulse" {
+@-moz-keyframes pulse {
   0% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -8825,7 +8828,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     -o-transform: scale(1);
     transform: scale(1); } }
 
-@keyframes "pulse" {
+@keyframes pulse {
   0% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -8982,6 +8985,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
       margin-left: -40px;
       background: rgba(255, 255, 255, 0.9);
       -webkit-transform: scale(1);
+      transform: scale(1);
       border-radius: 8px;
       overflow: hidden; }
       .dropzone .dz-preview .dz-progress .dz-upload {
@@ -9139,31 +9143,31 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
 /* ------------------------------------------------
   [3] Size
 -------------------------------------------------*/
-@keyframes "uppy-StatusBar-ProgressStripes" {
+@keyframes uppy-StatusBar-ProgressStripes {
   from {
     background-position: 0 0; }
   to {
     background-position: 64px 0; } }
 
-@keyframes "uppy-StatusBar-spinnerAnimation" {
+@keyframes uppy-StatusBar-spinnerAnimation {
   0% {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
 
-@keyframes "uppy-Dashboard-fadeIn" {
+@keyframes uppy-Dashboard-fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
 
-@keyframes "uppy-Dashboard-fadeOut" {
+@keyframes uppy-Dashboard-fadeOut {
   from {
     opacity: 1; }
   to {
     opacity: 0; } }
 
-@keyframes "uppy-Dashboard-slideDownAndFadeIn" {
+@keyframes  uppy-Dashboard-slideDownAndFadeIn {
   from {
     transform: translate3d(-50%, -70%, 0);
     opacity: 0; }
@@ -9171,7 +9175,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     transform: translate3d(-50%, -50%, 0);
     opacity: 1; } }
 
-@keyframes "uppy-Dashboard-slideDownAndFadeIn--small" {
+@keyframes uppy-Dashboard-slideDownAndFadeIn--small {
   from {
     transform: translate3d(0, -20%, 0);
     opacity: 0; }
@@ -9179,7 +9183,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     transform: translate3d(0, 0, 0);
     opacity: 1; } }
 
-@keyframes "uppy-Dashboard-slideUpFadeOut" {
+@keyframes uppy-Dashboard-slideUpFadeOut{
   from {
     transform: translate3d(-50%, -50%, 0);
     opacity: 1; }
@@ -9187,7 +9191,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     transform: translate3d(-50%, -70%, 0);
     opacity: 0; } }
 
-@keyframes "uppy-Dashboard-slideUpFadeOut--small" {
+@keyframes uppy-Dashboard-slideUpFadeOut--small {
   from {
     transform: translate3d(0, 0, 0);
     opacity: 1; }
@@ -9195,7 +9199,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     transform: translate3d(0, -20%, 0);
     opacity: 0; } }
 
-@keyframes "uppy-ScreenCapture-icon--blink" {
+@keyframes uppy-ScreenCapture-icon--blink {
   0% {
     fill: #2275d7; }
   50% {
@@ -9389,6 +9393,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
 
 .uppy-u-reset {
   -webkit-appearance: none;
+  appearance: none;
   line-height: 1;
   padding: 0;
   margin: 0;
@@ -11428,6 +11433,7 @@ svg.UppyIcon.retry {
 .uppy-DashboardContent-back {
   background: none;
   -webkit-appearance: none;
+  appearance: none;
   font-family: inherit;
   font-size: inherit;
   line-height: 1;
@@ -11453,6 +11459,7 @@ svg.UppyIcon.retry {
 .uppy-DashboardContent-addMore {
   background: none;
   -webkit-appearance: none;
+  appearance: none;
   font-family: inherit;
   font-size: inherit;
   line-height: 1;
@@ -11731,6 +11738,7 @@ a.uppy-Dashboard-poweredBy {
 .uppy-FileInput-btn {
   background: none;
   -webkit-appearance: none;
+  appearance: none;
   font-family: inherit;
   font-size: inherit;
   line-height: 1;
