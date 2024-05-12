@@ -49,6 +49,10 @@ function onboardingemail($to, $petname) {
         text-align: center;
         padding-top: 20px;
     }
+
+    .ii a[href] {
+        color: #ffffff !important;
+    }
 </style>
 </head>
 <body>
@@ -57,9 +61,8 @@ function onboardingemail($to, $petname) {
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi there</p>
         <p>Your Pet, $petname has been successfully onboarded to our platform</p>
-        <a href="" target="_blank" class="btn">Visit Dashboard</a>
-        <p>This is a really simple email template. It's sole purpose is to get the recipient to click the button with no distractions.</p>
-        <p>Good luck! Hope it works.</p>
+        <a href="./dashboard.php" target="_blank" class="btn">Visit Dashboard</a>
+        
     </div>
 </div>
 </body>
