@@ -85,6 +85,7 @@ $(document).ready(function() {
             });
 
             // Show spinner and update button text
+            // $(this).prop('disabled', true);
             $(this).find('.spinner-border').show();
             $(this).find('.button-text').text('Processing...');
     
@@ -114,9 +115,9 @@ $(document).ready(function() {
                     }
                     else if (response === 'Pet onboarded successfully') {
                         successalert(response);
-                        setTimeout(function() {
-                            window.location.href = "./dashboard.php";
-                        }, 4000); // Redirect to dashboard after 1 seconds
+                        // setTimeout(function() {
+                        //     window.location.href = "./dashboard.php";
+                        // }, 4000); 
                         
                     
                     }

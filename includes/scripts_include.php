@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="./assets/css/quill.snow.css">
     <link rel="stylesheet" href="./assets/css/daterangepicker.css">
     <link rel="stylesheet" href="./assets/css/app-light.css">
-    
+
+
     
     <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/popper.min.js"></script>
@@ -39,3 +40,4 @@
     <script src='./assets/js/uppy.min.js'></script>
     <script src='./assets/js/quill.min.js'></script>
     <script src="./assets/js/apps.js"></script>
+    <script src="./assets/js/pets.js"></script>

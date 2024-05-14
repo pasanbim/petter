@@ -36,7 +36,7 @@ else {
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="text-center mb-4">
         <img src="./assets/images/logo.svg" alt="Petter Logo" width="175">
 
