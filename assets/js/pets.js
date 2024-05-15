@@ -8,7 +8,7 @@ $(document).ready(function() {
                 var petsHtml = '';
                 response.forEach(function(pet) {
                     petsHtml += `
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="card shadow mb-4">
                                 <div class="card-body text-center">
                                     <div class="row align-items-center justify-content-end">
@@ -22,12 +22,15 @@ $(document).ready(function() {
                                                         <i class="fe fe-meh fe-12 mr-4"></i>Profile
                                                     </a>
                                                     <a class="dropdown-item" href="#">
-                                                        <i class="fe fe-message-circle fe-12 mr-4"></i>Chat
+                                                        <i class="fe fe-plus-square fe-12 mr-4"></i>Add Record
                                                     </a>
                                                     <a class="dropdown-item" href="#">
-                                                        <i class="fe fe-mail fe-12 mr-4"></i>Contact
+                                                        <i class="fe fe-bell fe-12 mr-4"></i>Setup Alert
                                                     </a>
-                                                    <a class="dropdown-item delete" data-deleteid="${pet.id}" href="#">
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="fe fe-edit fe-12 mr-4"></i>Edit
+                                                    </a>
+                                                    <a class="dropdown-item delete" data-deleteid="${pet.id}" href="">
                                                         <i class="fe fe-delete fe-12 mr-4"></i>Delete
                                                     </a>
                                                 </div>
@@ -59,8 +62,6 @@ $(document).ready(function() {
     // Load pets on page load
     loadPets();
 
-
-
     $(document).on('click', '.delete', function(e) {
         e.preventDefault();
         var deleteid = $(this).data('deleteid');
@@ -76,6 +77,9 @@ $(document).ready(function() {
                         successalert(response.message);
                         if (response.status == 1) {
                             loadPets(); // Refresh pets list without reloading the page
+                        }
+                        if (response.status == 2) {
+                            erroralert(response.message);
                         }
                     }
                 }
