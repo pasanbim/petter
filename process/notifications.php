@@ -5,7 +5,6 @@ include '../process/functions.php';
 include '../includes/config.php';
 
 if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
-
     $user = $_SESSION['email'];
 
     if (isset($_POST['loadNotifications']) && $_POST['loadNotifications'] == true) {
@@ -33,5 +32,7 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
         $result = $conn->query($sql);
         echo json_encode(['status' => 1]);
     }
+
+    // dfdf
 }
 ?>
