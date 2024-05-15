@@ -4,6 +4,14 @@ include '../process/send-mail.php';
 include '../process/functions.php'; 
 include '../includes/config.php';
 
+
+date_default_timezone_set('Asia/Colombo');
+$dateandtime = date('Y-m-d h:i A', time());
+
+
+
+
+
 if (isset($_SESSION['email'])) {
 
     $user = $_SESSION['email'];
@@ -12,7 +20,13 @@ if (isset($_SESSION['email'])) {
         $deleteid = $_POST['deleteid'];
         $sql = "DELETE FROM pets WHERE id = '$deleteid' AND user = '$user'";
         if ($conn->query($sql) === TRUE) {
+
+            $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Pet $deleteid Deleted Successfully', '$dateandtime', '$user')";
+            $conn->query($sqlfornotification);
+            
             sendJsonResponse(1,"Pet deleted successfully");
+
+
         } else {
             sendJsonResponse(2, "Error Deleting pet");
         }

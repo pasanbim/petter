@@ -41,3 +41,4 @@
     <script src='./assets/js/quill.min.js'></script>
     <script src="./assets/js/apps.js"></script>
     <script src="./assets/js/pets.js"></script>
+    <script src="./assets/js/notifications.js"></script>

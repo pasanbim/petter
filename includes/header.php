@@ -14,8 +14,8 @@ sessionvalidation();
         <ul class="nav">
           <li class="nav-item nav-notif">
             <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-              <span class="fe fe-bell fe-16"></span>
-              <span class="dot dot-md"></span>
+              <span class="fe fe-bell fe-16" id="notification-icon"></span>
+              <span class="notification-dot dot "></span>
             </a>
           </li>
           <li class="nav-item dropdown">
@@ -43,59 +43,26 @@ sessionvalidation();
                 </button>
             </div>
             <div class="modal-body">
-                <div class="list-group list-group-flush my-n3">
+                <div class="list-group list-group-flush my-n3 notifications-list">
+
+
+                
                     <div class="list-group-item bg-transparent">
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <span class="fe fe-box fe-24"></span>
                             </div>
                             <div class="col">
-                                <small><strong>Package has uploaded successfull</strong></small>
-                                <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                                <small class="badge badge-pill badge-light text-muted">1m ago</small>
+                                <small><strong></strong></small>
+                                <small class="badge badge-pill badge-light text-muted"></small>
                             </div>
                         </div>
                     </div>
-                    <div class="list-group-item bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-                                <span class="fe fe-download fe-24"></span>
-                            </div>
-                            <div class="col">
-                                <small><strong>Widgets are updated successfull</strong></small>
-                                <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                                <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-                                <span class="fe fe-inbox fe-24"></span>
-                            </div>
-                            <div class="col">
-                                <small><strong>Notifications have been sent</strong></small>
-                                <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                                <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="list-group-item bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-                                <span class="fe fe-link fe-24"></span>
-                            </div>
-                            <div class="col">
-                                <small><strong>Link was attached to menu</strong></small>
-                                <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                                <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                            </div>
-                        </div>
-                    </div> 
+                    
                 </div> 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
+                <button type="button" class="btn btn-secondary btn-block clear-notifications" data-dismiss="modal">Clear All</button>
             </div>
         </div>
     </div>

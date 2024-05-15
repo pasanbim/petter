@@ -19,7 +19,7 @@
               </a>
 
               <a class="nav-link" href="./pets.php">
-                <i class="fe fe-layers fe-16"></i>
+                <i class="fe fe-moon fe-16"></i>
                 <span class="ml-3 item-text">My Pets</span>
               </a>
 
