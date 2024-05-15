@@ -7663,9 +7663,9 @@ select {
   -ms-transform: translate(0, 0); }
 
 .modal.fade.modal-slide .modal-content {
-  height: 100%;
+  height: auto;
   border: none;
-  background: transparent; }
+}
 
 .modal.fade.modal-full .modal-content {
   border: none;
