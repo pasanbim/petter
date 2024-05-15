@@ -19,7 +19,7 @@ if (isset($_SESSION['email'])) {
         $sql = "DELETE FROM pets WHERE id = '$deleteid' AND user = '$user'";
         if ($conn->query($sql) === TRUE) {
 
-            $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Pet $deleteid Deleted Successfully', '$time', '$user')";
+            $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Pet $deleteid Deleted Successfully', '$dateandtime', '$user')";
             $conn->query($sqlfornotification);
             
             sendJsonResponse(1,"Pet deleted successfully");
