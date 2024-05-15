@@ -7663,8 +7663,9 @@ select {
   -ms-transform: translate(0, 0); }
 
 .modal.fade.modal-slide .modal-content {
-  height: auto;
+  height: 100%;
   border: none;
+  background: transparent; 
 }
 
 .modal.fade.modal-full .modal-content {
