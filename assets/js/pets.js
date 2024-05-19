@@ -84,7 +84,6 @@ $(document).ready(function() {
 
                         else if (response.status == 3) {
                             erroralert(response.message);
-                            window.location.href = 'onboarding.php';
                         }
                     }
                 }
