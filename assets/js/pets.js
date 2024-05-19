@@ -77,10 +77,14 @@ $(document).ready(function() {
                         successalert(response.message);
                         if (response.status == 1) {
                             loadPets(); // Refresh pets list without reloading the page
-                            
                         }
-                        if (response.status == 2) {
+                        else if (response.status == 2) {
                             erroralert(response.message);
+                        }
+
+                        else if (response.status == 3) {
+                            erroralert(response.message);
+                            window.location.href = 'onboarding.php';
                         }
                     }
                 }
