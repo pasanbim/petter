@@ -40,6 +40,10 @@ if (isset($_SESSION['email'])) {
                 $pets[] = $row;
             }
         }
+
+        elseif ($result->num_rows == 0) {
+            header('Location: ../onboarding.php');
+        }
     
         echo json_encode($pets);
     }
