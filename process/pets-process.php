@@ -42,7 +42,7 @@ if (isset($_SESSION['email'])) {
         }
 
         elseif ($result->num_rows == 0) {
-            echo json_encode("No Pets Found");
+            sendJsonResponse(3, "No Pets Found");
         }
     
         echo json_encode($pets);
