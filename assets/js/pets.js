@@ -5,6 +5,11 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'json',
             success: function(response) {
+                if (response.status == 3) {
+                    erroralert(response.message);
+                    window.location.href = 'onboarding.php';
+                    return;
+                }
                 var petsHtml = '';
                 response.forEach(function(pet) {
                     petsHtml += `
@@ -79,10 +84,6 @@ $(document).ready(function() {
                             loadPets(); // Refresh pets list without reloading the page
                         }
                         else if (response.status == 2) {
-                            erroralert(response.message);
-                        }
-
-                        else if (response.status == 3) {
                             erroralert(response.message);
                         }
                     }
