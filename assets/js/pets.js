@@ -35,6 +35,9 @@ $(document).ready(function() {
                                                     <a class="dropdown-item" href="#">
                                                         <i class="fe fe-edit fe-12 mr-4"></i>Edit
                                                     </a>
+                                                    <a class="dropdown-item" href="#" data-shareid="${pet.id}" class="sharepet btn mb-2 btn-outline-success" id="sharepet" data-toggle="modal" data-target="#verticalModal">
+                                                        <i class="fe fe-share-2 fe-12 mr-4"></i>Share
+                                                    </a>
                                                     <a class="dropdown-item delete" data-deleteid="${pet.id}" href="">
                                                         <i class="fe fe-delete fe-12 mr-4"></i>Delete
                                                     </a>
@@ -65,7 +68,54 @@ $(document).ready(function() {
     }
 
     // Load pets on page load
-    loadPets();
+    loadPets(); 
+
+
+    //load share link in modal
+    $(document).on('click', '#sharepet', function(e) {
+
+        var shareid = $(this).data('shareid');
+        sharelink = window.location.origin + '/profile.php?petid=' + shareid;
+        $('#sharelink').html(sharelink);
+
+    
+        
+    });
+
+    //copy share link to clipboard
+    $(document).on('click', '.copy-share-link', function(e) {
+
+        var sharelink = $('#sharelink').html();
+        navigator.clipboard.writeText(sharelink).then(function() {
+            successalert('Link copied to clipboard');
+        });    
+    });
+
+    //share link on facebook
+
+    $('.share-link-fb').click(function(e) {
+        var sharelink = $('#sharelink').html();
+        window.open('https://www.facebook.com/share.php?u=' + sharelink, '_blank');
+        
+    });
+
+    //share link on whatsapp
+
+    $('.share-link-wa').click(function(e) {
+        var sharelink = $('#sharelink').html();
+        window.open('https://api.whatsapp.com/send?text=' + sharelink, '_blank');
+        
+    });
+
+    //share link on twitter
+
+    $('.share-link-tw').click(function(e) {
+        var sharelink = $('#sharelink').html();
+        window.open('https://twitter.com/share?url=' + sharelink, '_blank');
+        
+    });
+
+    
 
     $(document).on('click', '.delete', function(e) {
         e.preventDefault();

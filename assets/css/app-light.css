@@ -7649,7 +7649,7 @@ select {
 /* custom modal */
 .modal.fade.modal-slide .modal-dialog {
   position: absolute;
-  min-width: 20%;
+  min-width: 25%;
   right: 0;
   margin: 0;
   height: 100%;
