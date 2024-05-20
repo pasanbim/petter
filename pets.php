@@ -33,7 +33,6 @@
               <div class="btn copy-share-link fe fe-copy fe-12 mb-2 ml-2" style="color: white; background-color:#FF7C00;"></div>
               <div class="btn share-link-fb fa-brands fa-facebook-f fe-12 mb-2 ml-2" style="color: white; background-color:#0866FF;"></div>
               <div class="btn share-link-wa fa-brands fa-whatsapp fe-12 mb-2 ml-2" style="color: white; background-color:#07C141;"></div>
-              <div class="btn share-link-tw fe fe-twitter fe-12 mb-2 ml-2" style="color: white; background-color:black;"></div>
             </div>
           </div>
         </div>
