@@ -8,6 +8,7 @@
     <?php include './includes/cdn_include.php'; ?>
 
 
+<<<<<<< HEAD
 
 </head>
 
@@ -55,3 +56,9 @@
 </body>
 
 </html>
+=======
+date_default_timezone_set('Asia/Colombo');
+echo date('Y-m-d h:i A', time());
+echo "test.php file is created by me";
+?>
+>>>>>>> 2e57f5c0215fcfb273f18bc2a33fc70392684407
