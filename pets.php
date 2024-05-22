@@ -70,11 +70,8 @@
 
                                         <div class="form-group col-md-12">
                                                 <label for="proof" class="form-label">Proof</label>
-                                                <input class="form-control proof" style="height: unset" type="file" id="proof">
+                                                <input class="form-control proof" style="height: unset" type="file" id="proof" accept=".jpg, .png, .heic, .jpeg, .pdf">
                                         </div>
-                                        <input type="text" class="petidhidden" id="petidhidden" hidden value="">
-
-
 
                                         <button class="btn btn-primary btn-addrecord" id="btn-addrecord" style="margin-left:5px">Add Record</button>
 
@@ -86,6 +83,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- Share Pet Modal-->
 
         <div class="modal fade" id="sharepetmodal" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle"
@@ -139,14 +137,17 @@
     <script src="assets/js/moment.min.js"></script>
     <script src='assets/js/daterangepicker.js'></script>
     <script>
-    $('.drgpicker').daterangepicker({
+  
+  $('.drgpicker').daterangepicker({
         singleDatePicker: true,
         timePicker: false,
         showDropdowns: true,
+        maxDate: moment(),
         locale: {
             format: 'MM/DD/YYYY'
         }
     });
+
     </script>
     <?php include './includes/scripts_include.php'; ?>
 </body>

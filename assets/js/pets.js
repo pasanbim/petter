@@ -129,7 +129,7 @@ $(document).ready(function() {
 
     
 
-    
+    // Delete pet
 
     $(document).on('click', '.delete', function(e) {
         e.preventDefault();
@@ -157,15 +157,55 @@ $(document).ready(function() {
     });
 
 
-
-
-    $(document).on('click', '#btn-addrecord', function(e) {
+    // Add record
+    $(document).on('click', '.btn-addrecord', function(e) {
         e.preventDefault();
         var id = $(this).data('petid');
-        console.log(id);
-        
-
+        var recordtype = $('#type').find(":selected").text();
+        var date = $('#date').val();
+        var record = $('#record').val();
+        var proof = $('#proof')[0].files[0];
+    
+        if (recordtype == '' || date == '' || record == '') {
+            erroralert('All fields are required');
+            return;
+        }
+    
+        // Create a FormData object
+        var formData = new FormData();
+        formData.append('petid', id);
+        formData.append('recordtype', recordtype);
+        formData.append('date', date);
+        formData.append('record', record);
+        formData.append('proof', proof);
+    
+        $.ajax({
+            url: "./process/pets-process.php",
+            type: "POST",
+            data: formData,
+            contentType: false, // Required for FormData
+            processData: false, // Required for FormData
+            dataType: 'json',
+            success: function(response) {
+                if (response.status == 5) {
+                    erroralert(response.message);
+                }
+                else if (response.status == 6) {
+                    successalert(response.message);
+                }
+                else if (response.status == 7) {
+                    successalert(response.message);
+                    $('#addrecordmodal').modal('hide');
+                }
+                else if (response.status == 8) {
+                    erroralert(response.message);
+                }
+            }
+        });
+    
+        $(this).removeData('petid'); // clear pet id from button
     });
+    
 
   
 });
