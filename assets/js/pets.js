@@ -171,7 +171,6 @@ $(document).ready(function() {
             return;
         }
     
-        // Create a FormData object
         var formData = new FormData();
         formData.append('petid', id);
         formData.append('recordtype', recordtype);
@@ -183,10 +182,11 @@ $(document).ready(function() {
             url: "./process/pets-process.php",
             type: "POST",
             data: formData,
-            contentType: false, // Required for FormData
-            processData: false, // Required for FormData
+            contentType: false,
+            processData: false,
             dataType: 'json',
             success: function(response) {
+                
                 if (response.status == 5) {
                     erroralert(response.message);
                 }
