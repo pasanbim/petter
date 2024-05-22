@@ -177,6 +177,11 @@ $(document).ready(function() {
         formData.append('date', date);
         formData.append('record', record);
         formData.append('proof', proof);
+
+        $('#spinner').show();
+        $(this).prop('disabled', true);
+
+        
     
         $.ajax({
             url: "./process/pets-process.php",
@@ -186,15 +191,23 @@ $(document).ready(function() {
             processData: false,
             dataType: 'json',
             success: function(response) {
+
+                $('#spinner').hide();
+                $('#btn-addrecord').prop('disabled', false);
                 
                 if (response.status == 5) {
                     erroralert(response.message);
                 }
                 else if (response.status == 6) {
-                    successalert(response.message);
+                    erroralert(response.message);
                 }
                 else if (response.status == 7) {
                     successalert(response.message);
+
+                    // Clear input fields
+
+                    $('#record').val('');
+                    $('#proof').val('');
                     $('#addrecordmodal').modal('hide');
                 }
                 else if (response.status == 8) {

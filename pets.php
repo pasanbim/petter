@@ -16,8 +16,8 @@
 <body class="vertical light">
     <?php include './includes/header.php'; include './includes/sidebar.php'; ?>
     <main role="main" class="main-content">
-        <div class="container-fluid">
-            <div class="card-body">
+        <!-- <div class="container-fluid">
+            <div class="card-body"> -->
 
                 <!-- Add Record Modal-->
 
@@ -73,7 +73,10 @@
                                                 <input class="form-control proof" style="height: unset" type="file" id="proof" accept=".jpg, .png, .heic, .jpeg, .pdf">
                                         </div>
 
-                                        <button class="btn btn-primary btn-addrecord" id="btn-addrecord" style="margin-left:5px">Add Record</button>
+                                        <button class="btn btn-primary btn-addrecord" id="btn-addrecord" style="margin-left:5px">
+                                            Add Record
+                                            <span id="spinner" class="spinner-border spinner-border-sm" role="status" style="display: none; margin-left: 5px;"></span>
+                                        </button>
 
                                     </div>
                                 </div>
@@ -81,8 +84,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
         
         <!-- Share Pet Modal-->
 

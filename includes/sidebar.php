@@ -19,8 +19,12 @@
               </a>
 
               <a class="nav-link" href="./pets.php">
-                <i class="fe fe-moon fe-16"></i>
+                <i class="fe fe-gitlab fe-16"></i>
                 <span class="ml-3 item-text">My Pets</span>
+              </a>
+              <a class="nav-link" href="./pets.php">
+                <i class="fe fe-file-text fe-16"></i>
+                <span class="ml-3 item-text">Records</span>
               </a>
 
             </li>
