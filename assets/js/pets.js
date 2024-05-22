@@ -26,7 +26,7 @@ $(document).ready(function() {
                                                     <a class="dropdown-item" href="#">
                                                         <i class="fe fe-meh fe-12 mr-4"></i>Profile
                                                     </a>
-                                                    <a class="dropdown-item" href="#">
+                                                    <a class="dropdown-item" href="" data-petid="${pet.id}" data-petname="${pet.name}" class="addrecord btn mb-2 btn-outline-success" id="addrecord" data-toggle="modal" data-target="#addrecordmodal">
                                                         <i class="fe fe-plus-square fe-12 mr-4"></i>Add Record
                                                     </a>
                                                     <a class="dropdown-item" href="#">
@@ -35,7 +35,7 @@ $(document).ready(function() {
                                                     <a class="dropdown-item" href="#">
                                                         <i class="fe fe-edit fe-12 mr-4"></i>Edit
                                                     </a>
-                                                    <a class="dropdown-item" href="#" data-shareid="${pet.id}" class="sharepet btn mb-2 btn-outline-success" id="sharepet" data-toggle="modal" data-target="#verticalModal">
+                                                    <a class="dropdown-item" href="" data-shareid="${pet.id}" class="sharepet btn mb-2 btn-outline-success" id="sharepet" data-toggle="modal" data-target="#sharepetmodal">
                                                         <i class="fe fe-share-2 fe-12 mr-4"></i>Share
                                                     </a>
                                                     <a class="dropdown-item delete" data-deleteid="${pet.id}" href="">
@@ -51,7 +51,7 @@ $(document).ready(function() {
                                         </a>
                                     </div>
                                     <div class="card-text my-2">
-                                        <h4 class="card-title mt-3 my-0">${pet.name}</h4>
+                                        <h4 class="card-title petname mt-3 my-0">${pet.name}</h4>
                                         <p class="small text-muted mb-0">${pet.sex} ${pet.socialability} ${pet.type} Born in ${pet.birthday}</p>
                                         <p class="small">
                                             <span class="badge badge-primary" style="font-size:90%;">${pet.id}</span>
@@ -78,6 +78,18 @@ $(document).ready(function() {
         sharelink = window.location.origin + '/profile.php?petid=' + shareid;
         $('#sharelink').html(sharelink);
 
+    
+        
+    });
+
+    //change add record modal title for each pet
+
+    $(document).on('click', '#addrecord', function(e) {
+        var petName =  $(this).data('petname');
+        var petId = $(this).data('petid');
+
+        $('#btn-addrecord').attr('data-petid', petId);
+        $('.addrecordmodaltitle').html('Add Record For ' + petName);
     
         
     });
@@ -117,6 +129,8 @@ $(document).ready(function() {
 
     
 
+    
+
     $(document).on('click', '.delete', function(e) {
         e.preventDefault();
         var deleteid = $(this).data('deleteid');
@@ -141,4 +155,16 @@ $(document).ready(function() {
             });
         });
     });
+
+
+
+
+    $(document).on('click', '#btn-addrecord', function(e) {
+        e.preventDefault();
+        var id = $(this).data('petid');
+        console.log(id);
+
+    });
+
+  
 });
