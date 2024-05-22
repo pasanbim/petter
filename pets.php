@@ -144,7 +144,7 @@
         timePicker: false,
         showDropdowns: true,
         locale: {
-            format: 'MM/DD/YYYY'
+            format: 'MM/DD/YYYY',
         }
     });
     </script>
