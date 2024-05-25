@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dashboard | Petter</title>
+    <title>My Pets | Petter</title>
     <link href="https://releases.transloadit.com/uppy/v2.0.1/uppy.min.css" rel="stylesheet">
     <script src="https://releases.transloadit.com/uppy/v2.0.1/uppy.min.js"></script>
 
