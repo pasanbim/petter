@@ -38,13 +38,12 @@
                                         <div class="form-group col-md-6">
                                             <label for="type">Type</label>
                                             <select id="type" class="form-control">
-                                                <option value="vaccinations">Vaccinations</option>
-                                                <option value="history">History</option>
-                                                <option value="surgeries">Surgeries</option>
-                                                <option value="allergies">Allergies</option>
-                                                <option value="medications">Medications</option>
-                                                <option value="checkups">Check-ups</option>
-                                                <option value="labresults">Lab Results</option>
+                                                <option value="vaccination">Vaccination</option>
+                                                <option value="surgery">Surgery</option>
+                                                <option value="allergy">Allergy</option>
+                                                <option value="medication">Medication</option>
+                                                <option value="checkup">Checkup</option>
+                                                <option value="labresult">Lab Result</option>
                                                 <option value="nutrition">Nutrition</option>
                                                 <option value="behavior">Behavior</option>
                                                 <option value="breeding">Breeding</option>

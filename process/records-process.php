@@ -9,7 +9,7 @@ $user = $_SESSION['email'];
 if (isset($_POST['petid']) && !empty($_POST['petid'])) {
 
     $petid = $_POST['petid'];
-    $sql = "SELECT * FROM records WHERE petid = '$petid'";
+    $sql = "SELECT * FROM records WHERE petid = '$petid' ORDER BY date DESC";
     $result = $conn->query($sql);
     $records = [];
     if ($result->num_rows > 0) {
@@ -19,7 +19,8 @@ if (isset($_POST['petid']) && !empty($_POST['petid'])) {
         echo json_encode($records);
 
     } else {
-        sendJsonResponse(2, "No records found");
+        echo json_encode($records);
+
     }
 
 }

@@ -16,23 +16,21 @@
 <body class="vertical light">
     <?php include './includes/header.php'; include './includes/sidebar.php'; ?>
     <main role="main" class="main-content">
-        <!-- <div class="container-fluid">
-            <div class="card-body"> -->
-
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="row align-items-center my-4">
                     <div class="col">
                         <h3 class="h3 page-title">Records</h3>
                     </div>
-                    <div class="col-auto"> 
+                    <div class="col-auto">
                         <select id="type" class="form-control selectpet">
-
-
                         </select>
                     </div>
-                    <!-- </div>
-                <div class="row" id="pets-list"></div> -->
+                </div>
+                <div class="card card-fill timeline">
+                    <div class="card-body recordssection" id="recordssection">
+                        
+                    </div>
                 </div>
             </div>
         </div>
