@@ -5,65 +5,90 @@ $(document).ready(function() {
             url: 'process/pets-process.php',
             type: 'GET',
             success: function(response) {
-                    var pets = JSON.parse(response);
-                    var select = $('.selectpet');
-                    select.empty();
-                    pets.forEach(function(pet) {
-                        select.append('<option value="' + pet.name + '" petid="' + pet.id + '">' + pet.name + ' | ' + pet.id + '</option>');
-                    });
+                var pets = JSON.parse(response);
+                var select = $('.selectpet');
+                select.empty();
+                pets.forEach(function(pet) {
+                    select.append('<option value="' + pet.name + '" petid="' + pet.id + '" petname="' + pet.name + '">' + pet.name + ' | ' + pet.id + '</option>');
+                });
 
-                    if (pets.length > 0) {
-                        select.val(pets[0].name).change();  // Automatically select the first pet
-                    }
+                if (pets.length > 0) {
+                    select.val(pets[0].name).change();  // Automatically select the first pet
+                }
 
             },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error("AJAX request failed:", textStatus, errorThrown);
-            }
+
         });
     }
 
-    loadPetsInsideSelect();
-
-    function loadPetRecordsOnSelect(petid) {
+    function loadPetRecordsOnSelect(petid, petname) {
         $.ajax({
             url: 'process/records-process.php',
             type: 'POST',
             data: { petid: petid },
             success: function(petrecords) {
+                var recordHtml = '';
+                var records = JSON.parse(petrecords);
 
-                    var recordHtml = '';
-                    var records = JSON.parse(petrecords);
 
-                    if (records.length === 0) {
-                        recordHtml = '<p class="mb-1">No records found for the selected pet.</p>';
-                    } else {
-                        records.forEach(function(record) {
-                            recordHtml += `
-                                <div class="pb-3 timeline-item item-primary">
-                                    <div class="pl-5">
-                                        <div class="mb-1 recordtype"><strong>${record.type} on</strong></div>
-                                        <div class="card d-inline-flex mb-3 mt-3">
-                                            <div class="card-body bg-light py-2 px-3">${record.record}</div>
-                                        </div>
-                                        <br>
-                                        <span class="badge badge-light p-2">${record.date}</span>
+
+                $('.btn-addrecord').attr('data-petid', petid);
+                $('.addrecordmodaltitle').html('Add Record For ' + petname);
+
+
+
+                if (records.length === 0) {
+                    recordHtml = '<p class="mb-1">No records found for the selected pet.<button class="btn btn-primary" data-toggle="modal" data-target="#addrecordmodal">Add record</button></p>';
+                } else {
+                    records.forEach(function(record) {
+                        recordHtml += `
+                            <div class="pb-3 timeline-item item-primary">
+                                <div class="pl-5">
+                                    <div class="mb-1 recordtype"><strong>${record.type}</strong></div>
+                                    <div class="card d-inline-flex mb-3 mt-3">
+                                        <div class="card-body bg-light py-2 px-3">${record.record}</div>
                                     </div>
+                                    <br>
+                                    <span class="badge badge-light p-2">Added on ${getFormattedDate(record.date)}</span>`;
+
+                        if (record.proof) {
+                            recordHtml += `
+                            <span class="badge badge-light p-2">
+                            <a style="text-decoration: none" href="uploads/${record.proof}"> <span class="fe fe-file fe-11 text-muted"></span></a>
+                            </span><br>`;
+                        }
+
+                        recordHtml += `
                                 </div>
-                            `;
-                        });
-                    }
-                    $('.recordssection').html(recordHtml);
-            } 
+                            </div>`;
+                    });
+                }
+                $('.recordssection').html(recordHtml);
+            }
         });
     }
 
     // Event listener for the select pet dropdown change event
     $('.selectpet').change(function() {
         var selectedPetId = $(this).find('option:selected').attr('petid');
-        loadPetRecordsOnSelect(selectedPetId);
+        var selectedPetName = $(this).find('option:selected').attr('petname');
+        loadPetRecordsOnSelect(selectedPetId, selectedPetName);
     });
 
+    function getFormattedDate(date) {
+        const today = new Date();
+        const recordDate = new Date(date);
+        const diffInDays = Math.floor((today - recordDate) / (1000 * 60 * 60 * 24));
+        if (diffInDays === 0) {
+            return "today";
+        } else if (diffInDays === 1) {
+            return "yesterday";
+        } else {
+            return `${diffInDays} days ago`;
+        }
+    }
 
+    // Load the pets into the select element when the page is ready
+    loadPetsInsideSelect();
 
 });

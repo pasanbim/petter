@@ -72,7 +72,7 @@ if (isset($_SESSION['email'])) {
             
         }
 
-        $sql = "INSERT INTO records (petid, type, record, proof, added_by, date) VALUES ('$petid', '$recordtype', '$record', '$newFileName', '$user', '$date')";
+        $sql = "INSERT INTO records (petid, type, record, proof, user,addedby, date) VALUES ('$petid', '$recordtype', '$record', '$newFileName', '$user', 'you', '$date')";
         if ($conn->query($sql) === TRUE) {
 
             $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('New Record Added Successfully', '$dateandtime', '$user')";
