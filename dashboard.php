@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Dashboard | Petter</title>
+    <?php include './includes/cdn_include.php'; ?>
+
   </head>
   <body class="vertical light">
   <div class="wrapper">

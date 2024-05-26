@@ -39,7 +39,7 @@
                                         <div class="form-group col-md-6">
                                             <label for="type">Type</label>
                                             <select id="type" class="form-control">
-                                                <option value="vaccination">Vaccination</option>
+                                            <option value="vaccination">Vaccination</option>
                                                 <option value="surgery">Surgery</option>
                                                 <option value="allergy">Allergy</option>
                                                 <option value="medication">Medication</option>

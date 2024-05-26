@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/images/icon.png">
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv1WxQIx06rjpy0X4oZyqdOsDeW9mflvI&libraries=places&callback=addressAutocomplete"></script>
 
     </script>

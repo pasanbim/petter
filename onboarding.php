@@ -30,6 +30,7 @@ else {
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
     <link rel="stylesheet" href="./assets/css/onboarding.css">
     <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/icon.png">
     <script src="./assets/js/global.js"></script>
     <script src="./assets/js/onboarding.js"></script>
 

@@ -1,6 +1,7 @@
 <?php 
 include './process/functions.php'; 
 include './includes/config.php'; 
+
 sessionvalidation();
 ?>
 

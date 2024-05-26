@@ -6,3 +6,6 @@
 <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
 <link rel="stylesheet" href="./assets/css/global.css">
 <script src="./assets/js/global.js"></script>
+<link rel="icon" type="image/x-icon" href="assets/images/icon.png">
+
+
