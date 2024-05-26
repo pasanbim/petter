@@ -41,9 +41,6 @@ $(document).ready(function() {
                     recordHtml = `
                     <div class="d-flex align-items-center mb-1" style="justify-content: space-between; margin-top:0">
                         <p class="mb-0">No records found for the selected pet.</p>
-                        <button data-toggle="modal" data-target="#addrecordmodal" class="btn btn-primary ml-3" style="margin-top:0 !important">
-                            <span class="fe fe-plus fe-12 mr-2 mb-2"></span>New Record
-                        </button>
                     </div>`;
                     
                 } else {

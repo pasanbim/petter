@@ -9,7 +9,7 @@ $user = $_SESSION['email'];
 if (isset($_POST['petid']) && !empty($_POST['petid'])) {
 
     $petid = $_POST['petid'];
-    $sql = "SELECT * FROM records WHERE petid = '$petid' ORDER BY date DESC";
+    $sql = "SELECT * FROM records WHERE petid = '$petid' ORDER BY date DESC, id DESC";
     $result = $conn->query($sql);
     $records = [];
     if ($result->num_rows > 0) {

@@ -115,9 +115,9 @@ $(document).ready(function() {
                     }
                     else if (response === 'Pet onboarded successfully') {
                         successalert(response);
-                        // setTimeout(function() {
-                        //     window.location.href = "./dashboard.php";
-                        // }, 4000); 
+                        setTimeout(function() {
+                            window.location.href = "./dashboard.php";
+                        }, 1000); 
                         
                     
                     }

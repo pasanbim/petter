@@ -96,6 +96,13 @@
                         <select id="type" class="form-control selectpet">
                         </select>
                     </div>
+                    <div class="col-auto">
+                    <button data-toggle="modal" data-target="#addrecordmodal" class="btn btn-primary" style="margin-top:0 !important; padding: 7px !important">
+                            <span class="fe fe-plus fe-12 mr-2 mb-2"></span>New Record
+                        </button>
+
+                        
+                    </div>
                 </div>
                 <div class="card card-fill timeline" id="timeline">
                     <div class="card-body recordssection" id="recordssection">
