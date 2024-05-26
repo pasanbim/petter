@@ -78,8 +78,13 @@ $(document).ready(function() {
                 var records = JSON.parse(petrecords);
 
                 if (records.length === 0) {
-                    recordHtml = '<p class="mb-1">No records found for the selected pet.<button class="btn btn-primary" data-toggle="modal" data-target="#addrecordmodal">Add record</button></p>';
-                } else {
+                    recordHtml = `
+                    <div class="d-flex align-items-center mb-1" style="justify-content: space-between; margin-top:0">
+                        <p class="mb-0">No records found for the selected pet.</p>
+                        <button data-toggle="modal" data-target="#addrecordmodal" class="btn btn-primary ml-3" style="margin-top:0 !important">
+                            <span class="fe fe-plus fe-12 mr-2 mb-2"></span>New Record
+                        </button>
+                    </div>`;                } else {
                     records.forEach(function(record) {
                         recordHtml += `
                             <div class="pb-3 timeline-item item-primary">
@@ -123,9 +128,9 @@ $(document).ready(function() {
         const recordDate = new Date(date);
         const diffInDays = Math.floor((today - recordDate) / (1000 * 60 * 60 * 24));
         if (diffInDays === 0) {
-            return "today";
+            return "Today";
         } else if (diffInDays === 1) {
-            return "yesterday";
+            return "Today";
         } else {
             return `${diffInDays} days ago`;
         }
