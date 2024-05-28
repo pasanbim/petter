@@ -14,10 +14,11 @@
 </head>
 
 <body class="vertical light">
-    <?php include './includes/header.php'; include './includes/sidebar.php'; ?>
-    <main role="main" class="main-content">
-        <!-- <div class="container-fluid">
-            <div class="card-body"> -->
+    <div class="wrapper">
+
+        <?php include './includes/header.php'; include './includes/sidebar.php'; ?>
+        <main role="main" class="main-content">
+            <div class="container-fluid">
 
                 <!-- Add Record Modal-->
 
@@ -30,7 +31,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                                
+
                             </div>
                             <div class="modal-body">
                                 <div class="card-inline" style="display: flex;align-items: center;">
@@ -39,7 +40,7 @@
                                         <div class="form-group col-md-6">
                                             <label for="type">Type</label>
                                             <select id="type" class="form-control">
-                                            <option value="vaccination">Vaccination</option>
+                                                <option value="vaccination">Vaccination</option>
                                                 <option value="surgery">Surgery</option>
                                                 <option value="allergy">Allergy</option>
                                                 <option value="medication">Medication</option>
@@ -69,13 +70,16 @@
                                         </div>
 
                                         <div class="form-group col-md-12">
-                                                <label for="proof" class="form-label">Proof</label>
-                                                <input class="form-control proof" style="height: unset" type="file" id="proof" accept=".jpg, .png, .heic, .jpeg, .pdf">
+                                            <label for="proof" class="form-label">Proof</label>
+                                            <input class="form-control proof" style="height: unset" type="file"
+                                                id="proof" accept=".jpg, .png, .heic, .jpeg, .pdf">
                                         </div>
 
-                                        <button class="btn btn-primary btn-addrecord" id="btn-addrecord" style="margin-left:5px">
+                                        <button class="btn btn-primary btn-addrecord" id="btn-addrecord"
+                                            style="margin-left:5px">
                                             Add Record
-                                            <span id="spinner" class="spinner-border spinner-border-sm" role="status" style="display: none; margin-left: 5px;"></span>
+                                            <span id="spinner" class="spinner-border spinner-border-sm" role="status"
+                                                style="display: none; margin-left: 5px;"></span>
                                         </button>
 
                                     </div>
@@ -85,62 +89,63 @@
                     </div>
                 </div>
 
-        
-        <!-- Share Pet Modal-->
 
-        <div class="modal fade" id="sharepetmodal" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="verticalModalTitle">Share Profile</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-inline" style="display: flex;align-items: center;">
-                            <div class="card d-inline-flex mb-2">
-                                <div class="card-body sharelink bg-light py-2 px-3" id="sharelink">
+                <!-- Share Pet Modal-->
+
+                <div class="modal fade" id="sharepetmodal" tabindex="-1" role="dialog"
+                    aria-labelledby="verticalModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="verticalModalTitle">Share Profile</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-inline" style="display: flex;align-items: center;">
+                                    <div class="card d-inline-flex mb-2">
+                                        <div class="card-body sharelink bg-light py-2 px-3" id="sharelink">
+                                        </div>
+                                    </div>
+                                    <div class="btn copy-share-link fe fe-copy fe-12 mb-2 ml-2"
+                                        style="color: white; background-color:#FF7C00;"></div>
+                                    <div class="btn share-link-fb fa-brands fa-facebook-f fe-12 mb-2 ml-2"
+                                        style="color: white; background-color:#0866FF;"></div>
+                                    <div class="btn share-link-wa fa-brands fa-whatsapp fe-12 mb-2 ml-2"
+                                        style="color: white; background-color:#07C141;"></div>
                                 </div>
                             </div>
-                            <div class="btn copy-share-link fe fe-copy fe-12 mb-2 ml-2"
-                                style="color: white; background-color:#FF7C00;"></div>
-                            <div class="btn share-link-fb fa-brands fa-facebook-f fe-12 mb-2 ml-2"
-                                style="color: white; background-color:#0866FF;"></div>
-                            <div class="btn share-link-wa fa-brands fa-whatsapp fe-12 mb-2 ml-2"
-                                style="color: white; background-color:#07C141;"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
 
 
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="row align-items-center my-4">
-                    <div class="col">
-                        <h3 class="h3 page-title">My Pets</h3>
-                    </div>
-                    <div class="col-auto">
-                        <a href="./onboarding.php" class="btn btn-primary">
-                            <span class="fe fe-plus fe-12 mr-2"></span>New Pet
-                        </a>
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row align-items-center my-4">
+                            <div class="col">
+                                <h3 class="h3 page-title">My Pets</h3>
+                            </div>
+                            <div class="col-auto">
+                                <a href="./onboarding.php" class="btn btn-primary">
+                                    <span class="fe fe-plus fe-12 mr-2"></span>New Pet
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row" id="pets-list"></div>
                     </div>
                 </div>
-                <div class="row" id="pets-list"></div>
             </div>
-        </div>
-        </div>
-    </main>
+        </main>
+    </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/moment.min.js"></script>
     <script src='assets/js/daterangepicker.js'></script>
     <script>
-  
-  $('.drgpicker').daterangepicker({
+    $('.drgpicker').daterangepicker({
         singleDatePicker: true,
         timePicker: false,
         showDropdowns: true,
@@ -149,7 +154,6 @@
             format: 'MM/DD/YYYY'
         }
     });
-
     </script>
     <?php include './includes/scripts_include.php'; ?>
 </body>
