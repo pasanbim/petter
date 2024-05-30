@@ -124,6 +124,7 @@ $(document).ready(function() {
                     $('#reminder').val('');
                     $(this).prop('disabled', false);
                     $('#spinner').hide();
+                    $(this).modal('hide');
                     
                 }
             }
