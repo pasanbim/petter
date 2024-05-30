@@ -113,15 +113,15 @@
                                         <div class="form-group col-md-12">
                                             <label for="type">Type</label>
                                             <select id="reminder_type" class="form-control">
-                                                <option value="vaccination">Vaccination</option>
-                                                <option value="medication">Medication</option>
-                                                <option value="surgery">Surgery</option>
-                                                <option value="appointment">Vet Appointment</option>
-                                                <option value="checkup">Health Checkup</option>
-                                                <option value="training">Training</option>
-                                                <option value="feeding">Feeding</option>
-                                                <option value="bathing">Bathing</option>
-                                                <option value="breeding">Breeding</option>
+                                                <option value="Vaccination">Vaccination</option>
+                                                <option value="Medication">Medication</option>
+                                                <option value="Surgery">Surgery</option>
+                                                <option value="Appointment">Vet Appointment</option>
+                                                <option value="Checkup">Health Checkup</option>
+                                                <option value="Training">Training</option>
+                                                <option value="Feeding">Feeding</option>
+                                                <option value="Bathing">Bathing</option>
+                                                <option value="Breeding">Breeding</option>
                                             </select>
                                         </div>
 
@@ -151,6 +151,7 @@
                                         <div class="form-group col-md-12">
                                             <label for="type">Remind me Prior to</label>
                                             <select id="reminder_prior_to" class="form-control">
+                                                <option value="0">0 hour</option>
                                                 <option value="1">1 hour</option>
                                                 <option value="2">2 hours</option>
                                                 <option value="4">4 hours</option>
