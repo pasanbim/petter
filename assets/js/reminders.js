@@ -125,8 +125,6 @@ $(document).ready(function() {
 
                 if (response.status == 1) {
                     successalert(response.message);
-                    successalert('Reminder Scheduled Successfully');
-                    
                     $('#reminder').val('');
                     $('#addremindermodal').modal('hide');    
                 }

@@ -29,7 +29,7 @@ if (isset($_SESSION['email'])) {
             $insert_reminder_result = mysqli_query($conn, $insert_reminder);
 
             if ($insert_reminder_result) {
-                sendJsonResponse(1, "You will be reminded on $reminderDate at $reminderTime");
+                sendJsonResponse(1, "Reminder Scheduled Successfully. You will be reminded on $reminderDate at $reminderTime");
                 exit();
             }
 
