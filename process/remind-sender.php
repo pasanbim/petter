@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
             $updateSql = "UPDATE reminders SET status = 'sent' WHERE id = " . $row['id'];
 
             if ($conn->query($updateSql) === TRUE) {
-                logMessage("Reminder {$row['id']} sent to: $to and status updated.");
+                logMessage("Reminder " . $row['id'] . " sent to: " . $to . " and status updated.");
 
             } else {
                 logMessage("Error updating status for reminder ID: " . $row['id']);
