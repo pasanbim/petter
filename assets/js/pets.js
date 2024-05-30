@@ -30,7 +30,7 @@ $(document).ready(function() {
                                                     <a class="dropdown-item" href="" data-petid="${pet.id}" data-petname="${pet.name}" class="addrecord btn mb-2 btn-outline-success" id="addrecord" data-toggle="modal" data-target="#addrecordmodal">
                                                         <i class="fe fe-plus-square fe-12 mr-4"></i>Add Record
                                                     </a>
-                                                    <a class="dropdown-item" href="#">
+                                                    <a class="dropdown-item" href="" data-petid="${pet.id}" data-petname="${pet.name}" class="addreminder btn mb-2 btn-outline-success" id="addreminder" data-toggle="modal" data-target="#addremindermodal">
                                                         <i class="fe fe-bell fe-12 mr-4"></i>Setup Alert
                                                     </a>
                                                     <a class="dropdown-item" href="#">
@@ -150,6 +150,15 @@ $(document).ready(function() {
 
         $('#btn-addrecord').attr('data-petid', petId);
         $('.addrecordmodaltitle').html('Add Record For ' + petName);
+    });
+
+    // Change add reminder modal title for each pet
+    $(document).on('click', '#addreminder', function(e) {
+        var petName = $(this).data('petname');
+        var petId = $(this).data('petid');
+
+        $('#btn-addreminder').attr('data-petid', petId);
+        $('.addremindermodaltitle').html('Setup Alert For ' + petName);
     });
 
     // Copy share link to clipboard

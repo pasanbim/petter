@@ -90,6 +90,85 @@
                 </div>
 
 
+
+
+
+
+                <!-- Add new reminder modal -->
+                <div class="modal fade" id="addremindermodal" tabindex="-1" role="dialog"
+                    aria-labelledby="verticalModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title addremindermodaltitle" id="verticalModalTitle"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-inline" style="display: flex;align-items: center;">
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-12">
+                                            <label for="type">Type</label>
+                                            <select id="type" class="form-control">
+                                                <option value="vaccination">Vaccination</option>
+                                                <option value="medication">Medication</option>
+                                                <option value="surgery">Surgery</option>
+                                                <option value="appointment">Vet Appointment</option>
+                                                <option value="checkup">Health Checkup</option>
+                                                <option value="training">Training</option>
+                                                <option value="feeding">Feeding</option>
+                                                <option value="bathing">Bathing</option>
+                                                <option value="breeding">Breeding</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="date">Date</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control drgpicker" id="date">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text" id="button-addon-date">
+                                                        <span class="fe fe-calendar fe-16 "></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="time">Time</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control time-input" id="time">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text" id="button-addon-time">
+                                                        <span class="fe fe-clock fe-16 "></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="record">Reminder</label>
+                                            <input type="text" class="form-control" id="record">
+                                        </div>
+
+                                        <button class="btn btn-primary btn-addreminder" id="btn-addreminder"
+                                            style="margin-left:5px">
+                                            Add Reminder
+                                            <span id="spinner" class="spinner-border spinner-border-sm" role="status"
+                                                style="display: none; margin-left: 5px;"></span>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <!-- Share Pet Modal-->
 
                 <div class="modal fade" id="sharepetmodal" tabindex="-1" role="dialog"
@@ -143,6 +222,7 @@
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/moment.min.js"></script>
+    <script src='assets/js/jquery.timepicker.js'></script>
     <script src='assets/js/daterangepicker.js'></script>
     <script>
     $('.drgpicker').daterangepicker({
@@ -154,6 +234,14 @@
             format: 'MM/DD/YYYY'
         }
     });
+
+    $('.time-input').timepicker({
+        scrollDefault: 'now',
+        zindex: '9999',
+        interval: 15,
+        defaultTime: '11.30PM',
+
+      });
     </script>
     <?php include './includes/scripts_include.php'; ?>
 </body>

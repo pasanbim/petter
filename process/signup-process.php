@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $longitude = $conn->real_escape_string($longitude);
     $password = $conn->real_escape_string($password);
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
+    $status = 'active';
 
     if (!validateText($name)) {
         sendJsonResponse(3, "Invalid name");
@@ -58,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Check if the email matches the one stored in the session
             if ($otp == $_SESSION['otp'] && $email == $_SESSION['otp_email']) {
-                $sql = "INSERT INTO users (name, email, address, latitude, longitude,  password) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$hashedpassword')";
+                $sql = "INSERT INTO users (name, email, address, latitude, longitude,  password, status) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$hashedpassword', '$status')";
                 if ($conn->query($sql) === TRUE) {
 
                     $_SESSION['email'] = $email;

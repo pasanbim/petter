@@ -104,8 +104,6 @@
                                     style="margin-top:0 !important; padding: 7px !important">
                                     <span class="fe fe-plus fe-12 mr-2 mb-2"></span>New Record
                                 </button>
-
-
                             </div>
                         </div>
                         <div class="card card-fill timeline" id="timeline">
