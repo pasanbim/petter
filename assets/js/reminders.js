@@ -119,8 +119,11 @@ $(document).ready(function() {
                 action: 'add'
             },
             success: function(response) {
-                if (response.status == 'success') {
-                    successalert('Reminder added successfully');
+                if (response.status == 1) {
+                    successalert('Reminder Added Successfully');
+                    $('#reminder').val('');
+                    $(this).prop('disabled', false);
+                    $('#spinner').hide();
                     
                 }
             }
