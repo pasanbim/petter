@@ -20,7 +20,7 @@ $endTime = date('H:i', strtotime('+5 minutes'));
 echo "Current Date: " . $currentDate . "<br>";
 echo "Current Time: " . $currentTime . "<br>";
 
-$sql = "SELECT * FROM reminders WHERE reminder_date = '$currentDate' AND reminder_time BETWEEN '$currentTime' AND '$endTime' AND status = 'active'";
+$sql = "SELECT * FROM reminders WHERE reminder_date = '$currentDate' AND reminder_time = '$currentTime' AND status = 'active'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
