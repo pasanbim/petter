@@ -28,13 +28,8 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 
         echo $row['id'] . " " . $row['reminder_date'] . " " . $row['reminder_time'] . " " . $row['email'] . " " . $row['type'] . " " . $row['reminder'] . "<br>";
-
-        $to = $row['email'];
-        $subject = "Reminder: " . $row['type'];
-        $message = "Dear user,\n\nThis is a reminder for your pet's " . $row['type'] . " scheduled on " . $row['date'] . " at " . $row['time'] . ".\n\nReminder note: " . $row['reminder'] . "\n\nThank you.";
-        $headers = "From: noreply@petter.pasanb.me";
-
-        if (mail($to, $subject, $message, $headers)) {
+        
+        if (reminderemail($row['email'], $row['type'], $row['date'],$row['time'],$row['reminder'])) {
             $updateSql = "UPDATE reminders SET status = 'sent' WHERE id = " . $row['id'];
 
             if ($conn->query($updateSql) === TRUE) {
