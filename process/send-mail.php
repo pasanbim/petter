@@ -335,7 +335,7 @@ if ($to == "pasantaxila@gmail.com") {
 
 function reminderemail($to, $type, $date, $time, $reminder) {
 
-    $subject = 'Reminder: '.$type.' on '.$date.' at '.$time.'';
+    $subject = ''.$type.' Reminder: '.$type.' on '.$date.' at '.$time.'';
     $headers = "From: Petter <noreply@petter.pasanb.me>\r\n";
     $headers .= "Content-type: text/html\r\n";
     $message = <<<EMAIL
@@ -399,14 +399,9 @@ function reminderemail($to, $type, $date, $time, $reminder) {
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi there,</p>
         <p>This is to remind you that your pet's $type scheduled on $date at $time</p>
-        <br> <br>
-        <p>Reminder note: $reminder</p>
-        <br>
-        <br>
+        <p><b>Reminder note:</b> $reminder</p>
         <p>Please make the necessary arrangements to attend.</p>
-        <br>
         <p>Thank you</p>
-        <br>
     </div>
 </div>
 </body>
