@@ -31,7 +31,7 @@ $(document).ready(function() {
                                                         <i class="fe fe-plus-square fe-12 mr-4"></i>Add Record
                                                     </a>
                                                     <a class="dropdown-item" href="" data-petid="${pet.id}" data-petname="${pet.name}" class="addreminder btn mb-2 btn-outline-success" id="addreminder" data-toggle="modal" data-target="#addremindermodal">
-                                                        <i class="fe fe-bell fe-12 mr-4"></i>Setup Alert
+                                                        <i class="fe fe-bell fe-12 mr-4"></i>Setup Reminder
                                                     </a>
                                                     <a class="dropdown-item" href="#">
                                                         <i class="fe fe-edit fe-12 mr-4"></i>Edit
@@ -158,7 +158,7 @@ $(document).ready(function() {
         var petId = $(this).data('petid');
 
         $('#btn-addreminder').attr('data-petid', petId);
-        $('.addremindermodaltitle').html('Setup Alert For ' + petName);
+        $('.addremindermodaltitle').html('Setup Reminder For ' + petName);
     });
 
     // Copy share link to clipboard
