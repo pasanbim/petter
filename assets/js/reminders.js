@@ -119,13 +119,25 @@ $(document).ready(function() {
                 action: 'add'
             },
             success: function(response) {
+
+                $('#spinner').hide();
+                $('#btn-addreminder').prop('disabled', false);
+
                 if (response.status == 1) {
-                    successalert('Reminder Added Successfully');
-                    $('#reminder').val('');
-                    $(this).prop('disabled', false);
-                    $('#spinner').hide();
-                    $(this).modal('hide');
+                    successalert(response.message);
+                    successalert('Reminder Scheduled Successfully');
                     
+                    $('#reminder').val('');
+                    $('#addremindermodal').modal('hide');    
+                }
+                else if (response.status == 2) {
+                    erroralert(response.message);
+                }
+                else if (response.status == 3) {
+                    erroralert(response.message);
+                }
+                else if (response.status == 4) {
+                    erroralert(response.message);
                 }
             }
     
