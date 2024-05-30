@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
         $to = $row['email'];
         $subject = "Reminder: " . $row['type'];
         $message = "Dear user,\n\nThis is a reminder for your pet's " . $row['type'] . " scheduled on " . $row['date'] . " at " . $row['time'] . ".\n\nReminder note: " . $row['reminder'] . "\n\nThank you.";
-        $headers = "From: your_email@example.com";
+        $headers = "From: noreply@petter.pasanb.me";
 
         if (mail($to, $subject, $message, $headers)) {
             $updateSql = "UPDATE reminders SET status = 'sent' WHERE id = " . $row['id'];
