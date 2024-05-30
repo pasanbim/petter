@@ -176,6 +176,9 @@ $(document).ready(function() {
                  else if (response.status == 2) {
                     erroralert("User Not Found");
                 }
+                 else if (response.status == 3) {
+                    erroralert("Your Accout is Deactivated");
+                }
 
                  else if (response.status == 4) {
                     erroralert("Invalid Email");

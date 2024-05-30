@@ -34,3 +34,5 @@
     <script src="./assets/js/pets.js"></script>
     <script src="./assets/js/notifications.js"></script>
     <script src="./assets/js/records.js"></script>
+    <script src="./assets/js/reminders.js"></script>
+
