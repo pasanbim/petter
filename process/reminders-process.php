@@ -17,7 +17,7 @@ if (isset($_SESSION['email'])) {
     $reminderTime = $_POST['reminderTime'];
     $status = "active";
 
-    if (isset($petid) && !empty($petid) && isset($reminder) && !empty($reminder) && isset($reminder_type) && !empty($reminder_type) 
+    if (isset($petid) && !empty($petid) && isset($reminder_type) && !empty($reminder_type) 
         && isset($date) && !empty($date) && isset($time) && !empty($time) && isset($action) && !empty($action)&& isset($reminderDate) && !empty($reminderDate)&& isset($reminderTime) && !empty($reminderTime)) {
 
         $check_pet = "SELECT * FROM pets WHERE id = '$petid' AND user = '$user'";
