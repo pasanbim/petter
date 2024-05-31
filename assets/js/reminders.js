@@ -92,12 +92,8 @@ $(document).ready(function() {
             
         }
 
-      
-        
- 
 
-
-        if (reminder == '' || reminder_type == '' || date == '' || time == '' || reminder_prior_to == '') {
+        if (reminder_type == '' || date == '' || time == '' || reminder_prior_to == '') {
             erroralert('Please fill all the fields');
             return;
         }
