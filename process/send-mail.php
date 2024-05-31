@@ -291,8 +291,8 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
         
     }
     .ii a[href] {
-    color: #ffffff !important;
-}
+    color: #FFFFFF !important;
+    }
 </style>
 </head>
 <body>
@@ -311,7 +311,7 @@ function loginemail($to, $name, $time, $date, $device, $ip, $location) {
       </p>
     <p>
     If you didn’t recognise this log in, check your recent activity and change your password immediately.</p>
-     <a class="btn anchor" href="petter.pasanb.me/reset.php" target="_blank" style="text-decoration:none;">Reset Password</a>
+     <a class="btn anchor" href="petter.pasanb.me/reset.php" target="_blank" style="text-decoration:none; color: #FFFFFF">Reset Password</a>
 
 
     </div>
