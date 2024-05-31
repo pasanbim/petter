@@ -151,7 +151,6 @@
                                         <div class="form-group col-md-12">
                                             <label for="type">Remind me Prior to</label>
                                             <select id="reminder_prior_to" class="form-control">
-                                                <option value="0">0 hour</option>
                                                 <option value="1">1 hour</option>
                                                 <option value="2">2 hours</option>
                                                 <option value="4">4 hours</option>
