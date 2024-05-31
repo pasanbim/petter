@@ -334,10 +334,15 @@ if ($to == "pasantaxila@gmail.com") {
 
 
 function reminderemail($to, $type, $date, $time, $reminder) {
-
-    $subject = ''.$type.' Reminder: '.$type.' on '.$date.' at '.$time.'';
+    $subject = "$type Reminder: on $date at $time";
     $headers = "From: Petter <noreply@petter.pasanb.me>\r\n";
     $headers .= "Content-type: text/html\r\n";
+
+    $reminderNote = "";
+    if (!empty($reminder)) {
+        $reminderNote = "<p><b>Reminder note:</b> $reminder</p>";
+    }
+
     $message = <<<EMAIL
     <!DOCTYPE html>
 <html lang="en">
@@ -398,8 +403,8 @@ function reminderemail($to, $type, $date, $time, $reminder) {
     <div class="content">
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi there,</p>
-        <p>This is to remind you that your pet's $type scheduled on $date at $time</p>
-        <p><b>Reminder note:</b> $reminder</p>
+        <p>This is to remind you that your pet's $type is scheduled on $date at $time.</p>
+        $reminderNote
         <p>Please make the necessary arrangements to attend.</p>
         <p>Thank you</p>
     </div>
@@ -409,11 +414,9 @@ function reminderemail($to, $type, $date, $time, $reminder) {
 
 EMAIL;
 
-
     if (mail($to, $subject, $message, $headers)) {
         return true;
-    } 
-    else {
+    } else {
         return false;
     }
 }
