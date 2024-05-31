@@ -110,17 +110,17 @@ else {
                 <div class="col-md-6">
                     <label for="sex" class="form-label fw-bold">Sex</label>
                     <select class="form-select sex mb-3" id="sex">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label for="socialability" class="form-label fw-bold">Socialability</label>
                     <select class="form-select socialability" id="socialability">
-                        <option value="social">Social</option>
-                        <option value="tolerant">Tolerant</option>
-                        <option value="selective">Selective</option>
-                        <option value="aggressive">Aggressive</option>
+                        <option value="Social">Social</option>
+                        <option value="Tolerant">Tolerant</option>
+                        <option value="Selective">Selective</option>
+                        <option value="Aggressive">Aggressive</option>
                     </select>
                 </div>
             </div>

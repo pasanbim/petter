@@ -90,7 +90,7 @@ if (isset($_SESSION['email'])) {
     
     
     else {
-        $sql = "SELECT * FROM pets WHERE user = '$user'";
+        $sql = "SELECT * FROM pets WHERE user = '$user' ORDER BY id ASC";
         $result = $conn->query($sql);
     
         $pets = [];
