@@ -93,7 +93,7 @@ $(document).ready(function() {
         }
 
 
-        if (reminder_type == '' || date == '' || time == '' || reminder_prior_to == '') {
+        if (reminder_type == '' || date == '' || time == '') {
             erroralert('Please fill all the fields');
             return;
         }
