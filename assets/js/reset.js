@@ -45,18 +45,23 @@ $(document).ready(function() {
   });
 
 
+
+
+  const url = 'https://petter.pasanb.me/passwordreset.php?token=10570b2ad8a3e59aea17';
+  const urlObj = new URL(url);
+  const token = urlObj.searchParams.get('token');
+
+  //redirect if token is not set
+  if(token === null) {
+      window.location.href = 'https://petter.pasanb.me/reset.php';
+  }
+
+  
     $('.pwreset').click(function() {
 
         $newpassword = $('.newpassword').val();
         $confirmpassword = $('.confirmpassword').val();
-        const url = 'https://petter.pasanb.me/passwordreset.php?token=10570b2ad8a3e59aea17';
-        const urlObj = new URL(url);
-        const token = urlObj.searchParams.get('token');
 
-        //redirect if token is not set
-        if(token === null) {
-            window.location.href = 'https://petter.pasanb.me/reset.php';
-        }
 
         if($newpassword === '') {
             erroralert("Please enter your new password");
