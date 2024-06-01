@@ -24,36 +24,79 @@ $(document).ready(function() {
         },
         success: function(response) {
             if (response.status == 0) {
-                erroralert("Email not found");
+                erroralert(response.message);
 
             } else if (response.status == 1) {
-                successalert("Reset link sent to your email");
+                successalert(response.message);
 
             } else if (response.status == 2) {
-                erroralert("Error sending email");
+                erroralert(response.message);
 
-            } else if (response.status == 3) {
-                erroralert("Error sending email");
+            } 
+             else if (response.status == 3) {
+                erroralert(response.message);
 
-            } else if (response.status == 4) {
-                erroralert("Error sending email");
-
-            } else if (response.status == 5) {
-                erroralert("Error sending email");
-
-            } else if (response.status == 6) {
-                erroralert("Error sending email");
-
-            } else {
-                erroralert("Error sending email");
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("AJAX error:", error);
+            } 
         }
     });
 
 
 
   });
+
+
+    $('pwreset').click(function() {
+
+        $newpassword = $('.newpassword').val();
+        $confirmpassword = $('.confirmpassword').val();
+        const url = 'https://petter.pasanb.me/passwordreset.php?token=10570b2ad8a3e59aea17';
+        const urlObj = new URL(url);
+        const token = urlObj.searchParams.get('token');
+
+        if($newpassword === '') {
+            erroralert("Please enter your new password");
+            return;
+        }
+
+        else if($confirmpassword === '') {
+            erroralert("Please confirm your password");
+            return;
+        }
+
+        else if(validatepassword($newpassword) == false) {
+            erroralert("Password must be at least 5 characters");
+            return;
+        }
+        else if($newpassword !== $confirmpassword) {
+            erroralert("Passwords do not match");
+            return;
+        }
+
+        else if($newpassword == $confirmpassword) {
+
+            $.ajax({
+                url: './process/reset-process.php',
+                type: 'POST',
+                data: {
+                    
+                    token: token,
+                    newpassword: $newpassword,
+                    confirmpassword: $confirmpassword,
+                    action: 'resetpassword'
+                },
+                success: function(response) {
+                        if (response.status == 1) {
+                            successalert(response.message);
+
+                        } else if (response.status == 2 || response.status == 3 || response.status == 4 || response.status == 5) {
+                            erroralert(response.message);
+
+                        } 
+                    } 
+                
+            });
+
+        }
+
+    });
 });

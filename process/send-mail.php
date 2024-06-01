@@ -300,7 +300,7 @@ function passwordresetemail($to, $token) {
         <p>Hi there,</p>
         <p>We received a request to reset your password. Click the button below and you’ll be on your way.</p>
        <a href="petter.pasanb.me/passwordreset.php?token=$token" target="_blank" class="btn anchor" style="text-decoration:none; color: #FFFFFF">Reset Password</a>
-       <p>If you didn't request a password reset, ignore this email.</p>
+       <p>If you didn't request a password reset, Safely ignore this email.</p>
 
     </div>
 </div>
