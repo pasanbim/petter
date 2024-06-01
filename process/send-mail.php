@@ -299,7 +299,7 @@ function passwordresetemail($to, $token) {
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi there,</p>
         <p>We received a request to reset your password. Click the button below and you’ll be on your way.</p>
-       <a href="petter.pasanb.me/password-reset.php?token=$token" target="_blank" class="btn anchor" style="text-decoration:none; color: #FFFFFF">Reset Password</a>
+       <a href="https://petter.pasanb.me/password-reset.php?token=$token" target="_blank" class="btn anchor" style="text-decoration:none; color: #FFFFFF">Reset Password</a>
        <p>If you didn't request a password reset, Safely ignore this email.</p>
 
     </div>
