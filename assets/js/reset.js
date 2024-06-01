@@ -53,6 +53,11 @@ $(document).ready(function() {
         const urlObj = new URL(url);
         const token = urlObj.searchParams.get('token');
 
+        //redirect if token is not set
+        if(token === null) {
+            window.location.href = 'https://petter.pasanb.me/reset.php';
+        }
+
         if($newpassword === '') {
             erroralert("Please enter your new password");
             return;
