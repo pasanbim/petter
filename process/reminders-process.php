@@ -29,6 +29,9 @@ if (isset($_SESSION['email'])) {
             $insert_reminder_result = mysqli_query($conn, $insert_reminder);
 
             if ($insert_reminder_result) {
+
+                $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES (' $reminder_type Reminder Scheduled Successfully', '$dateandtime', '$user')";
+                $conn->query($sqlfornotification);
                 sendJsonResponse(1, "Reminder Scheduled Successfully. You will be reminded on $reminderDate at $reminderTime");
                 exit();
             }
