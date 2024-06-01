@@ -47,7 +47,7 @@ $(document).ready(function() {
 
 
 
-  const url = 'https://petter.pasanb.me/passwordreset.php?token=10570b2ad8a3e59aea17';
+  const url = window.location.search;
   const urlObj = new URL(url);
   const token = urlObj.searchParams.get('token');
 
@@ -56,7 +56,7 @@ $(document).ready(function() {
       window.location.href = 'https://petter.pasanb.me/reset.php';
   }
 
-  
+
     $('.pwreset').click(function() {
 
         $newpassword = $('.newpassword').val();
