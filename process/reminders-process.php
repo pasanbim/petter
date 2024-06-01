@@ -30,7 +30,7 @@ if (isset($_SESSION['email'])) {
 
             if ($insert_reminder_result) {
 
-                $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES (' $reminder_type Reminder Scheduled Successfully', '$dateandtime', '$user')";
+                $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Reminder Scheduled Successfully', NOW(), '$user')";
                 $conn->query($sqlfornotification);
                 sendJsonResponse(1, "Reminder Scheduled Successfully. You will be reminded on $reminderDate at $reminderTime");
                 exit();
