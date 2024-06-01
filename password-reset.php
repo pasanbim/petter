@@ -42,7 +42,8 @@
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
                             <span class="button-text">Reset</span>
                         </button>
-            
+
+
                     </div>
                 </div>
             </div>

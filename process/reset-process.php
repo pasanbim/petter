@@ -64,8 +64,6 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && !emp
         $sql = "UPDATE users SET password = '$password', reset_token = NULL, reset_expires = NULL WHERE email = '$email'";
         if ($conn->query($sql) === TRUE) {
             sendJsonResponse(1, "Password reset successfully");
-            sleep(2);
-            header('Location: ../login.php');
         } 
         else {
             sendJsonResponse(2, "Error resetting password");
