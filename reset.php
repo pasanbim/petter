@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Petter</title>
+    <title>Forogt Password | Petter</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="icon" type="image/x-icon" href="assets/images/icon.png">
     <script src="./assets/js/global.js"></script>
-    <script src="./assets/js/signup-login.js"></script>
+    <script src="./assets/js/reset.js"></script>
 
 </head>
 
@@ -27,29 +27,19 @@
             <div class="col-12 col-md-4 d-flex align-items-center">
                 <div class="login-form">
                     <img src="./assets/images/logo.svg" alt="Petter Logo" width="150" class="mx-auto d-block mb-3 mt-2">
-                    <h3 class="text-center mb-4 title">Login</h3>
+                    <h3 class="text-center mb-4 title">Forgot Your Password ?</h3>
+                    <p class="text-center">Enter your email and we will send you instructions to reset your password</p>
                     <div class="input-fields-wrapper">
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control email" name="email" required>
                         </div>
-                        <div class="form-group password-field">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control password" name="password" required>
-                        </div>
 
-                        <button type="submit" class="btn btn-primary w-100 login mb-3">
+                        <button type="submit" class="btn btn-primary w-100 reset mb-3">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                            <span class="button-text">Login</span>
+                            <span class="button-text">Reset</span>
                         </button>
                     </div>
-                    <p class="text-center mt-2 alreadyhave">
-                     Don't you have an account? <a style="text-decoration:none" href="./signup.php"><span
-                                class="alreadyhavespan">Sign up</span></a>
-                    </p>
-                    <p class="text-center alreadyhave forgotpassword" style="margin-top:-7px">
-                    <a style="text-decoration:none; color: #777777" href="./reset.php">Forgot Your Password ? </a>
-                    </p>
                 </div>
             </div>
         </div>
