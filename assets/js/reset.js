@@ -45,7 +45,7 @@ $(document).ready(function() {
   });
 
 
-    $('pwreset').click(function() {
+    $('.pwreset').click(function() {
 
         $newpassword = $('.newpassword').val();
         $confirmpassword = $('.confirmpassword').val();

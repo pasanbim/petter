@@ -58,6 +58,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && !emp
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        
         $email = $row['email'];
         $password = password_hash($newpassword, PASSWORD_DEFAULT);
         $sql = "UPDATE users SET password = '$password', reset_token = NULL, reset_expires = NULL WHERE email = '$email'";
