@@ -243,7 +243,7 @@ $(document).on('click', '.editpet', function(e) {
         success: function(response) {
 
             $('#spinner').hide();
-            $(this).prop('disabled', true);
+            $(this).prop('disabled', false);
 
             if (response.status == 0 || response.status == 2 || response.status == 3 || response.status == 4) {
                 erroralert(response.message);
