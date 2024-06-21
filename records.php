@@ -5,11 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Records | Petter</title>
-    <link href="https://releases.transloadit.com/uppy/v2.0.1/uppy.min.css" rel="stylesheet">
-    <script src="https://releases.transloadit.com/uppy/v2.0.1/uppy.min.js"></script>
-
-
-
     <?php include './includes/cdn_include.php'; ?>
 
 </head>
@@ -123,6 +118,7 @@
     <script src="assets/js/moment.min.js"></script>
     <script src='assets/js/daterangepicker.js'></script>
     <script>
+        
     $('.drgpicker').daterangepicker({
         singleDatePicker: true,
         timePicker: false,

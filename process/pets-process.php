@@ -35,6 +35,69 @@ if (isset($_SESSION['email'])) {
     
     
     } 
+
+    // edit pet
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'editpet') {
+
+        if (
+            isset($_POST['name']) && !empty($_POST['name']) &&
+            isset($_POST['petid']) && !empty($_POST['petid']) &&
+            isset($_POST['type']) && !empty($_POST['type']) &&
+            isset($_POST['breed']) && !empty($_POST['breed']) &&
+            isset($_POST['color']) && !empty($_POST['color']) &&
+            isset($_POST['weight']) && !empty($_POST['weight']) &&
+            isset($_POST['birthday']) && !empty($_POST['birthday']) &&
+            isset($_POST['sex']) && !empty($_POST['sex']) &&
+            isset($_POST['socialability']) && !empty($_POST['socialability'])
+        ) {
+            $name = $_POST['name'];
+            $petid = $_POST['petid'];
+            $type = $_POST['type'];
+            $breed = $_POST['breed'];
+            $color = $_POST['color'];
+            $weight = $_POST['weight'];
+            $birthday = $_POST['birthday'];
+            $sex = $_POST['sex'];
+            $socialability = $_POST['socialability'];
+    
+    
+            if (isset($_FILES['petImage']) && $_FILES['petImage']['error'] == 0) {
+                $fileTmpPath = $_FILES['petImage']['tmp_name'];
+                $fileName = $_FILES['petImage']['name'];
+                $fileSize = $_FILES['petImage']['size'];
+                $fileType = $_FILES['petImage']['type'];
+    
+                $allowedFileTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (in_array($fileType, $allowedFileTypes) && $fileSize < 5000000) {
+                    $newFileName = md5(time() . $fileName) . '_' . $fileName;
+                    $uploadPath = $uploadDir . $newFileName;
+    
+                    if (!move_uploaded_file($fileTmpPath, $uploadPath)) {
+                        sendJsonResponse(0, "There was an error moving the uploaded file");
+                    }
+                } else {
+                    sendJsonResponse(2, "Invalid file type or size too large");
+                }
+            } else {
+                $newFileName = $_POST['existingpetimage'];
+            }
+    
+            $sql = "UPDATE pets SET name = '$name', type = '$type', breed = '$breed', color = '$color', weight = '$weight', birthday = '$birthday', sex = '$sex', socialability = '$socialability', petImage = '$newFileName' 
+                    WHERE id = '$petid' AND user = '$user'";
+            if ($conn->query($sql) === TRUE) {
+                $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Pet $petid Updated Successfully', '$dateandtime', '$user')";
+                $conn->query($sqlfornotification);
+    
+                sendJsonResponse(1, "Pet Updated Successfully");
+            } else {
+                sendJsonResponse(3, "Error Updating Pet");
+            }
+        } else {
+            sendJsonResponse(4, "All fields are required");
+        }
+    }
+
+ 
     // add record
 
     elseif (isset($_POST['petid']) && !empty($_POST['petid']) && isset($_POST['recordtype']) && !empty($_POST['recordtype']) && isset($_POST['date']) && !empty($_POST['date']) && isset($_POST['record']) && !empty($_POST['record']))

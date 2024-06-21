@@ -33,7 +33,7 @@ $(document).ready(function() {
                                                     <a class="dropdown-item" href="" data-petid="${pet.id}" data-petname="${pet.name}" class="addreminder btn mb-2 btn-outline-success" id="addreminder" data-toggle="modal" data-target="#addremindermodal">
                                                         <i class="fe fe-bell fe-12 mr-4"></i>Setup Reminder
                                                     </a>
-                                                    <a class="dropdown-item" href="#">
+                                                    <a class="dropdown-item" href="./editpet.php?id=${pet.id}&name=${pet.name}"">
                                                         <i class="fe fe-edit fe-12 mr-4"></i>Edit
                                                     </a>
                                                     <a class="dropdown-item" href="" data-shareid="${pet.id}" class="sharepet btn mb-2 btn-outline-success" id="sharepet" data-toggle="modal" data-target="#sharepetmodal">
@@ -211,6 +211,54 @@ $(document).ready(function() {
             });
         });
     });
+
+
+
+  // Edit pet
+$(document).on('click', '.editpet', function(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('petid', $('#petid').val());
+    formData.append('name', $('#name').val());
+    formData.append('type', $('#type').find(":selected").text());
+    formData.append('breed', $('#breed').val());
+    formData.append('color', $('#color').val());
+    formData.append('weight', $('#weight').val());
+    formData.append('birthday', $('#birthday').val());
+    formData.append('sex', $('#sex').find(":selected").text());
+    formData.append('socialability', $('#socialability').find(":selected").text());
+    formData.append('petImage', $('#customFile')[0].files[0]);
+    formData.append('existingpetimage', $('#existingpetimage').val());
+    formData.append('action', 'editpet');
+
+
+    $('#spinner').show();
+    $(this).prop('disabled', true);
+
+    $.ajax({
+        url: "./process/pets-process.php",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+
+            $('#spinner').hide();
+            $(this).prop('disabled', true);
+
+            if (response.status == 0 || response.status == 2 || response.status == 3 || response.status == 4) {
+                erroralert(response.message);
+            }
+            else if(response.status ==1){
+                successalert(response.message);
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
+        }
+    });
+});
+
 
     // Add record
     $(document).on('click', '.btn-addrecord', function(e) {
