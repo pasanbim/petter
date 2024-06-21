@@ -37,6 +37,7 @@ if (isset($_SESSION['email'])) {
     } 
 
     // edit pet
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'editpet') {
 
         if (

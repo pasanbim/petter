@@ -103,7 +103,6 @@
                         </div>
                         <div class="card card-fill timeline" id="timeline">
                             <div class="card-body recordssection" id="recordssection">
-
                             </div>
                         </div>
                     </div>

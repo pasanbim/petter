@@ -231,7 +231,6 @@ $(document).on('click', '.editpet', function(e) {
     formData.append('existingpetimage', $('#existingpetimage').val());
     formData.append('action', 'editpet');
 
-
     $('#spinner').show();
     $(this).prop('disabled', true);
 
