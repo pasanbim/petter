@@ -2,7 +2,10 @@
 include './process/functions.php'; 
 include './includes/config.php'; 
 
-sessionvalidation();
+
+$redirecturl= $_SERVER['REQUEST_URI'];
+sessionvalidation($redirecturl);
+
 ?>
 
 <nav class="topnav navbar navbar-light">

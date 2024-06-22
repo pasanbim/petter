@@ -51,9 +51,9 @@ function detectdevice(){
 }
 
 
-function sessionvalidation(){
+function sessionvalidation($redirect){
     if (!isset($_SESSION['email']) || !isset($_SESSION['name'])) {
-        header("Location: ./login.php");
+        header("Location: ./login.php?redirect=$redirect");
     }
 }
 ?>

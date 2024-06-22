@@ -33,7 +33,7 @@ $(document).ready(function() {
                                                     <a class="dropdown-item" href="" data-petid="${pet.id}" data-petname="${pet.name}" class="addreminder btn mb-2 btn-outline-success" id="addreminder" data-toggle="modal" data-target="#addremindermodal">
                                                         <i class="fe fe-bell fe-12 mr-4"></i>Setup Reminder
                                                     </a>
-                                                    <a class="dropdown-item" href="./editpet.php?id=${pet.id}&name=${pet.name}"">
+                                                    <a class="dropdown-item" href="./editpet.php?id=${pet.id}">
                                                         <i class="fe fe-edit fe-12 mr-4"></i>Edit
                                                     </a>
                                                     <a class="dropdown-item" href="" data-shareid="${pet.id}" class="sharepet btn mb-2 btn-outline-success" id="sharepet" data-toggle="modal" data-target="#sharepetmodal">
@@ -232,7 +232,6 @@ $(document).on('click', '.editpet', function(e) {
     formData.append('action', 'editpet');
 
     $('#spinner').show();
-    $(this).prop('disabled', true);
 
     $.ajax({
         url: "./process/pets-process.php",
@@ -243,7 +242,6 @@ $(document).on('click', '.editpet', function(e) {
         success: function(response) {
 
             $('#spinner').hide();
-            $(this).prop('disabled', false);
 
             if (response.status == 0 || response.status == 2 || response.status == 3 || response.status == 4) {
                 erroralert(response.message);

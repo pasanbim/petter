@@ -170,7 +170,16 @@ $(document).ready(function() {
                 } 
                 else if (response.status == 1) {
                     successalert("Login Successful");
-                    window.location = './dashboard.php';
+                    let urlParams = new URLSearchParams(window.location.search);
+                    let redirectUrl = urlParams.get('redirect');
+
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl;
+                    }
+                    else {
+                        window.location.href = './dashboard.php';
+                    }
+
 
                 } 
                  else if (response.status == 2) {

@@ -1,14 +1,13 @@
 <?php 
 
-session_start(); 
-
-
-if (isset($_SESSION['email'])) {}
-else {
-    header("Location: ./login.php");
-    exit();
+session_start();
+$redirect = $_SERVER['REQUEST_URI'];
+function sessionvalidation($redirect){
+    if (!isset($_SESSION['email']) || !isset($_SESSION['name'])) {
+        header("Location: ./login.php?redirect=$redirect");
+    }
 }
-
+sessionvalidation($redirect);
 ?>
 
 
