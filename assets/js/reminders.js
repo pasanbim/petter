@@ -66,7 +66,7 @@ $(document).ready(function() {
                         // Create the dropdown with conditional "Add New Reminder" option
                         var dropdown = `
                         <td>
-                          <div class="dropdown">
+                          <div class="dropdown" style = "text-align:center">
                             <button class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" type="button" id="dr${index}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </button>
                             <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dr${index}">

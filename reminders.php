@@ -138,7 +138,7 @@
                                                     <th>Reminder</th>
                                                     <th>Remind Prior to</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
+                                                    <th style = "text-align:center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -171,18 +171,15 @@
             info: "Showing _START_ to _END_ of _TOTAL_ reminders",
             infoEmpty: "Showing 0 to 0 of 0 Reminders",
             infoFiltered: "(filtered from _MAX_ total reminders)",
-            paginate: {
-                previous: "Previous",
-                next: "Next"
-            }
         },
         "lengthMenu": [
             [10, 25, 50, 100],
             [10, 25, 50, 100]
         ],
         "pagingType": "simple_numbers", // Use simple pagination
-        "pageLength": 10, // Set initial page length
-        "dom": 'rt<"bottom"ip><"clear">' // Hide the length menu and search box
+        "pageLength": 100, // Set initial page length
+        // "dom": 'rt<"bottom"ip><"clear">',
+        "dom": 'rt'
     });
 
 
