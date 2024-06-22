@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Reminders | Petter</title>
     <?php include './includes/cdn_include.php'; ?>
+    <link rel="stylesheet" href="./assets/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="./assets/css/daterangepicker.css">
+
 
 </head>
 
@@ -16,7 +19,7 @@
         <main role="main" class="main-content">
             <div class="container-fluid">
 
-            
+
                 <!-- Add new reminder modal -->
                 <div class="modal fade" id="addremindermodal" tabindex="-1" role="dialog"
                     aria-labelledby="verticalModalTitle" aria-hidden="true">
@@ -89,9 +92,6 @@
                     </div>
                 </div>
 
-
-
-
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="row align-items-center my-4">
@@ -109,9 +109,43 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="card card-fill timeline" id="timeline">
-                            <div class="card-body recordssection" id="recordssection">
 
+                        <div class="row my-4 noremindermessage" style="display:none;">
+                            <div class="col-md-12">
+                                <div class="card shadow">
+                                    <div class="card-body remindersbody">
+
+                                        <div class="d-flex align-items-center mb-1"
+                                            style="justify-content: space-between; margin-top:0">
+                                            <p class="mb-0">No reminders found for the selected pet.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row my-4 reminderbodywithdatatable" style="display:none;">
+                            <div class="col-md-12">
+                                <div class="card shadow">
+                                    <div class="card-body remindersbody">
+                                        <table class="table datatables table-bordered" id="dataTable-1">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pet</th>
+                                                    <th>Type</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+                                                    <th>Reminder</th>
+                                                    <th>Remind Prior to</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -126,8 +160,32 @@
     <script src="assets/js/moment.min.js"></script>
     <script src='assets/js/daterangepicker.js'></script>
     <script src='assets/js/jquery.timepicker.js'></script>
+    <script src='assets/js/jquery.dataTables.min.js'></script>
+    <script src='assets/js/dataTables.bootstrap4.min.js'></script>
 
     <script>
+        var table = $('#dataTable-1').DataTable({
+        autoWidth: true,
+        language: {
+            emptyTable: "No reminders found for the selected pet.",
+            info: "Showing _START_ to _END_ of _TOTAL_ reminders",
+            infoEmpty: "Showing 0 to 0 of 0 Reminders",
+            infoFiltered: "(filtered from _MAX_ total reminders)",
+            paginate: {
+                previous: "Previous",
+                next: "Next"
+            }
+        },
+        "lengthMenu": [
+            [10, 25, 50, 100],
+            [10, 25, 50, 100]
+        ],
+        "pagingType": "simple_numbers", // Use simple pagination
+        "pageLength": 10, // Set initial page length
+        "dom": 'rt<"bottom"ip><"clear">' // Hide the length menu and search box
+    });
+
+
     $('.drgpicker').daterangepicker({
         singleDatePicker: true,
         timePicker: false,
@@ -144,9 +202,7 @@
         interval: 15,
         defaultTime: '11.30PM',
 
-      });
-
-      
+    });
     </script>
     <?php include './includes/scripts_include.php'; ?>
 

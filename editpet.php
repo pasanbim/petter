@@ -121,7 +121,7 @@
 
                                 <button type="submit" class="btn btn-primary editpet mb-3">
                                     <span class="spinner-border spinner-border-sm" id ="spinner" role="status" aria-hidden="true" style="display: none;"></span>
-                                    <span class="button-text">Update Pet</span>
+                                    <span class="button-text">Save Changes</span>
                                </button>
                             </div>
                         </div>
