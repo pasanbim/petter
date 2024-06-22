@@ -54,7 +54,6 @@ $(document).ready(function() {
 
                         // Create the base row data
                         var row = [
-                            reminder.petid,
                             reminder.type,
                             reminder.date,
                             reminder.time,

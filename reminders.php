@@ -8,8 +8,6 @@
     <?php include './includes/cdn_include.php'; ?>
     <link rel="stylesheet" href="./assets/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="./assets/css/daterangepicker.css">
-
-
 </head>
 
 <body class="vertical light">
@@ -131,7 +129,6 @@
                                         <table class="table datatables table-bordered" id="dataTable-1">
                                             <thead>
                                                 <tr>
-                                                    <th>Pet</th>
                                                     <th>Type</th>
                                                     <th>Date</th>
                                                     <th>Time</th>
