@@ -33,10 +33,23 @@
               <a class="nav-link" href="./reminders.php">
                 <i class="fe fe-bell fe-16"></i>
                 <span class="ml-3 item-text">Reminders</span>
-                <span class="badge badge-pill badge-primary">Beta</span>
+                <span class="badge badge-pill badge-primary">New</span>
+
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="./vets.php">
+                <i class="fe fe-user fe-16"></i>
+                <span class="ml-3 item-text">Vets</span>
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="./appointments.php">
+                <i class="fe fe-calendar fe-16"></i>
+                <span class="ml-3 item-text">Appointments</span>
+              </a>
+            </li>
+            <!-- <li class="nav-item dropdown">
               <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-credit-card fe-16"></i>
                 <span class="ml-3 item-text">Forms</span>
@@ -99,7 +112,7 @@
                 </li>
               </ul>
             </li>
-          </ul>
+          </ul> -->
           <div class="btn-box w-100 mt-4 mb-1">
             <a href="./logout.php" class="btn mb-2 btn-primary btn-lg btn-block">
               <i class="fe fe-log-out fe-12 mx-2"></i><span class="small">Log Out</span>
