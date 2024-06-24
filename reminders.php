@@ -24,7 +24,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title addremindermodaltitle" id="verticalModalTitle"></h5>
+                                <h5 class="modal-title editremindermodaltitle" id="verticalModalTitle"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -78,7 +78,7 @@
 
                                         <button class="btn btn-primary btn-addreminder" id="btn-addreminder"
                                             style="margin-left:5px">
-                                            Add Reminder
+                                            Save Changes
                                             <span id="spinner" class="spinner-border spinner-border-sm" role="status"
                                                 style="display: none; margin-left: 5px;"></span>
                                         </button>
@@ -129,6 +129,7 @@
                                         <table class="table datatables table-bordered" id="dataTable-1">
                                             <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>Type</th>
                                                     <th>Date</th>
                                                     <th>Time</th>

@@ -27,7 +27,20 @@ if (isset($_SESSION['email']) && isset($_POST['petid']) && isset($_POST['action'
     }
 }
 
-else if (isset($_SESSION['email'])) {
+elseif (isset($_SESSION['email']) && isset($_POST['reminderid']) && isset($_POST['reminderid']) && $_POST['action'] == "delete") {
+    $reminderid = $_POST['reminderid'];
+    $sql = "DELETE FROM reminders WHERE id = '$reminderid' AND email = '$user'";
+    if ($conn->query($sql)) {
+        sendJsonResponse(1, "Reminder Deleted Successfully");
+        exit();
+    }
+    else {
+        sendJsonResponse(2, "Failed to Delete Reminder");
+        exit();
+    }
+}
+
+elseif (isset($_SESSION['email'])) {
     $user = $_SESSION['email'];
 
     $petid = $_POST['petid'];
