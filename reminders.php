@@ -129,7 +129,6 @@
                                         <table class="table datatables table-bordered" id="dataTable-1">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>Type</th>
                                                     <th>Date</th>
                                                     <th>Time</th>
