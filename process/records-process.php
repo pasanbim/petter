@@ -6,7 +6,18 @@ include '../includes/config.php';
 
 $user = $_SESSION['email'];
 
-if (isset($_POST['petid']) && !empty($_POST['petid'])) {
+if (isset($_POST['recordid']) && !empty($_POST['recordid']) && isset($_POST['action']) && !empty($_POST['action']) && $_POST['action'] == 'delete') {
+
+    $recordid = $_POST['recordid'];
+    $sql = "DELETE FROM records WHERE id = '$recordid' AND user = '$user'";
+    if ($conn->query($sql) === TRUE) {
+        sendJsonResponse(1, "Record deleted successfully");
+    } else {
+        sendJsonResponse(0, "Error deleting record: ");
+    }
+}
+
+else if (isset($_POST['petid']) && !empty($_POST['petid'])) {
 
     $petid = $_POST['petid'];
     $sql = "SELECT * FROM records WHERE petid = '$petid' ORDER BY date DESC, id DESC";
