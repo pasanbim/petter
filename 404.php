@@ -30,7 +30,7 @@
   </head>
   <body class="light">
     <div class="wrapper vh-100">
-      <div class="align-items-center h-100 d-flex w-50 mx-auto">
+      <div class="align-items-center h-100 d-flex w-30 mx-auto">
         <div class="mx-auto text-center">
 
         <div class="rotate-container">
