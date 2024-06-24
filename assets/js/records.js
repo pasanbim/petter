@@ -89,7 +89,7 @@ $(document).ready(function() {
                                         <div class="dropdown" style="text-align:center">
                                             <button class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" type="button" id="dr1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                             <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dr1">
-                                                <a class="dropdown-item" data-recordid="${record.id}" href="#" class="editrecord btn mb-2 btn-outline-success" id="editrecord" data-toggle="modal" data-target="#editrecordmodal">
+                                                <a class="dropdown-item" data-recordid="${record.id}" href="./editrecord.php?id=${record.id}" class="editrecord btn mb-2 btn-outline-success" id="editrecord">
                                                     <i class="fe fe-edit fe-12 mr-4"></i>Edit
                                                 </a>
                                                 <a class="dropdown-item deleterecord" data-recordid="${record.id}" class="deleterecord btn mb-2 btn-outline-success" id="deleterecord">
