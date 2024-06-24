@@ -18,16 +18,17 @@
             <div class="container-fluid">
 
 
-                <!-- Add new reminder modal -->
-                <div class="modal fade" id="addremindermodal" tabindex="-1" role="dialog"
+               <!-- Add new reminder modal -->
+               <div class="modal fade" id="addremindermodal" tabindex="-1" role="dialog"
                     aria-labelledby="verticalModalTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title editremindermodaltitle" id="verticalModalTitle"></h5>
+                                <h5 class="modal-title addremindermodaltitle" id="verticalModalTitle"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
+
                             </div>
                             <div class="modal-body">
                                 <div class="card-inline" style="display: flex;align-items: center;">
@@ -35,23 +36,23 @@
 
                                         <div class="form-group col-md-12">
                                             <label for="type">Type</label>
-                                            <select id="type" class="form-control">
-                                                <option value="vaccination">Vaccination</option>
-                                                <option value="surgery">Surgery</option>
-                                                <option value="allergy">Allergy</option>
-                                                <option value="medication">Medication</option>
-                                                <option value="checkup">Checkup</option>
-                                                <option value="labresult">Lab Result</option>
-                                                <option value="nutrition">Nutrition</option>
-                                                <option value="behavior">Behavior</option>
-                                                <option value="breeding">Breeding</option>
+                                            <select id="reminder_type" class="form-control">
+                                                <option value="Vaccination">Vaccination</option>
+                                                <option value="Medication">Medication</option>
+                                                <option value="Surgery">Surgery</option>
+                                                <option value="Appointment">Vet Appointment</option>
+                                                <option value="Checkup">Health Checkup</option>
+                                                <option value="Training">Training</option>
+                                                <option value="Feeding">Feeding</option>
+                                                <option value="Bathing">Bathing</option>
+                                                <option value="Breeding">Breeding</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-6">
                                             <label for="date">Date</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control drgpicker" id="date">
+                                                <input type="text" class="form-control drgpicker datepickerforreminder" id="date">
                                                 <div class="input-group-append">
                                                     <div class="input-group-text" id="button-addon-date">
                                                         <span class="fe fe-calendar fe-16 "></span>
@@ -72,13 +73,30 @@
                                         </div>
 
                                         <div class="form-group col-md-12">
-                                            <label for="record">Reminder</label>
-                                            <input type="text" class="form-control" id="record">
+                                            <label for="type">Remind me Prior to</label>
+                                            <select id="reminder_prior_to" class="form-control">
+                                                <option value="1">01 hour</option>
+                                                <option value="2">02 hours</option>
+                                                <option value="4">04 hours</option>
+                                                <option value="6">06 hours</option>
+                                                <option value="8">08 hours</option>
+                                                <option value="10">10 hours</option>
+                                                <option value="12">12 hours</option>
+                                            </select>
                                         </div>
+
+
+                                        <div class="form-group col-md-12">
+                                            <label for="record">Reminder</label>
+                                            <input type="text" class="form-control reminder" id="reminder">
+                                        </div>
+
+
+
 
                                         <button class="btn btn-primary btn-addreminder" id="btn-addreminder"
                                             style="margin-left:5px">
-                                            Save Changes
+                                            Add Reminder
                                             <span id="spinner" class="spinner-border spinner-border-sm" role="status"
                                                 style="display: none; margin-left: 5px;"></span>
                                         </button>
@@ -89,6 +107,9 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Add new reminder modal ends -->
+
 
                 <div class="row justify-content-center">
                     <div class="col-12">
@@ -101,7 +122,7 @@
                                 </select>
                             </div>
                             <div class="col-auto">
-                                <button data-toggle="modal" data-target="#addremindermodal" class="btn btn-primary"
+                                <button data-toggle="modal" data-target="#addremindermodal" class="btn btn-primary" id="newreminderbuttonreminderpage"
                                     style="margin-top:0 !important; padding: 7px !important">
                                     <span class="fe fe-bell fe-12 mr-2 mb-2"></span>New Reminder
                                 </button>

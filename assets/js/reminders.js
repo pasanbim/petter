@@ -88,6 +88,16 @@ $(document).ready(function() {
         loadpetreminders(selectedpetId);
     });
 
+
+    $('#newreminderbuttonreminderpage').on('click', function() {
+        var petName = $('.selectpetforreminders').find('option:selected').attr('petname');
+        var petId = $('.selectpetforreminders').find('option:selected').attr('petid');
+        
+        $('.btn-addreminder').attr('data-petid', petId);
+        $('.addremindermodaltitle').html('Add Reminder For ' + petName);
+       
+    });
+
     function convertToYmdFormat(dateString) {
         var date = new Date(dateString);
         var year = date.getFullYear();
@@ -178,7 +188,10 @@ $(document).ready(function() {
                 if (response.status == 1) {
                     successalert(response.message);
                     $('#reminder').val('');
-                    $('#addremindermodal').modal('hide');    
+                    $('#addremindermodal').modal('hide'); 
+                    loadpetreminders($('.selectpetforreminders').find('option:selected').attr('petid'));
+
+                
                 }
                 else if (response.status == 2) {
                     erroralert(response.message);
@@ -193,13 +206,13 @@ $(document).ready(function() {
     
         
         });
-        
-
-        
-
-      
     
     });
+
+
+
+
+
 
 
 
@@ -225,7 +238,7 @@ $(document).ready(function() {
                 success: function(response) {
                     if (response.status == 1 ) {
                         successalert(response.message);
-                        loadPetsInsideSelectForReminders();
+                        loadpetreminders($('.selectpetforreminders').find('option:selected').attr('petid'));
                     } else {
                         erroralert(response.message);
                     }
