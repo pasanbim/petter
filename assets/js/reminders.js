@@ -42,7 +42,6 @@ $(document).ready(function() {
                         var badgeClass = reminder.status.toLowerCase() === 'sent' ? 'badge-success' : 'badge-primary';
     
                         var row = [
-                            reminder.id,
                             reminder.type,
                             reminder.date,
                             reminder.time,
