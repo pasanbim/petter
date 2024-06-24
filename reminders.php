@@ -213,6 +213,11 @@
         }
     });
 
+    $('.datepickerforreminder').daterangepicker({
+        singleDatePicker: true,
+        minDate: moment(),
+    });
+
     $('.time-input').timepicker({
         scrollDefault: 'now',
         zindex: '9999',
