@@ -159,6 +159,8 @@
     <script src='assets/js/jquery.timepicker.js'></script>
     <script src='assets/js/jquery.dataTables.min.js'></script>
     <script src='assets/js/dataTables.bootstrap4.min.js'></script>
+    <script src="./assets/js/reminders.js"></script>
+
 
     <script>
         var table = $('#dataTable-1').DataTable({

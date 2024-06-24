@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Records | Petter</title>
     <?php include './includes/cdn_include.php'; ?>
+    
 
 </head>
 
@@ -116,6 +117,8 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/moment.min.js"></script>
     <script src='assets/js/daterangepicker.js'></script>
+    <script src="./assets/js/records.js"></script>
+
     <script>
         
     $('.drgpicker').daterangepicker({

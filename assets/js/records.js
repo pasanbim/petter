@@ -79,7 +79,7 @@ $(document).ready(function() {
                                     <div class="dropdown" style="text-align:center">
                                         <button class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" type="button" id="dr1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                         <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dr1">
-                                            <a class="dropdown-item" href="#" class="addrecord btn mb-2 btn-outline-success" id="addrecord" data-toggle="modal" data-target="#addrecordmodal">
+                                            <a class="dropdown-item" href="#" class="addrecord btn mb-2 btn-outline-success" id="addrecord">
                                                 <i class="fe fe-user fe-12 mr-4"></i>Contact Vet
                                             </a>
                                         </div>
@@ -146,7 +146,9 @@ $(document).ready(function() {
                 success: function(response) {
                     if (response.status === 1) {
                         successalert('Record deleted successfully');
-                        loadPetsInsideSelect();
+                        var selectedPetId = $('.selectpet').find('option:selected').attr('petid');
+                        var selectedPetName = $('.selectpet').find('option:selected').attr('petname');
+                        loadPetRecordsOnSelect(selectedPetId, selectedPetName);
                     } else {
                         erroralert('Failed to delete record');
                     }
