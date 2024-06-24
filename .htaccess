@@ -1,8 +1,1 @@
-RewriteEngine On
-
-# Set an environment variable "LOCAL" if the host is localhost
-RewriteCond %{HTTP_HOST} ^localhost [NC]
-RewriteRule ^ - [E=LOCAL:1]
-
-# Use the LOCAL environment variable to conditionally set the ErrorDocument
-ErrorDocument 404 %{ENV:LOCAL:/petter/404.php}/404.php
+ErrorDocument 404 /petter/404.php
