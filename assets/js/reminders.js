@@ -88,22 +88,26 @@ $(document).ready(function() {
         loadpetreminders(selectedpetId);
     });
 
+    function convertToYmdFormat(dateString) {
+        var date = new Date(dateString);
+        var year = date.getFullYear();
+        var month = ('0' + (date.getMonth() + 1)).slice(-2);
+        var day = ('0' + date.getDate()).slice(-2);
+        return year + '/' + month + '/' + day;
+    }
+
+
+
     $(document).on('click', '.btn-addreminder', function(e) {
-        e.preventDefault();
+
         var petid = $(this).attr('data-petid');
         var reminder = $('#reminder').val();
         var reminder_type = $('#reminder_type').val();
         var date = $('#date').val();
+        var date = convertToYmdFormat(date);
+
         var time = $('#time').val(); // The event time in format HH:MM AM/PM
         var reminder_prior_to = parseInt($('#reminder_prior_to').val(), 10); // Reminder prior to in hours
-
-        function convertToYmdFormat(dateString) {
-            var date = new Date(dateString);
-            var year = date.getFullYear();
-            var month = ('0' + (date.getMonth() + 1)).slice(-2);
-            var day = ('0' + date.getDate()).slice(-2);
-            return year + '/' + month + '/' + day;
-        }
 
         function convertTo24HourTime(timeStr) {
             var [time, modifier] = timeStr.split(' ');
@@ -119,7 +123,7 @@ $(document).ready(function() {
             
             return `${hours}:${minutes}`;
         }
-        
+
         function createDateTime(dateStr, timeStr) {
             var time24 = convertTo24HourTime(timeStr);
             var [year, month, day] = dateStr.split('/');
@@ -128,23 +132,27 @@ $(document).ready(function() {
         }
         
         var eventDateTime = createDateTime(date, time);
-        
+
         if (isNaN(eventDateTime.getTime())) {
             console.error("Invalid date/time value");
         } else {
             eventDateTime.setHours(eventDateTime.getHours() - reminder_prior_to);
             
+            // Format the adjusted Date object to YYYY/MM/DD HH:MM
             var reminderDate = eventDateTime.getFullYear() + '/' +
                                ('0' + (eventDateTime.getMonth() + 1)).slice(-2) + '/' +
                                ('0' + eventDateTime.getDate()).slice(-2);
             var reminderTime = ('0' + eventDateTime.getHours()).slice(-2) + ':' +
                                ('0' + eventDateTime.getMinutes()).slice(-2);
+            
+            
         }
 
-        if (reminder_type == '' || date == '' || time == '') {
+        if (reminder_type == '' || date == '' || time == '' || reminder_prior_to == '' || reminder == '') {
             erroralert('Please fill all the fields');
             return;
         }
+
         $('#spinner').show();
         $(this).prop('disabled', true);
 
@@ -160,23 +168,49 @@ $(document).ready(function() {
                 reminder_prior_to: reminder_prior_to,
                 reminderDate: reminderDate,
                 reminderTime: reminderTime,
-                remindpriorto : reminder_prior_to,
                 action: 'add'
             },
             success: function(response) {
+
                 $('#spinner').hide();
                 $('#btn-addreminder').prop('disabled', false);
 
                 if (response.status == 1) {
                     successalert(response.message);
                     $('#reminder').val('');
-                    $('#addremindermodal').modal('hide');
-                } else {
+                    $('#addremindermodal').modal('hide');    
+                }
+                else if (response.status == 2) {
+                    erroralert(response.message);
+                }
+                else if (response.status == 3) {
+                    erroralert(response.message);
+                }
+                else if (response.status == 4) {
                     erroralert(response.message);
                 }
             }
+    
+        
         });
+        
+
+        
+
+      
+    
     });
+
+
+
+
+
+
+
+
+
+
+
 
     $(document).on('click', '.deletereminder', function(e) {
         e.preventDefault();

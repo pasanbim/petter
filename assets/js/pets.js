@@ -188,12 +188,6 @@ $(document).ready(function() {
         $('#btn-addrecord').attr('data-petid', petId);
         $('.addrecordmodaltitle').html('Add Record For ' + petName);
     });
-    // Change edit record modal title for each pet
-    $(document).on('click', '.editrecord', function(e) {
-        var recordid = $(this).data('petname');
-
-       alert(recordid);
-    });
 
     // Change add reminder modal title for each pet
     $(document).on('click', '#addreminder', function(e) {
@@ -258,7 +252,7 @@ $(document).ready(function() {
 
 
   // Edit pet
-$(document).on('click', '.editpet', function(e) {
+    $(document).on('click', '.editpet', function(e) {
     e.preventDefault();
     var formData = new FormData();
     formData.append('petid', $('#petid').val());

@@ -241,6 +241,8 @@
     <script src="assets/js/moment.min.js"></script>
     <script src='assets/js/jquery.timepicker.js'></script>
     <script src='assets/js/daterangepicker.js'></script>
+    <script src='assets/js/daterangepicker.js'></script>
+    <script src='assets/js/reminders.js'></script>
     <script>
     $('.drgpicker').daterangepicker({
         singleDatePicker: true,
