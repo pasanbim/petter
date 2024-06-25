@@ -220,6 +220,8 @@ $(document).ready(function() {
         
 
         $(document).on('click', '.editreminder', function(e) {
+
+            
             e.preventDefault();
             var reminderid = $(this).data('reminderid');
     
@@ -247,7 +249,6 @@ $(document).ready(function() {
                         $('#btn-updatereminder').attr('reminderid', reminderid); 
 
                         $('#editremindermodal').modal('show');
-
                     }
                 }
             });
@@ -255,6 +256,8 @@ $(document).ready(function() {
 
 
         $(document).on('click', '#btn-updatereminder', function(e) {
+
+            
 
             var reminderid = $(this).attr('reminderid');
             var reminder = $('#updatereminder').val();
@@ -308,9 +311,7 @@ $(document).ready(function() {
                 erroralert('Please fill all the fields');
                 return;
             }
-    
-            $('#spinner').show();
-            $(this).prop('disabled', true);
+
     
             $.ajax({
                 url: 'process/reminders-process.php',
@@ -327,10 +328,7 @@ $(document).ready(function() {
                     action: 'update'
                 },
                 success: function(response) {
-    
-                    $('#spinner').hide();
-                    $('#btn-updatereminder').prop('disabled', false);
-    
+
                     if (response.status == 1) {
                         successalert(response.message);
                         $('#reminder').val('');
