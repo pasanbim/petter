@@ -56,16 +56,20 @@ $(document).ready(function() {
                             <button class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" type="button" id="dr${index}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dr${index}">
                             ${reminder.status.toLowerCase() === 'active' ?`
-                              <a class="dropdown-item" href="" class="addrecord btn mb-2 btn-outline-success" id="addrecord" data-toggle="modal" data-target="#addrecordmodal">
+
+                              <a class="dropdown-item editreminder" data-reminderid="${reminder.id}" class="btn mb-2 btn-outline-success">
                                <i class="fe fe-edit fe-12 mr-4"></i>Edit
                               </a>
-                              <a class="dropdown-item deletereminder" data-reminderid="${reminder.id}" href="" class="addrecord btn mb-2 btn-outline-success" id="addrecord" data-toggle="modal" data-target="#addrecordmodal">
+
+                              <a class="dropdown-item deletereminder" data-reminderid="${reminder.id}" class="btn mb-2 btn-outline-success">
                                <i class="fe fe-delete fe-12 mr-4"></i>Delete
                               </a>` : ''}
+                              
                               ${reminder.status.toLowerCase() === 'sent' ? `
-                              <a class="dropdown-item deletereminder" data-reminderid="${reminder.id}" href="" class="addrecord btn mb-2 btn-outline-success" id="addrecord" data-toggle="modal" data-target="#addrecordmodal">
+                              <a class="dropdown-item deletereminder" data-reminderid="${reminder.id}" class="btn mb-2 btn-outline-success">
                                <i class="fe fe-delete fe-12 mr-4"></i>Delete
                               </a>` : ''}
+
                             </div>
                           </div>
                         </td>`;
@@ -210,9 +214,148 @@ $(document).ready(function() {
     });
 
 
+    // Edit Reminder --------------------------------------------------------------------------------
+
+    $(document).ready(function() {
+        
+
+        $(document).on('click', '.editreminder', function(e) {
+            e.preventDefault();
+            var reminderid = $(this).data('reminderid');
+    
+
+            $.ajax({
+                url: 'process/reminders-process.php',
+                type: 'POST',
+                data: {
+                    reminderid: reminderid,
+                    action: 'get'
+                },
+                success: function(response) {
+                    var data = JSON.parse(response);
+
+                    if (data && data.length > 0) {
+
+                        var reminderDetails = data[0];
+
+                        $('.updatereminder_type').val(reminderDetails.type).trigger('change');
+                        $('.updatedate').val(reminderDetails.date);
+                        $('.updatetime').val(reminderDetails.time);
+                        $('.updatereminder_prior_to').val(reminderDetails.remind_prior_to).trigger('change');
+                        $('.updatereminder').val(reminderDetails.reminder);
+
+                        $('#btn-updatereminder').attr('reminderid', reminderid); 
+
+                        $('#editremindermodal').modal('show');
+
+                    }
+                }
+            });
+        });
 
 
+        $(document).on('click', '#btn-updatereminder', function(e) {
 
+            var reminderid = $(this).attr('reminderid');
+            var reminder = $('#updatereminder').val();
+            var reminder_type = $('#updatereminder_type').val();
+            var date = $('#updatedate').val();
+            var date = convertToYmdFormat(date);
+    
+            var time = $('#updatetime').val(); 
+            var reminder_prior_to = parseInt($('#updatereminder_prior_to').val(), 10);
+    
+            function convertTo24HourTime(timeStr) {
+                var [time, modifier] = timeStr.split(' ');
+                var [hours, minutes] = time.split(':');
+                
+                if (hours === '12') {
+                    hours = '00';
+                }
+                
+                if (modifier === 'PM') {
+                    hours = parseInt(hours, 10) + 12;
+                }
+                
+                return `${hours}:${minutes}`;
+            }
+    
+            function createDateTime(dateStr, timeStr) {
+                var time24 = convertTo24HourTime(timeStr);
+                var [year, month, day] = dateStr.split('/');
+                var dateTimeStr = `${year}-${month}-${day}T${time24}:00`;
+                return new Date(dateTimeStr);
+            }
+            
+            var eventDateTime = createDateTime(date, time);
+    
+            if (isNaN(eventDateTime.getTime())) {
+                console.error("Invalid date/time value");
+            } else {
+                eventDateTime.setHours(eventDateTime.getHours() - reminder_prior_to);
+                
+                // Format the adjusted Date object to YYYY/MM/DD HH:MM
+                var reminderDate = eventDateTime.getFullYear() + '/' +
+                                   ('0' + (eventDateTime.getMonth() + 1)).slice(-2) + '/' +
+                                   ('0' + eventDateTime.getDate()).slice(-2);
+                var reminderTime = ('0' + eventDateTime.getHours()).slice(-2) + ':' +
+                                   ('0' + eventDateTime.getMinutes()).slice(-2);
+                
+                
+            }
+    
+            if (reminder_type == '' || date == '' || time == '' || reminder_prior_to == '' || reminder == '') {
+                erroralert('Please fill all the fields');
+                return;
+            }
+    
+            $('#spinner').show();
+            $(this).prop('disabled', true);
+    
+            $.ajax({
+                url: 'process/reminders-process.php',
+                type: 'POST',
+                data: {
+                    reminderid: reminderid,
+                    reminder: reminder,
+                    reminder_type: reminder_type,
+                    date: date,
+                    time: time,
+                    reminder_prior_to: reminder_prior_to,
+                    reminderDate: reminderDate,
+                    reminderTime: reminderTime,
+                    action: 'update'
+                },
+                success: function(response) {
+    
+                    $('#spinner').hide();
+                    $('#btn-updatereminder').prop('disabled', false);
+    
+                    if (response.status == 1) {
+                        successalert(response.message);
+                        $('#reminder').val('');
+                        $('#addremindermodal').modal('hide'); 
+                        loadpetreminders($('.selectpetforreminders').find('option:selected').attr('petid'));
+                        $('#editremindermodal').modal('hide');
+
+                    }
+                    else if (response.status == 2) {
+                        erroralert(response.message);
+                    }
+        
+                },
+                error: function() {
+                    $('#spinner').hide();
+                    $('#btn-updatereminder').prop('disabled', false);
+                    erroralert('An error occurred.');
+                }
+        
+            
+            });
+        
+        });
+    });
+    
 
 
 

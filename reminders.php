@@ -18,8 +18,8 @@
             <div class="container-fluid">
 
 
-               <!-- Add new reminder modal -->
-               <div class="modal fade" id="addremindermodal" tabindex="-1" role="dialog"
+                <!-- Add new reminder modal -->
+                <div class="modal fade" id="addremindermodal" tabindex="-1" role="dialog"
                     aria-labelledby="verticalModalTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -52,7 +52,8 @@
                                         <div class="form-group col-md-6">
                                             <label for="date">Date</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control drgpicker datepickerforreminder" id="date">
+                                                <input type="text" class="form-control drgpicker datepickerforreminder"
+                                                    id="date">
                                                 <div class="input-group-append">
                                                     <div class="input-group-text" id="button-addon-date">
                                                         <span class="fe fe-calendar fe-16 "></span>
@@ -107,8 +108,104 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Add new reminder modal ends -->
+
+
+
+
+
+
+
+
+                <!-- Edit reminder modal -->
+                <div class="modal fade" id="editremindermodal" tabindex="-1" role="dialog"
+                    aria-labelledby="verticalModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title editremindermodaltitle" id="verticalModalTitle">Edit Reminder
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-inline" style="display: flex;align-items: center;">
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-12">
+                                            <label for="type">Type</label>
+                                            <select id="updatereminder_type" class="form-control updatereminder_type">
+                                                <option value="Vaccination">Vaccination</option>
+                                                <option value="Medication">Medication</option>
+                                                <option value="Surgery">Surgery</option>
+                                                <option value="Appointment">Vet Appointment</option>
+                                                <option value="Checkup">Health Checkup</option>
+                                                <option value="Training">Training</option>
+                                                <option value="Feeding">Feeding</option>
+                                                <option value="Bathing">Bathing</option>
+                                                <option value="Breeding">Breeding</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="date">Date</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control drgpicker datepickerforreminder updatedate"
+                                                    id="updatedate">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text" id="button-addon-date">
+                                                        <span class="fe fe-calendar fe-16 "></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="time">Time</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control time-input updatetime" id="updatetime">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text" id="button-addon-time">
+                                                        <span class="fe fe-clock fe-16 "></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="type">Remind me Prior to</label>
+                                            <select id="updatereminder_prior_to" class="form-control updatereminder_prior_to">
+                                                <option value="1">01 hour</option>
+                                                <option value="2">02 hours</option>
+                                                <option value="4">04 hours</option>
+                                                <option value="6">06 hours</option>
+                                                <option value="8">08 hours</option>
+                                                <option value="10">10 hours</option>
+                                                <option value="12">12 hours</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group col-md-12">
+                                            <label for="record">Reminder</label>
+                                            <input type="text" class="form-control updatereminder" id="updatereminder">
+                                        </div>
+
+                                        <button class="btn btn-primary btn-updatereminder" id="btn-updatereminder" style="margin-left:5px">
+                                            Save Changes
+                                            <span id="spinner" class="spinner-border spinner-border-sm" role="status" style="display: none; margin-left: 5px;"></span>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit reminder modal ends -->
 
 
                 <div class="row justify-content-center">
@@ -122,7 +219,8 @@
                                 </select>
                             </div>
                             <div class="col-auto">
-                                <button data-toggle="modal" data-target="#addremindermodal" class="btn btn-primary" id="newreminderbuttonreminderpage"
+                                <button data-toggle="modal" data-target="#addremindermodal" class="btn btn-primary"
+                                    id="newreminderbuttonreminderpage"
                                     style="margin-top:0 !important; padding: 7px !important">
                                     <span class="fe fe-bell fe-12 mr-2 mb-2"></span>New Reminder
                                 </button>
@@ -156,7 +254,7 @@
                                                     <th>Reminder</th>
                                                     <th>Remind Prior to</th>
                                                     <th>Status</th>
-                                                    <th style = "text-align:center">Action</th>
+                                                    <th style="text-align:center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -184,7 +282,7 @@
 
 
     <script>
-        var table = $('#dataTable-1').DataTable({
+    var table = $('#dataTable-1').DataTable({
         autoWidth: true,
         language: {
             emptyTable: "No reminders found for the selected pet.",

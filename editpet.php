@@ -45,6 +45,14 @@
                             <div class="col">
                                 <h3 class="h3 page-title">Edit Pet</h3>
                             </div>
+                            <div class="col-auto">
+                                <a href="./pets.php">
+                                <button class="btn btn-primary"
+                                    style="margin-top:0 !important; padding: 7px !important">
+                                    <span class="fe fe-arrow-left fe-12 mr-2 mb-2"></span>Back to Pets
+                                </button>
+                                </a>
+                            </div>
                         </div>
                         <div class="card shadow mb-4">
                             <div class="card-body">
