@@ -18,23 +18,36 @@ if (isset($_SESSION['email'])) {
 
     // delete pet
 
-    if (isset($_POST['deleteid']) && !empty($_POST['deleteid'])) {
-        $deleteid = $_POST['deleteid'];
-        $sql = "DELETE FROM pets WHERE id = '$deleteid' AND user = '$user'";
-        if ($conn->query($sql) === TRUE) {
+    
+if (isset($_POST['deleteid']) && !empty($_POST['deleteid'])) {
+    $deleteid = $_POST['deleteid'];
 
-            $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Pet $deleteid Deleted Successfully', '$dateandtime', '$user')";
-            $conn->query($sqlfornotification);
-            
-            sendJsonResponse(1,"Pet deleted successfully");
-
-
-        } else {
-            sendJsonResponse(2, "Error Deleting pet");
+    // Correct SQL query syntax
+    $sql_to_delete_pet_image = "SELECT petImage FROM pets WHERE id = '$deleteid' AND user = '$user'";
+    $result = $conn->query($sql_to_delete_pet_image);
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $petImage = $row['petImage'];
+        if (file_exists($uploadDir . $petImage)) {
+            unlink($uploadDir . $petImage);
         }
-    
-    
-    } 
+    }
+
+    // Delete the pet record
+    $sql = "DELETE FROM pets WHERE id = '$deleteid' AND user = '$user'";
+    if ($conn->query($sql) === TRUE) {
+        // Insert notification
+        $dateandtime = date('Y-m-d H:i:s'); // Ensure $dateandtime is set
+        $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Pet $deleteid Deleted Successfully', '$dateandtime', '$user')";
+        $conn->query($sqlfornotification);
+
+        sendJsonResponse(1, "Pet deleted successfully");
+    } else {
+        sendJsonResponse(2, "Error deleting pet");
+    }
+
+    $conn->close();
+} 
 
     // edit pet
     
