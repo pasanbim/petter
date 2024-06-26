@@ -68,8 +68,8 @@
                                         <div class="form-group mb-3">
                                             <label for="type">Type</label>
                                             <select class="form-control" id="type">
-                                                <option value="dog" <?php if($row["type"] == "dog") echo "selected"; ?>>Dog</option>
-                                                <option value="cat" <?php if($row["type"] == "cat") echo "selected"; ?>>Cat</option>
+                                                <option value="Dog" <?php if($row["type"] == "Dog") echo "selected"; ?>>Dog</option>
+                                                <option value="Cat" <?php if($row["type"] == "Cat") echo "selected"; ?>>Cat</option>
                                             </select>
                                         </div>
 
@@ -96,9 +96,9 @@
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="sex">Sex</label>
-                                            <select class="form-control" id="sex">
-                                                <option value="male" <?php if($row["sex"] == "male") echo "selected"; ?>>Male</option>
-                                                <option value="female" <?php if($row["sex"] == "female") echo "selected"; ?>>Female</option>
+                                            <select class="form-control" id="sex" name="sex">
+                                                <option value="male" <?php if ($row["sex"] == "Male") echo 'selected="selected"'; ?>>Male</option>
+                                                <option value="female" <?php if ($row["sex"] == "Female") echo 'selected="selected"'; ?>>Female</option>
                                             </select>
                                         </div>
 

@@ -68,10 +68,10 @@ sessionvalidation($redirect);
             <div class="pettype-container mt-4">
                 <label class="form-label fw-bold">Pet Type</label>
                 <div class="pettype-cards">
-                    <div class="card selected" id="dog">
+                    <div class="card selected" id="Dog">
                         <i class="fa-solid selected fa-dog fa-3x peticon"></i>
                     </div>
-                    <div class="card" id="cat">
+                    <div class="card" id="Cat">
                         <i class="fa-solid fa-cat fa-3x peticon"></i>
                     </div>
                 </div>
