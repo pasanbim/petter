@@ -32,7 +32,7 @@ sessionvalidation($redirecturl);
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
               <?php 
-              $sql = "SELECT image FROM users WHERE email = '".$_SESSION['email']."'";
+              $sql = "SELECT * FROM users WHERE email = '".$_SESSION['email']."'";
               $result = $conn->query($sql);
               $row = $result->fetch_assoc();
               if($row['image'] != '') {
