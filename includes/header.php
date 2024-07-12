@@ -44,7 +44,7 @@ sessionvalidation($redirecturl);
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="./profile.php">Profile</a>
               <a class="dropdown-item" href="./logout.php">Log Out</a>
             </div>
           </li>
