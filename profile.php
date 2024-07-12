@@ -81,10 +81,13 @@
 
     <?php 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $name = $_POST['name'];
+
+        //filter name
+        
+        $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
         $email = $_POST['email'];
 
-        if($name == '' || $email == '') {
+        if($name == '' || $email == '' ) {
             echo "<script>location.reload()</script>";
             exit();
         }
