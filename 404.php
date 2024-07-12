@@ -37,9 +37,9 @@
         <img src="./assets/images/icon.svg" alt="Rotating Image" class="rotate-image mb-1">
     </div>
 
-          <h1 class="display-1 m-0 font-weight-bolder text-muted" style="font-size:80px;">404</h1>
-          <h1 class="mb-3 text-muted font-weight-bold">We Looked Everyware!</h1>
-          <h6 class="mb-5 text-muted">We Couldn't Find the Page You Were Looking For </h6>
+          <h1 class="display-1 m-0 font-weight-bolder text-muted" style="font-size:80px;color:black !important">404</h1>
+          <h1 class="mb-3 text-muted font-weight-bold"  style="color:black !important">We Looked Everyware!</h1>
+          <h6 class="mb-5 text-muted"  style="color:black !important">We Couldn't Find the Page You Were Looking For </h6>
           <a  href="./dashboard.php" class="btn btn-lg btn-primary px-5 ">Back to Dashboard</a>
         </div>
       </div>
