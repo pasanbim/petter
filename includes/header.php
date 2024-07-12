@@ -31,20 +31,11 @@ sessionvalidation($redirecturl);
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-              <?php 
-              $sql = "SELECT image FROM users WHERE email = '".$_SESSION['email']."'";
-              $result = $conn->query($sql);
-              $row = $result->fetch_assoc();
-              if($row['image'] != '') {
-                  echo '<img src="./assets/avatars/'.$row['image'].'" alt="..." class="avatar-img rounded-circle">';
-              } else {
-                  echo '<img src="./assets/images/icon-square.jpg" alt="..." class="avatar-img rounded-circle">';
-              }
-              ?>
+                <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="./profile.php">Profile</a>
+              <a class="dropdown-item" href="#">Profile</a>
               <a class="dropdown-item" href="./logout.php">Log Out</a>
             </div>
           </li>
