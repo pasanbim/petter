@@ -69,7 +69,7 @@
                                         <label for="image">Image</label>
                                         <input type="file" class="form-control" id="image" name="image">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Save Change</button>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
                                 </form>
                             </div>
                         </div>
@@ -93,6 +93,11 @@
         if ($conn->query($updateProfileQuery) === TRUE) {
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
+
+            $dateandtime = date('Y-m-d H:i:s'); // Ensure $dateandtime is set
+            $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Profile Updated Successfully', '$dateandtime', '$email')";
+            $conn->query($sqlfornotification);
+            
             echo "<script>location.reload()</script>";
         } else {
             echo "<script>erroralert('Error updating profile.')</script>";
