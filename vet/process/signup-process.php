@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $license = $conn->real_escape_string($license);
     $password = $conn->real_escape_string($password);
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
-    $status = 'active';
+    $status = 'pending';
 
     if (!validateText($name)) {
         sendJsonResponse(3, "Invalid name");
@@ -60,10 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } else {
             $otp = $conn->real_escape_string($otp);
+            $user_type = 'vet';
 
             // Check if the email matches the one stored in the session
             if ($otp == $_SESSION['otp'] && $email == $_SESSION['otp_email']) {
-                $sql = "INSERT INTO users (name, email, address, latitude, longitude, phone, license, password, status) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$phone', '$license', '$hashedpassword', '$status')";
+                $sql = "INSERT INTO users (name, email, address, latitude, longitude, phone, license, password, status, user_type) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$phone', '$license', '$hashedpassword', '$status', '$user_type')";
                 if ($conn->query($sql) === TRUE) {
 
                     $_SESSION['email'] = $email;
