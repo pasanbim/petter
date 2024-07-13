@@ -152,7 +152,7 @@ EMAIL;
 
 function signupsuccess($to, $name) {
 
-    $subject = 'Your Petter Account has been successfully created!';
+    $subject = 'Your Petter vet account is pending approval!';
     $headers = "From: Petter <noreply@petter.pasanb.me>\r\n";
     $headers .= "Content-type: text/html\r\n";
     $message = <<<EMAIL
