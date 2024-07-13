@@ -89,9 +89,7 @@ $(document).ready(function() {
                 $button.find('.button-text').text('Sign up');
                 
                 if (response.status == 1) {
-                    successalert("Signup Successful");
-                    window.location = './onboarding.php'; 
-
+                    successalert("Account Pending Approval");
                 } 
                 else if (response.status == 0) {
                     erroralert("Invalid OTP or email mismatch");
