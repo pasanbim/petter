@@ -29,7 +29,6 @@
                             </div>
                             <div class="col-auto">
                                 <select class="form-control radius" id="radius">
-                                    <option value="1">Within 01 km</option>
                                     <option value="5">Within 05 km</option>
                                     <option value="10">Within 10 km</option>
                                     <option value="15">Within 15 km</option>
