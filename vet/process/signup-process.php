@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $latitude = $_POST['latitude'] ?? '';
     $longitude = $_POST['longitude'] ?? '';
     $phone = $_POST['phone'] ?? '';
-    $license = $_POST['longilicensetude'] ?? '';
+    $license = $_POST['license'] ?? '';
     $password = $_POST['password'] ?? '';
     $otp = $_POST['otp'] ?? null; 
 
