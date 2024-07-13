@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $_POST['address'] ?? '';
     $latitude = $_POST['latitude'] ?? '';
     $longitude = $_POST['longitude'] ?? '';
+    $phone = $_POST['phone'] ?? '';
+    $license = $_POST['longilicensetude'] ?? '';
     $password = $_POST['password'] ?? '';
     $otp = $_POST['otp'] ?? null; 
 
@@ -20,6 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $conn->real_escape_string($address);
     $latitude = $conn->real_escape_string($latitude);
     $longitude = $conn->real_escape_string($longitude);
+    $phone = $conn->real_escape_string($phone);
+    $license = $conn->real_escape_string($license);
     $password = $conn->real_escape_string($password);
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
     $status = 'active';
@@ -59,14 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Check if the email matches the one stored in the session
             if ($otp == $_SESSION['otp'] && $email == $_SESSION['otp_email']) {
-                $sql = "INSERT INTO users (name, email, address, latitude, longitude,  password, status) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$hashedpassword', '$status')";
+                $sql = "INSERT INTO users (name, email, address, latitude, longitude, phone, license, password, status) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$phone', '$license', '$hashedpassword', '$status')";
                 if ($conn->query($sql) === TRUE) {
 
                     $_SESSION['email'] = $email;
                     $_SESSION['name'] = $name;
                     
                     signupsuccess($email, $name);
-                    sendJsonResponse(1, "Signup successful");
+                    sendJsonResponse(1, "Account Pending Approval");
                 } else {
                     sendJsonResponse(2, "Error: " . $sql . "<br>" . $conn->error);
                 }
