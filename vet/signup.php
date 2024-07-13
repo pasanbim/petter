@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/images/icon.png">
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv1WxQIx06rjpy0X4oZyqdOsDeW9mflvI&libraries=places&callback=addressAutocomplete"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv1WxQIx06rjpy0X4oZyqdOsDeW9mflvI&libraries=places&callback=addressAutocomplete">
+    </script>
 
     </script>
 
@@ -43,7 +45,8 @@
                         </div>
                         <div class="form-group">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control address" id="autocomplete" placeholder="" autocomplete="off" >
+                            <input type="text" class="form-control address" id="autocomplete" placeholder=""
+                                autocomplete="off">
                             <input type="text" class="latitude" id="latitude" hidden readonly>
                             <input type="text" class="longitude" id="longitude" hidden readonly>
                         </div>
@@ -52,6 +55,19 @@
                             <input type="password" class="form-control password" name="password" autocomplete="off"
                                 required>
                         </div>
+                        <div class="row">
+                            <div class="form-group form-group col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="number" class="form-control phone" name="phone" autocomplete="off"
+                                    required>
+                            </div>
+                            <div class="form-group form-group col-md-6">
+                                <label for="license" class="form-label">License Number</label>
+                                <input type="text" class="form-control license" name="license" autocomplete="off"
+                                    required>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary w-100 signup mb-3">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                                 style="display: none;"></span>
