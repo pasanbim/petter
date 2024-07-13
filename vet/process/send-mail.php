@@ -214,10 +214,10 @@ function signupsuccess($to, $name) {
 <div class="container">
     <div class="content">
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
-        <p>Hi $name,</p>
-        <p>Your Petter Account has been successfully created! </p>
+        <p>Hi Dr. $name,</p>
+        <p>Your Petter Account has been successfully created and awaiting for the approval. </p>
        <a href="petter.pasanb.me/login.php" target="_blank" class="btn anchor" style="text-decoration:none; color: #FFFFFF">Login to account</a>
-       <p>Thank you for being part of the petter community </p>
+       <p>You can login to your account after we approved your account.</p>
 
     </div>
 </div>
