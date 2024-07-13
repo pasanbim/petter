@@ -6,7 +6,7 @@ html {
 }
 
 .background-image {
-    background-image: url(/assets/images/vet.jpg);
+    background-image: url(/assets/images/signup-dog-background.jpg);
     background-size: cover;
     filter: brightness(50%);
 }
@@ -22,7 +22,6 @@ html {
 .form-group {
     margin-bottom: 10px;
 }
-
 .form-label {
     color: #777;
     font-size: .813rem;
@@ -37,29 +36,32 @@ html {
 
 .btn-primary {
     background-color: #007bff;
+    
 }
 
-.title {
+.title{
     font-size: 1.3125rem;
     font-weight: bold;
 }
 
-.signup-footer {
+.signup-footer{
     text-align: center;
     font-size: 0.8em;
     color: #666;
     line-height: 1.3 !important;
+
 }
 
-.alreadyhave {
+.alreadyhave{
     color: #777;
     font-size: .813rem;
     font-weight: bold;
     text-decoration: none;
 }
 
-.alreadyhavespan {
+.alreadyhavespan{
     color: #FF7C00 !important;
+
 }
 
 @media (min-width: 768px) {
