@@ -107,7 +107,7 @@ $(document).ready(function() {
 
     // Function to handle making an appointment
     window.makeAppointment = function(vetId) {
-        window.location.href = `./make-appointment.php?vetId=${vetId}`;
+        window.location.href = `./appointment.php?vetId=${vetId}`;
     }
 
     // Initial call
