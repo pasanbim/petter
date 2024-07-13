@@ -27,21 +27,19 @@
 <body>
     <div class="container-fluid h-100">
         <div class="row h-100">
-            <div class="col-12 col-md-6 background-image d-none d-md-block"></div> <!-- Reduced width here -->
-            <div class="col-12 col-md-6 d-flex align-items-center"> <!-- Adjusted width here -->
+            <div class="col-12 col-md-8 background-image d-none d-md-block"></div>
+            <div class="col-12 col-md-4 d-flex align-items-center">
                 <div class="signup-form">
                     <img src="./assets/images/logo.svg" alt="Petter Logo" width="150" class="mx-auto d-block mb-3">
                     <h3 class="text-center mb-4 title">Create an account</h3>
                     <div class="input-fields-wrapper">
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control name" name="name" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control email" name="email" required>
-                            </div>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="address" class="form-label">Address</label>
@@ -54,27 +52,16 @@
                             <input type="password" class="form-control password" name="password" autocomplete="off"
                                 required>
                         </div>
-
-
-                   <div class="row">
-                   <div class="form-group form-group col-md-6">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input type="number" class="form-control phone" name="phone" autocomplete="off"required>
-                        </div>
-                        <div class="form-group form-group col-md-6">
-                            <label for="license" class="form-label">License Number</label>
-                            <input type="text" class="form-control license" name="license" autocomplete="off"
-                                required>
-                        </div>
-                   </div>
-
-
                         <button type="submit" class="btn btn-primary w-100 signup mb-3">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                                 style="display: none;"></span>
                             <span class="button-text">Sign up</span>
                         </button>
                     </div>
+                    <!-- <p class="text-center mt-4 signup-footer">
+                        By clicking the "Sign up" button, you are creating a petter account and therefore you agree to
+                        petter Company's Terms of Use and Privacy Policy.
+                    </p> -->
                     <p class="text-center mt-2 alreadyhave">
                         Already have an account? <a style="text-decoration:none" href="./login.php"><span
                                 class="alreadyhavespan">Log in</span></a>
