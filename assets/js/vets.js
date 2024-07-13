@@ -22,14 +22,14 @@ $(document).ready(function() {
         });
 
         // Close the info window when clicking on the map
-        map.addListener('click', function () {
+        map.addListener('click', function() {
             if (infoWindow) {
                 infoWindow.close();
             }
         });
 
         // Loop through the vet locations and place markers
-        response.vets.forEach(function (vet) {
+        response.vets.forEach(function(vet) {
             var vetLatLng = { lat: parseFloat(vet.latitude), lng: parseFloat(vet.longitude) };
             var marker = new google.maps.Marker({
                 position: vetLatLng,
@@ -58,8 +58,8 @@ $(document).ready(function() {
                 </div>`;
 
             // Create a new info window without close button
-            google.maps.event.addListener(marker, 'click', (function (marker) {
-                return function () {
+            google.maps.event.addListener(marker, 'click', (function(marker) {
+                return function() {
                     if (infoWindow) {
                         infoWindow.close();
                     }
@@ -68,7 +68,7 @@ $(document).ready(function() {
                     });
                     infoWindow.open(map, marker);
                     // Apply custom CSS to hide the close button
-                    google.maps.event.addListener(infoWindow, 'domready', function () {
+                    google.maps.event.addListener(infoWindow, 'domready', function() {
                         var iwCloseBtn = document.querySelector('.gm-style-iw button');
                         if (iwCloseBtn) {
                             iwCloseBtn.style.display = 'none';
@@ -80,41 +80,41 @@ $(document).ready(function() {
     }
 
     function GetVetInfo() {
-        var selectedRadius = $(".radius").val();
+        var selectedRadius = $("#radius").val();
 
         $.ajax({
             url: "./process/vets-process.php",
             type: "POST",
             data: { GetVetInfo: true, radius: selectedRadius },
             dataType: 'json',
-            success: function (response) {
+            success: function(response) {
                 if (response && response.vets.length > 0) {
+                    document.getElementById("no-vets").style.display = "none";
                     $("#map").show();
-                    $("#no-records").hide();
                     initMap(response);
                 } else {
                     $("#map").hide();
-                    $("#no-records").show();
+                    $("#no-vets").show();
                 }
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 console.error("Error fetching vet info:", status, error);
                 $("#map").hide();
-                $("#no-records").show();
+                $("#no-vets").show();
             }
         });
     }
 
     // Function to handle making an appointment
-    window.makeAppointment = function (vetId) {
-        window.location.href = `./appointment.php?vetId=${vetId}`;
+    window.makeAppointment = function(vetId) {
+        window.location.href = `./make-appointment.php?vetId=${vetId}`;
     }
 
     // Initial call
     GetVetInfo();
 
     // Bind change event to the dropdown
-    $(".radius").change(function () {
+    $("#radius").change(function() {
         GetVetInfo();
     });
 });
