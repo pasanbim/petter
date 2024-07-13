@@ -19,7 +19,6 @@ $(document).ready(function() {
                 url: './assets/images/home-marker.svg', 
                 scaledSize: new google.maps.Size(32, 32) 
             }
-
         });
 
         // Close the info window when clicking on the map
@@ -90,13 +89,15 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 if (response && response.vets.length > 0) {
+                    $("#map").show();
                     initMap(response);
                 } else {
-                    console.log("No vet locations found.");
+                    $("#map").hide(); 
                 }
             },
             error: function(xhr, status, error) {
                 console.error("Error fetching vet info:", status, error);
+                $("#map").hide();
             }
         });
     }
@@ -104,7 +105,6 @@ $(document).ready(function() {
     // Function to handle making an appointment
     window.makeAppointment = function(vetId) { 
         window.location.href = `./appointment.php?vetId=${vetId}`;
-        
     }
 
     // Initial call
