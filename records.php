@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Records | Petter</title>
     <?php include './includes/cdn_include.php'; ?>
-    
-
 </head>
 
 <body class="vertical light">
     <div class="wrapper">
-
         <?php include './includes/header.php'; include './includes/sidebar.php'; ?>
         <main role="main" class="main-content">
             <div class="container-fluid">
@@ -27,12 +24,10 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-
                             </div>
                             <div class="modal-body">
                                 <div class="card-inline" style="display: flex;align-items: center;">
                                     <div class="form-row">
-
                                         <div class="form-group col-md-6">
                                             <label for="type">Type</label>
                                             <select id="type" class="form-control">
@@ -47,7 +42,6 @@
                                                 <option value="breeding">Breeding</option>
                                             </select>
                                         </div>
-
                                         <div class="form-group col-md-6">
                                             <label for="date">Date</label>
                                             <div class="input-group">
@@ -59,25 +53,21 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="form-group col-md-12">
                                             <label for="record">Record</label>
                                             <input type="text" class="form-control" id="record">
                                         </div>
-
                                         <div class="form-group col-md-12">
                                             <label for="proof" class="form-label">Proof</label>
                                             <input class="form-control proof" style="height: unset" type="file"
                                                 id="proof" accept=".jpg, .png, .heic, .jpeg, .pdf">
                                         </div>
-
                                         <button class="btn btn-primary btn-addrecord" id="btn-addrecord"
                                             style="margin-left:5px">
                                             Add Record
                                             <span id="spinner" class="spinner-border spinner-border-sm" role="status"
                                                 style="display: none; margin-left: 5px;"></span>
                                         </button>
-
                                     </div>
                                 </div>
                             </div>
@@ -112,27 +102,27 @@
         </main>
     </div>
 
-
-
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/moment.min.js"></script>
     <script src='assets/js/daterangepicker.js'></script>
     <script src="./assets/js/records.js"></script>
 
     <script>
-        
-    $('.drgpicker').daterangepicker({
-        singleDatePicker: true,
-        timePicker: false,
-        showDropdowns: true,
-        maxDate: moment(),
-        locale: {
-            format: 'MM/DD/YYYY'
-        }
-    });
+        $(document).ready(function() {
+            // Your code to ensure header and sidebar are fully loaded
+            $('.drgpicker').daterangepicker({
+                singleDatePicker: true,
+                timePicker: false,
+                showDropdowns: true,
+                maxDate: moment(),
+                locale: {
+                    format: 'MM/DD/YYYY'
+                }
+            });
+            // Additional code for loading content
+        });
     </script>
     <?php include './includes/scripts_include.php'; ?>
-
 </body>
 
 </html>

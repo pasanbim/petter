@@ -8,51 +8,45 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-
 $redirecturl= $_SERVER['REQUEST_URI'];
 sessionvalidation($redirecturl);
-
 ?>
 
 <nav class="topnav navbar navbar-light">
-        <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
-          <i class="fe fe-menu navbar-toggler-icon"></i>
-        </button>
-        <!-- <form class="form-inline mr-auto searchform text-muted">
-          <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
-        </form> -->
-        <ul class="nav">
-          <li class="nav-item nav-notif">
+    <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+        <i class="fe fe-menu navbar-toggler-icon"></i>
+    </button>
+    <ul class="nav">
+        <li class="nav-item nav-notif">
             <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-              <span class="fe fe-bell fe-16" id="notification-icon"></span>
-              <span class="notification-dot dot "></span>
+                <span class="fe fe-bell fe-16" id="notification-icon"></span>
+                <span class="notification-dot dot"></span>
             </a>
-          </li>
-          <li class="nav-item dropdown">
+        </li>
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="avatar avatar-sm mt-2">
-              <?php 
-              $sql = "SELECT * FROM users WHERE email = '".$_SESSION['email']."'";
-              $result = $conn->query($sql);
-              $row = $result->fetch_assoc();
-              if($row['image'] != '') {
-                  echo '<img src="./assets/avatars/'.$row['image'].'" alt="..." class="avatar-img rounded-circle">';
-              } else {
-                  echo '<img src="./assets/images/icon-square.jpg" alt="..." class="avatar-img rounded-circle">';
-              }
-              ?>
-              </span>
+                <span class="avatar avatar-sm mt-2">
+                <?php 
+                $sql = "SELECT * FROM users WHERE email = '".$_SESSION['email']."'";
+                $result = $conn->query($sql);
+                $row = $result->fetch_assoc();
+                if($row['image'] != '') {
+                    echo '<img src="./assets/avatars/'.$row['image'].'" alt="..." class="avatar-img rounded-circle" style="display:none;">';
+                } else {
+                    echo '<img src="./assets/images/icon-square.jpg" alt="..." class="avatar-img rounded-circle" style="display:none;">';
+                }
+                ?>
+                </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="./profile.php">Profile</a>
-              <a class="dropdown-item" href="./logout.php">Log Out</a>
+                <a class="dropdown-item" href="./profile.php">Profile</a>
+                <a class="dropdown-item" href="./logout.php">Log Out</a>
             </div>
-          </li>
-        </ul>
-      </nav>
+        </li>
+    </ul>
+</nav>
 
-      <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
-    aria-hidden="true">
+<div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -63,9 +57,6 @@ sessionvalidation($redirecturl);
             </div>
             <div class="modal-body">
                 <div class="list-group list-group-flush my-n3 notifications-list">
-
-
-                
                     <div class="list-group-item bg-transparent">
                         <div class="row align-items-center">
                             <div class="col-auto">
@@ -77,7 +68,6 @@ sessionvalidation($redirecturl);
                             </div>
                         </div>
                     </div>
-                    
                 </div> 
             </div>
             <div class="modal-footer">
@@ -86,3 +76,11 @@ sessionvalidation($redirecturl);
         </div>
     </div>
 </div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Show the avatar image once the page is fully loaded
+        $('.avatar-img').show();
+    });
+</script>
