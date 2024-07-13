@@ -6,7 +6,7 @@ html {
 }
 
 .background-image {
-    background-image: url(/assets/images/vet.jpg);
+    background-image: url(/vet/assets/images/vet.jpg);
     background-size: cover;
     filter: brightness(50%);
 }
