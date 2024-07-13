@@ -215,7 +215,7 @@ function signupsuccess($to, $name) {
     <div class="content">
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi Dr. $name,</p>
-        <p>Your Petter Account has been successfully created and awaiting for the approval. </p>
+        <p>Your Petter Vet account has been successfully created and awaiting for the approval. </p>
        <a href="petter.pasanb.me/login.php" target="_blank" class="btn anchor" style="text-decoration:none; color: #FFFFFF">Login to account</a>
        <p>You can login to your account after we approved your account.</p>
 

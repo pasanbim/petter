@@ -180,6 +180,31 @@ $(document).ready(function() {
                         window.location.href = './dashboard.php';
                     }
 
+                } 
+                else if (response.status == 11) {
+                    successalert("Login Successful");
+                    let urlParams = new URLSearchParams(window.location.search);
+                    let redirectUrl = urlParams.get('redirect');
+
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl;
+                    }
+                    else {
+                        window.location.href = './vet/dashboard.php';
+                    }
+
+                } 
+                else if (response.status == 111) {
+                    successalert("Login Successful");
+                    let urlParams = new URLSearchParams(window.location.search);
+                    let redirectUrl = urlParams.get('redirect');
+
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl;
+                    }
+                    else {
+                        window.location.href = './admin/dashboard.php';
+                    }
 
                 } 
                  else if (response.status == 2) {

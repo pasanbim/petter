@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $email;
             $_SESSION['name'] = $row['name'];
             $_SESSION['id'] = $row['id'];
+            $_SESSION['user_type'] = $row['user_type'];
 
             date_default_timezone_set('Asia/Colombo');
 
@@ -39,8 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $time = date('h:i A', time());
             $date = date("Y/m/d");
 
-            loginemail($email, $_SESSION['name'], $time, $date, $device, $ip, $location);
-            sendJsonResponse(1, "Login successful");
+            if ($row['user_type'] == 'user') {
+                sendJsonResponse(1, "Login successful");
+            }
+            else if ($row['user_type'] == 'vet') {
+                sendJsonResponse(11, "Login successful");
+            }
+            else if ($row['user_type'] == 'admin') {
+                sendJsonResponse(111, "Login successful");
+            }
         } else {
             sendJsonResponse(0, "Invalid Credentials");
         }
