@@ -574,7 +574,7 @@ function onlineappointmentconfirmationemail($to,$date, $time, $link) {
         <p>Hi there,</p>
         <p>Your online appointment has been confirmed and scheduled on $date at $time.</p>
         <p>Please click the link below to join the meeting</p>
-        <a class="btn anchor" href="$link" target="_blank" style="text-decoration:none; color: #FFFFFF">join Meeting</a>
+        <a class="btn anchor" href="$link" target="_blank" style="text-decoration:none; color: #FFFFFF">Join Meeting</a>
     </div>
 </div>
 </body>
