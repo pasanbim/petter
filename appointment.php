@@ -193,38 +193,48 @@ if ($result->num_rows > 0) {
         });
 
         $('#finalize-appointment').on('click', function() {
-            var vetId = $('#vetid').val();
-            var petId = $('#pet').val();
-            var appointmenttype = $('#appoinmenttype').val();
-            var appointmentDate = $('#appointment_date').val();
-            var appointmentTime = $('#appointment_time').val();
+    var vetId = $('#vetid').val();
+    var petId = $('#pet').val();
+    var appointmentType = $('#appoinmenttype').val();
+    var appointmentDate = $('#appointment_date').val();
+    var appointmentTime = $('#appointment_time').val();
 
-            $.ajax({
-                type: 'POST',
-                url: './process/appointment-process.php',
-                data: {
-                    vetid: vetId,
-                    pet: petId,
-                    appointment_date: appointmentDate,
-                    appointment_time: appointmentTime,
-                    appointment_type: appointmenttype
-                },
-                success: function(response) {
-                    if (response.status == 1) {
-                        successalert(response.message);
-                        setTimeout(function() {
-                            window.location.href = './appointments.php';
-                        }, 2000);
-                    } 
-                    else if(response.status == 0){
-                        erroralert(response.message);
-                    }
-                },
-                error: function() {
-                    alert('Error booking the appointment.');
-                }
-            });
-        });
+    // Convert 24-hour time to 12-hour format
+    var time = appointmentTime;
+    var hours = Number(time.match(/^(\d+)/)[1]);
+    var minutes = Number(time.match(/:(\d+)/)[1]);
+    var AMPM = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var formattedTime = hours + ':' + minutes + ' ' + AMPM;
+
+    $.ajax({
+        type: 'POST',
+        url: './process/appointment-process.php',
+        data: {
+            vetid: vetId,
+            pet: petId,
+            appointment_date: appointmentDate,
+            appointment_time: formattedTime, // Send the formatted 12-hour time
+            appointment_type: appointmentType
+        },
+        success: function(response) {
+            if (response.status == 1) {
+                successalert(response.message);
+                setTimeout(function() {
+                    window.location.href = './appointments.php';
+                }, 2000);
+            } else if (response.status == 0) {
+                erroralert(response.message);
+            }
+        },
+        error: function() {
+            alert('Error booking the appointment.');
+        }
+    });
+});
+
     });
     </script>
 
