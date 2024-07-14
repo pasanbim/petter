@@ -572,8 +572,8 @@ function appointmentconfirmationemail($to,$date, $time) {
     <div class="content">
       <img src="https://i.ibb.co/QdhvmNC/logo-1.png" width="175" alt="petter logo">
         <p>Hi there,</p>
-        <p>Your appointment has been confirmed and it has been scheduled on $date at $time.</p>
-        <p>Please visit your petter account for more information</p>
+        <p>Your appointment has been confirmed and scheduled on $date at $time.</p>
+        <p>Please visit your account for more information</p>
         <a class="btn anchor" href="petter.pasanb.me/appointments.php" target="_blank" style="text-decoration:none; color: #FFFFFF">Appointments</a>
     </div>
 </div>
