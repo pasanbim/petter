@@ -3,6 +3,8 @@ include '../process/send-mail.php';
 include '../process/functions.php'; 
 include '../includes/config.php';
 
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_POST['pet']) && isset($_POST['appointment_date']) && isset($_POST['appointment_time']) && isset($_POST['appointment_type']) && isset($_SESSION['email']) && isset($_SESSION['id'])) {
     $vetId = $_POST['vetid'];
     $petId = $_POST['pet'];
@@ -47,13 +49,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
         }
         sendJsonResponse(1, "Appointment Booked Successfully");
         sleep(2);
-        header("Location: ./appointments.php");
+        header("Location: ../appointments.php");
     } else {
         sendJsonResponse(0, "Error in booking appointment: " . $stmt->error);
     }
     
     $stmt->close();
-} else {
+} 
+
+elseif (isset($_GET['cancelid']) && !empty($_GET['cancelid'])) {
+
+    $appointmentId = $_GET['cancelid'];
+    $status = "cancelled";
+
+    // Prepare SQL statement for cancelling appointment
+    $sql = "UPDATE appointments SET status = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $status, $appointmentId);
+    if ($stmt->execute()) {
+        header("Location: ../appointments.php");
+    }
+    $stmt->close();
+    
+}
+
+
+
+
+else {
     sendJsonResponse(0, "Invalid request");
 }
 ?>
