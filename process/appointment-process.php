@@ -3,7 +3,6 @@ include '../process/send-mail.php';
 include '../process/functions.php'; 
 include '../includes/config.php';
 
-// Check if the form was submitted and all necessary fields are present
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_POST['pet']) && isset($_POST['appointment_date']) && isset($_POST['appointment_time']) && isset($_POST['appointment_type']) && isset($_SESSION['email']) && isset($_SESSION['id'])) {
     $vetId = $_POST['vetid'];
     $petId = $_POST['pet'];
@@ -14,16 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
     $userEmail = $_SESSION['email'];
     $status = "active";
 
+   // Get the vet address
+    $sqlForVetAddress = "SELECT address FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sqlForVetAddress);
+    $stmt->bind_param("i", $vetId);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    //get the vet address 
-    $sql = "SELECT address FROM vets WHERE id = $vetId";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $address = $row['address'];
-
- 
-
-
+    if ($result && $result->num_rows > 0) {
+        $vetRow = $result->fetch_assoc();
+        $address = $vetRow['address'];
+    }
+    $stmt->close();
 
     // Generate a unique meeting link for online appointments
     $uniqueMeetingId = uniqid('petter-');
@@ -33,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
     $sql = "INSERT INTO appointments (unique_id, petid, vetid, userid, useremail, date, time, type, link, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
-        sendJsonResponse(0, "Failed to prepare the database statement");
+        sendJsonResponse(0, "");
         exit;
     }
     
@@ -41,9 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
     if ($stmt->execute()) {
         if($appointmentType === "online") {
             onlineappointmentconfirmationemail($userEmail, $appointmentDate, $appointmentTime, $link);
-        }
-        else {
-            physicalappointmentconfirmationemail($userEmail, $appointmentDate, $appointmentTime,$address);
+        } else {
+            physicalappointmentconfirmationemail($userEmail, $appointmentDate, $appointmentTime, $address);
         }
         sendJsonResponse(1, "Appointment Booked Successfully");
         sleep(2);
@@ -52,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
         sendJsonResponse(0, "Error in booking appointment: " . $stmt->error);
     }
     
-    // Close the statement
     $stmt->close();
 } else {
     sendJsonResponse(0, "Invalid request");
