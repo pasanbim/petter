@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
                                                         </div>
                                                     </div>
                                                 </section>
-                                                <h3>Pet</h3>
+                                                <h3>Pet & Mode</h3>
                                                 <section>
                                                     <?php 
                                                     $sqltogetallthepets = "SELECT * FROM pets WHERE `user` = ?";
@@ -109,7 +109,12 @@ if ($result->num_rows > 0) {
                                                     } else {
                                                         echo '<p>No pets found. Please add a pet first.</p>';
                                                     }
-                                                    ?>
+                                                    ?> <br>
+                                                    <select class="form-control" id="appoinmenttype" name="appoinmenttype" required>
+                                                        <option value="" disabled selected>Please select appointment type</option>
+                                                        <option value="online">Online</option>
+                                                        <option value="visitvet">Visit Vet</option>
+                                                    </select>
                                                 </section>
                                                 <h3>Date & Time</h3>
                                                 <section>
@@ -135,6 +140,7 @@ if ($result->num_rows > 0) {
                                                         <p><strong>Pet:</strong> <span id="confirm-pet"></span></p>
                                                         <p><strong>Date:</strong> <span id="confirm-date"></span></p>
                                                         <p><strong>Time:</strong> <span id="confirm-time"></span></p>
+                                                        <p><strong>Type:</strong> <span id="confirm-appointment-type"></span></p>
                                                     </div>
                                                     <button type="button" id="finalize-appointment"
                                                         class="btn btn-primary">Book the Appointment</button>
@@ -163,6 +169,10 @@ if ($result->num_rows > 0) {
             var selectedPetName = $(this).find('option:selected').text();
             $('#confirm-pet').text(selectedPetName);
         });
+        $('#appoinmenttype').on('change', function() {
+            var selectedtype = $(this).find('option:selected').text();
+            $('#confirm-appointment-type').text(selectedtype);
+        });
 
         // Update date and time confirmation when inputs change
         $('#appointment_date').on('change', function() {
@@ -185,6 +195,7 @@ if ($result->num_rows > 0) {
         $('#finalize-appointment').on('click', function() {
             var vetId = $('#vetid').val();
             var petId = $('#pet').val();
+            var appointmenttype = $('#appoinmenttype').val();
             var appointmentDate = $('#appointment_date').val();
             var appointmentTime = $('#appointment_time').val();
 
@@ -195,7 +206,8 @@ if ($result->num_rows > 0) {
                     vetid: vetId,
                     pet: petId,
                     appointment_date: appointmentDate,
-                    appointment_time: appointmentTime
+                    appointment_time: appointmentTime,
+                    appointment_type: appointmenttype
                 },
                 success: function(response) {
                     if (response.status == 1) {
