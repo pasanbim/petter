@@ -574,7 +574,7 @@ function onlineappointmentconfirmationemail($to,$date, $time, $link) {
         <p>Hi there,</p>
         <p>Your online appointment has been confirmed and scheduled on $date at $time.</p>
         <p>Please click the link below to join the meeting</p>
-        <a class="btn anchor" href="$link" target="_blank" style="text-decoration:none; color: #FFFFFF">join Appointment</a>
+        <a class="btn anchor" href="$link" target="_blank" style="text-decoration:none; color: #FFFFFF">join Meeting</a>
     </div>
 </div>
 </body>
@@ -661,7 +661,7 @@ function physicalappointmentconfirmationemail($to,$date, $time, $address) {
         <p>Hi there,</p>
         <p>Your appointment has been confirmed and scheduled on $date at $time.</p>
         <p>Please visit the vet address below for your appointment</p>
-        <p>$address</p>
+        <p><b>$address</b></p>
         <a class="btn anchor" href="https://www.google.com/maps/search/?api=1&query=$address" target="_blank" style="text-decoration:none; color: #FFFFFF">On Google Map</a>
     </div>
 </div>
