@@ -1,5 +1,5 @@
 
-    <link rel="stylesheet" href="./assets/css/simplebar.css">
+<link rel="stylesheet" href="./assets/css/simplebar.css">
     <link rel="stylesheet" href="./assets/css/feather.css">
     <link rel="stylesheet" href="./assets/css/select2.css">
     <link rel="stylesheet" href="./assets/css/dropzone.css">

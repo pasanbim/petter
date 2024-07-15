@@ -24,7 +24,7 @@ $(document).ready(function() {
                                                     <span class="text-muted sr-only">Action</span>
                                                 </button>
                                                 <div class="dropdown-menu m-2">
-                                                    <a class="dropdown-item" href="./profile.php?id=${pet.id}">
+                                                    <a class="dropdown-item" href="./petprofile.php?id=${pet.id}">
                                                         <i class="fe fe-meh fe-12 mr-4"></i>Profile
                                                     </a>
                                                     <a class="dropdown-item" href="" data-petid="${pet.id}" data-petname="${pet.name}" class="addrecord btn mb-2 btn-outline-success" id="addrecord" data-toggle="modal" data-target="#addrecordmodal">
@@ -174,7 +174,7 @@ $(document).ready(function() {
     // Load share link in modal
     $(document).on('click', '#sharepet', function(e) {
         var shareid = $(this).data('shareid');
-        sharelink = window.location.origin + '/profile.php?petid=' + shareid;
+        sharelink = window.location.origin + './petprofile.php?petid=' + shareid;
         $('#sharelink').html(sharelink);
     });
 
