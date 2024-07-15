@@ -186,7 +186,7 @@ $stmt->close();
         //download the entire page  in pdf format without loosing any element or style
         html2pdf(document.body, {
             margin: 1,
-            filename: 'pet_profile.pdf',
+            filename: '<?php echo $row['name']?>_Profile.pdf',
             image: {
                 type: 'jpeg',
                 quality: 0.98
