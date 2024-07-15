@@ -8,6 +8,7 @@
     <?php include './includes/cdn_include.php'; ?>
     <link rel="stylesheet" href="./assets/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="./assets/css/daterangepicker.css">
+
 </head>
 
 <body class="vertical light">

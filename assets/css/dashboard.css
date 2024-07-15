@@ -1,0 +1,110 @@
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.icon-container i {
+    font-size: 2rem;
+    color: #FF7C00;
+}
+
+#calendar {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.fc-daygrid-day.fc-today-remove-highlight {
+background: none !important;
+color: inherit !important;
+}
+.fc-daygrid-day.fc-day-inactive {
+    background-color: white !important;
+    color: inherit !important;
+}
+
+/* Style for active buttons */
+.fc .fc-button.fc-button-active {
+    background-color: #FF7C00 !important;
+    color: white !important;
+    border-color: #FF7C00 !important;
+}
+
+/* Style for inactive buttons */
+.fc .fc-button {
+    background-color: white !important;
+    color: black !important;
+    border-color: #ddd !important;
+}
+
+/* Optional: style for hover state */
+.fc .fc-button:hover {
+    background-color: #FF7C00 !important;
+    color: white !important;
+}
+/* Style for the today button */
+.fc .fc-toolbar .fc-button {
+text-transform: capitalize !important;
+}
+
+
+/* Remove border on focus and active state for right side buttons */
+.fc .fc-button-group .fc-button:focus,
+.fc .fc-button-group .fc-button:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+/* Remove the dot next to events in the day grid view */
+.fc .fc-daygrid-event-dot {
+    display: none !important;
+}
+
+/* Style for the calendar events */
+.fc-event {
+    background-color: #FF7C00 !important;
+    color: white !important;
+    border: none !important;
+    text-align: center;
+}
+
+/* Center the text within the event */
+.fc-event .fc-event-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+    margin-left: 20px !important;
+}
+
+
+
+/* Styles for responsiveness */
+@media (max-width: 768px) {
+    .fc .fc-toolbar.fc-header-toolbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fc .fc-toolbar .fc-toolbar-chunk {
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .fc .fc-button-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .fc .fc-button {
+        margin: 5px;
+        flex: 1 0 auto;
+    }
+}
