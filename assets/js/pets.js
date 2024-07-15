@@ -174,7 +174,7 @@ $(document).ready(function() {
     // Load share link in modal
     $(document).on('click', '#sharepet', function(e) {
         var shareid = $(this).data('shareid');
-        sharelink = window.location.origin + './petprofile.php?petid=' + shareid;
+        sharelink = window.location.origin + '/petprofile.php?id=' + shareid;
         $('#sharelink').html(sharelink);
     });
 
