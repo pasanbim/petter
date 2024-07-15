@@ -32,6 +32,8 @@
                             users.address as vet_address, 
                             pets.name as pet_name 
                             FROM appointments 
+                            WHERE appointments.userid = $_SESSION[id]
+
                             LEFT JOIN users ON appointments.vetid = users.id
                             LEFT JOIN pets ON appointments.petid = pets.id
                             WHERE appointments.status = 'active' AND appointments.type = 'online'
