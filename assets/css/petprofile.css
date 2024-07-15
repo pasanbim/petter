@@ -9,13 +9,13 @@ header {
     height: 60px;
 }
 
-a.header-button.btn {
-    padding: 10px 20px;
-    background-color: #FF7C00;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.header-button {
+    padding: 10px 20px !important;
+    background-color: #FF7C00 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
 }
 
 .pet_image {
