@@ -228,6 +228,7 @@
                                 <a href="./onboarding.php" class="btn btn-primary">
                                     <span class="fe fe-plus fe-12 mr-2"></span>New Pet
                                 </a>
+                                
                             </div>
                         </div>
                         <div class="row" id="pets-list"></div>

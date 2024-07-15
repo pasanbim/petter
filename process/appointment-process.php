@@ -90,13 +90,31 @@ elseif (isset($_GET['cancelid']) && !empty($_GET['cancelid'])) {
     $appointmentId = $_GET['cancelid'];
     $status = "cancelled";
 
+
+    //getuseremail 
+    $sqltogetuseremail = "SELECT * FROM appointments WHERE id = ?";
+    $stmttogetuseremail = $conn->prepare($sqltogetuseremail);
+    $stmttogetuseremail->bind_param("i", $appointmentId);
+    $stmttogetuseremail->execute();
+    $resulttogetuseremail = $stmttogetuseremail->get_result();
+
+    if ($resulttogetuseremail && $resulttogetuseremail->num_rows > 0) {
+        $row = $resulttogetuseremail->fetch_assoc();
+        $useremail = $row['useremail'];
+    }
+
     // Prepare SQL statement for cancelling appointment
     $sql = "UPDATE appointments SET status = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $status, $appointmentId);
     if ($stmt->execute()) {
-        $_SESSION['flash_message'] = "Appointment Cancelled Successfully";
-        header("Location: ../appointments.php");
+        if($_SESSION['user_type'] == 'user'){
+            header("Location: ../appointments.php");
+        }
+        elseif($_SESSION['user_type'] == 'vet'){
+            appointmentcancellationemail($useremail,$appointmentId);
+            header("Location: ../vet/appointments.php");
+        }
     }
     $stmt->close();
     

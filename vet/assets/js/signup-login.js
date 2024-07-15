@@ -34,12 +34,10 @@ $(document).ready(function() {
         var address = $('.address').val();
         var latitude = $('.latitude').val();
         var longitude = $('.longitude').val();
-        var phone = $('.phone').val();
-        var license = $('.license').val();
         var password = $('.password').val();
         var otp = $('.otp').val();
 
-        if (name === '' || email === '' || address === '' || password === '' || phone ==='' || license === '' || (otp === '' && $('.otp').length > 0)) {
+        if (name === '' || email === '' || address === '' || password === '' || (otp === '' && $('.otp').length > 0)) {
             erroralert("Please fill all fields");
             return;
         } 
@@ -67,8 +65,6 @@ $(document).ready(function() {
         formData.append('address', address);
         formData.append('latitude', latitude);
         formData.append('longitude', longitude);
-        formData.append('phone', phone);
-        formData.append('license', license);
         formData.append('password', password);
         if ($('.otp').length && otp !== '') {
             formData.append('otp', otp);
@@ -89,7 +85,9 @@ $(document).ready(function() {
                 $button.find('.button-text').text('Sign up');
                 
                 if (response.status == 1) {
-                    successalert("Account Pending Approval");
+                    successalert("Signup Successful");
+                    window.location = './onboarding.php'; 
+
                 } 
                 else if (response.status == 0) {
                     erroralert("Invalid OTP or email mismatch");
@@ -182,6 +180,31 @@ $(document).ready(function() {
                         window.location.href = './dashboard.php';
                     }
 
+                } 
+                else if (response.status == 11) {
+                    successalert("Login Successful");
+                    let urlParams = new URLSearchParams(window.location.search);
+                    let redirectUrl = urlParams.get('redirect');
+
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl;
+                    }
+                    else {
+                        window.location.href = './vet/dashboard.php';
+                    }
+
+                } 
+                else if (response.status == 111) {
+                    successalert("Login Successful");
+                    let urlParams = new URLSearchParams(window.location.search);
+                    let redirectUrl = urlParams.get('redirect');
+
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl;
+                    }
+                    else {
+                        window.location.href = './admin/dashboard.php';
+                    }
 
                 } 
                  else if (response.status == 2) {

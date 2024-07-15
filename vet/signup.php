@@ -82,7 +82,7 @@
                         petter Company's Terms of Use and Privacy Policy.
                     </p> -->
                     <p class="text-center mt-2 alreadyhave">
-                        Already have an account? <a style="text-decoration:none" href="./login.php"><span
+                        Already have an account? <a style="text-decoration:none" href="../login.php"><span
                                 class="alreadyhavespan">Log in</span></a>
                     </p>
                 </div>
