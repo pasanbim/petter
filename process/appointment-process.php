@@ -4,8 +4,6 @@ include '../process/functions.php';
 include '../includes/config.php';
 
 
- 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_POST['pet']) && isset($_POST['appointment_date']) && isset($_POST['appointment_time']) && isset($_POST['appointment_type']) && isset($_SESSION['email']) && isset($_SESSION['id'])) {
     $vetId = $_POST['vetid'];
     $petId = $_POST['pet'];
@@ -35,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
 
 
    // Get the vet address
-    $sqlForVetAddress = "SELECT address FROM users WHERE id = ?";
+    $sqlForVetAddress = "SELECT * FROM users WHERE id = ?";
     $stmt = $conn->prepare($sqlForVetAddress);
     $stmt->bind_param("i", $vetId);
     $stmt->execute();
@@ -44,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
     if ($result && $result->num_rows > 0) {
         $vetRow = $result->fetch_assoc();
         $address = $vetRow['address'];
+        $vetname = $vetRow['name'];
     }
     $stmt->close();
 
@@ -68,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
         $reminderTime = $reminderDateTime['time'];
         
         $insert_reminder = "INSERT INTO reminders (petid, type, date, time, reminder, remind_prior_to, reminder_date, reminder_time, email, status) 
-        VALUES ('$petId', 'Appointment', '$appointmentDate', '$appointmentTime', 'Vet Appointment', '$remindPriorToHours', '$reminderDate', '$reminderTime', '$userEmail', 'active')";
+        VALUES ('$petId', 'Appointment', '$appointmentDate', '$appointmentTime', 'Vet Appointment with Dr $vetname', '$remindPriorToHours', '$reminderDate', '$reminderTime', '$userEmail', 'active')";
         $conn->query($insert_reminder);
 
         if($appointmentType === "online") {
