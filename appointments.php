@@ -26,18 +26,21 @@
                         <!-- Fetch appointments from the database -->
                         <?php
                         include "./includes/config.php"; // Database configuration
+
+                        $userid = $_SESSION['id'];
+
                         $stmt = $conn->prepare(
                             "SELECT appointments.*, 
                             users.name as vet_name, 
                             users.address as vet_address, 
                             pets.name as pet_name 
                             FROM appointments 
-                            
                             LEFT JOIN users ON appointments.vetid = users.id
                             LEFT JOIN pets ON appointments.petid = pets.id
-                            WHERE appointments.status = 'active' AND appointments.type = 'online'
+                            WHERE appointments.status = 'active' AND appointments.type = 'online' AND appointments.userid = ?
                             ORDER BY appointments.date DESC, appointments.time DESC"
                         );
+                        $stmt->bind_param("i", $userid); // Bind the session user ID
                         $stmt->execute();
                         $result = $stmt->get_result();
                         if ($result->num_rows > 0) {
@@ -109,7 +112,6 @@
                         <!-- Fetch appointments from the database -->
                         <?php
 
-                        $useremail = $_SESSION['email']; // Get the session user ID
                         include "./includes/config.php"; // Database configuration
                         $stmt = $conn->prepare(
                             "SELECT appointments.*, 
@@ -119,10 +121,10 @@
                             FROM appointments 
                             LEFT JOIN users ON appointments.vetid = users.id
                             LEFT JOIN pets ON appointments.petid = pets.id
-                            WHERE appointments.status = 'active' AND appointments.useremail = ? AND appointments.type = 'visitvet'
+                            WHERE appointments.status = 'active' AND appointments.type = 'visitvet' AND appointments.userid = ?
                             ORDER BY appointments.date DESC, appointments.time DESC"
                         );
-                        $stmt->bind_param("i", $useremail); // Bind the session user ID
+                        $stmt->bind_param("i", $userid); // Bind the session user ID
                         $stmt->execute();
                         $result = $stmt->get_result();
                         if ($result->num_rows > 0) {
