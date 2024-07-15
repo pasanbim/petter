@@ -4,7 +4,9 @@ include '../process/send-mail.php';
 include '../process/functions.php'; 
 include '../includes/config.php';
 
-$user = $_SESSION['email'];
+if(isset($_SESSION['user'])) {
+    $user = $_SESSION['email'];
+} 
 
 if (isset($_POST['recordid']) && !empty($_POST['recordid']) && isset($_POST['action']) && !empty($_POST['action']) && $_POST['action'] == 'delete') {
 

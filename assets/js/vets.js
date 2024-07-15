@@ -7,7 +7,7 @@ $(document).ready(function() {
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: userLatLng,
-            zoom: 12
+            zoom: 9
         });
 
         // Add a marker for the user's location with a custom icon
