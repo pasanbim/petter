@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
         $reminderTime = $reminderDateTime['time'];
         
         $insert_reminder = "INSERT INTO reminders (petid, type, date, time, reminder, remind_prior_to, reminder_date, reminder_time, email, status) 
-        VALUES ('$petId', 'Appointment', '$appointmentDate', '$appointmentTime', 'Vet Appointment with Dr $vetname', '$remindPriorToHours', '$reminderDate', '$reminderTime', '$userEmail', 'active')";
+        VALUES ('$petId', 'Appointment', '$appointmentDate', '$appointmentTime', 'Appointment with Dr $vetname', '$remindPriorToHours', '$reminderDate', '$reminderTime', '$userEmail', 'active')";
         $conn->query($insert_reminder);
 
         if($appointmentType === "online") {
