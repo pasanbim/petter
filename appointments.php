@@ -32,12 +32,12 @@
                             users.address as vet_address, 
                             pets.name as pet_name 
                             FROM appointments 
+                            
                             LEFT JOIN users ON appointments.vetid = users.id
                             LEFT JOIN pets ON appointments.petid = pets.id
-                            WHERE appointments.status = 'active' AND appointments.type = 'online' AND appointments.userid = ?
+                            WHERE appointments.status = 'active' AND appointments.type = 'online'
                             ORDER BY appointments.date DESC, appointments.time DESC"
                         );
-                        $stmt->bind_param("i", $_SESSION['id']); // Bind the session user ID
                         $stmt->execute();
                         $result = $stmt->get_result();
                         if ($result->num_rows > 0) {
@@ -100,10 +100,16 @@
                         ?>
                     </div>
 
+
+
+
+
                     <div class="col-12" style="margin-top:30px">
                         <h3 class="page-title">Physical Appointments</h3> <br>
                         <!-- Fetch appointments from the database -->
                         <?php
+
+                        $userid = $_SESSION['id']; // Get the session user ID
                         include "./includes/config.php"; // Database configuration
                         $stmt = $conn->prepare(
                             "SELECT appointments.*, 
@@ -113,10 +119,11 @@
                             FROM appointments 
                             LEFT JOIN users ON appointments.vetid = users.id
                             LEFT JOIN pets ON appointments.petid = pets.id
-                            WHERE appointments.status = 'active' AND appointments.type = 'visitvet' AND appointments.userid = ?
+                            WHERE appointments.status = 'active' AND appointments.userid = ? AND appointments.type = 'visitvet'
                             ORDER BY appointments.date DESC, appointments.time DESC"
                         );
-                        $stmt->bind_param("i", $_SESSION['id']); // Bind the session user ID
+                        
+                        $stmt->bind_param("i", $userid); // Bind the session user ID
                         $stmt->execute();
                         $result = $stmt->get_result();
                         if ($result->num_rows > 0) {
