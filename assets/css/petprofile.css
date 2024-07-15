@@ -19,7 +19,7 @@ a.header-button.btn {
 }
 
 .pet_image {
-    height: 120px; 
+    height: 100px; 
     object-fit: cover; 
     display: block;
     margin: auto;
