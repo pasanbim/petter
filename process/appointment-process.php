@@ -4,6 +4,7 @@ include '../process/functions.php';
 include '../includes/config.php';
 
 
+ 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_POST['pet']) && isset($_POST['appointment_date']) && isset($_POST['appointment_time']) && isset($_POST['appointment_type']) && isset($_SESSION['email']) && isset($_SESSION['id'])) {
     $vetId = $_POST['vetid'];
@@ -14,6 +15,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
     $userId = $_SESSION['id'];
     $userEmail = $_SESSION['email'];
     $status = "active";
+    $remindPriorToHours = 6;
+
+    // Function to calculate reminder date and time
+
+    function calculateReminder($appointmentDate, $appointmentTime, $remindPriorToHours) {
+        $appointmentDateTime = $appointmentDate . ' ' . $appointmentTime;
+    
+        $appointment = new DateTime($appointmentDateTime);
+    
+        $interval = new DateInterval('PT' . $remindPriorToHours . 'H');
+        $appointment->sub($interval);
+    
+        $newDate = $appointment->format('Y/m/d');
+        $newTime = $appointment->format('H:i');
+    
+        return array('date' => $newDate, 'time' => $newTime);
+    }
+
 
    // Get the vet address
     $sqlForVetAddress = "SELECT address FROM users WHERE id = ?";
@@ -42,6 +61,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
     
     $stmt->bind_param("siiissssss", $uniqueMeetingId, $petId, $vetId, $userId, $userEmail, $appointmentDate, $appointmentTime, $appointmentType, $link, $status);
     if ($stmt->execute()) {
+
+        //add a reminder for the appointment
+        $reminderDateTime = calculateReminder($appointmentDate, $appointmentTime, $remindPriorToHours);
+        $reminderDate = $reminderDateTime['date'];
+        $reminderTime = $reminderDateTime['time'];
+        
+        $insert_reminder = "INSERT INTO reminders (petid, type, date, time, reminder, remind_prior_to, reminder_date, reminder_time, email, status) 
+        VALUES ('$petId', 'Appointment', '$appointmentDate', '$appointmentTime', 'Vet Appointment', '$remindPriorToHours', '$reminderDate', '$reminderTime', '$userEmail', 'active')";
+        $conn->query($insert_reminder);
+
         if($appointmentType === "online") {
             onlineappointmentconfirmationemail($userEmail, $appointmentDate, $appointmentTime, $link);
         } else {
@@ -67,14 +96,12 @@ elseif (isset($_GET['cancelid']) && !empty($_GET['cancelid'])) {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $status, $appointmentId);
     if ($stmt->execute()) {
+        $_SESSION['flash_message'] = "Appointment Cancelled Successfully";
         header("Location: ../appointments.php");
     }
     $stmt->close();
     
 }
-
-
-
 
 else {
     sendJsonResponse(0, "Invalid request");
