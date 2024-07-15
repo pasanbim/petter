@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Check if the email matches the one stored in the session
             if ($otp == $_SESSION['otp'] && $email == $_SESSION['otp_email']) {
-                $sql = "INSERT INTO users (name, email, address, latitude, longitude,  password, status) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$hashedpassword', '$status')";
+                $sql = "INSERT INTO users (name, email, address, latitude, longitude,  password, status, user_type) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$hashedpassword', '$status', 'user')";
                 if ($conn->query($sql) === TRUE) {
 
                     $_SESSION['email'] = $email;
