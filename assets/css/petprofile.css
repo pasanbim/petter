@@ -19,12 +19,11 @@ a.header-button.btn {
 }
 
 .pet_image {
-    height: 100px; 
-    object-fit: cover; 
+    width: 100px;
     display: block;
     margin: auto;
     margin-top: -50px;
-    border-radius: 50%;
+    border-radius: 100px;
 }
 
 .pet_name {
