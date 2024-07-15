@@ -73,7 +73,7 @@
                                 </div> <!-- /. card -->
                             </div>
                         </div>
-
+                        <h3 class="h3 page-title mb-4"> Appointment Schedule</h3>
                         <!-- Calendar Section -->
                         <div class="row mb-2">
                             <div class="col-12">
@@ -112,7 +112,7 @@
             },
             eventClick: function(info) {
                 // Redirect to the appointments page when an event is clicked
-                window.location.href = './reminders.php';
+                window.location.href = './appointments.php';
             }
         });
 

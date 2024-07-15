@@ -88,7 +88,9 @@
                                     htmlspecialchars($row["status"]) .
                                     '</span></td>
                                       <td>
-                                          <a href = "../process/appointment-process.php?cancelid=' . htmlspecialchars($row["id"]) .'" class="btn btn-danger btn-sm" style="padding-top:6px;padding-bottom:6px" data-cancelid="' . htmlspecialchars($row["id"]) .'">Cancel</a>
+                                       <a href = "../process/appointment-process.php?attendid=' . htmlspecialchars($row["id"]) .'" class="btn btn-success btn-sm" style="padding-top:6px;padding-bottom:6px" data-attendid="' . htmlspecialchars($row["id"]) .'">Attend</a>
+
+                                      <a href = "../process/appointment-process.php?cancelid=' . htmlspecialchars($row["id"]) .'" class="btn btn-danger btn-sm" style="padding-top:6px;padding-bottom:6px" data-cancelid="' . htmlspecialchars($row["id"]) .'">Cancel</a>
                                       </td>
                                   </tr>';
                             }
@@ -119,16 +121,19 @@
                         include "./includes/config.php"; // Database configuration
                         $stmt = $conn->prepare(
                             "SELECT appointments.*, 
-                            users.name as vet_name, 
-                            users.address as vet_address, 
+                            vet_users.name as vet_name, 
+                            vet_users.address as vet_address, 
+                            pet_users.name as petowner_name, 
+                            pet_users.email as petowner_email, 
                             pets.name as pet_name 
                             FROM appointments 
-                            LEFT JOIN users ON appointments.vetid = users.id
+                            LEFT JOIN users AS vet_users ON appointments.vetid = vet_users.id
+                            LEFT JOIN users AS pet_users ON appointments.userid = pet_users.id
                             LEFT JOIN pets ON appointments.petid = pets.id
-                            WHERE appointments.status = 'active' AND appointments.type = 'visitvet' AND appointments.userid = ?
+                            WHERE appointments.status = 'active' AND appointments.type = 'visitvet' AND appointments.vetid = ?
                             ORDER BY appointments.date DESC, appointments.time DESC"
                         );
-                        $stmt->bind_param("i", $userid); // Bind the session user ID
+                        $stmt->bind_param("i", $vetid); // Bind the session user ID
                         $stmt->execute();
                         $result = $stmt->get_result();
                         if ($result->num_rows > 0) {
@@ -139,10 +144,9 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Pet</th>
-                                            <th>Vet</th>
+                                            <th>Pet Owner</th>
                                             <th>Date</th>
                                             <th>Time</th>
-                                            <th>Address</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -157,7 +161,7 @@
                                     htmlspecialchars($row["pet_name"]) .
                                     '</td>
                                       <td>' .
-                                    htmlspecialchars($row["vet_name"]) .
+                                    htmlspecialchars($row["petowner_name"]) .
                                     '</td>
                                       <td>' .
                                     htmlspecialchars($row["date"]) .
@@ -165,14 +169,13 @@
                                       <td>' .
                                     htmlspecialchars($row["time"]) .
                                     '</td>
-                                    <td>' .
-                                    htmlspecialchars($row["vet_address"]) .
-                                    '</td>
                                       <td> <span class="badge badge-pill p-1 px-2 badge-success" style="color:white">' .
                                     htmlspecialchars($row["status"]) .
                                     '</span></td>
                                       <td>
-                                          <a href = "./process/appointment-process.php?cancelid=' . htmlspecialchars($row["id"]) .'" class="btn btn-danger btn-sm" style="padding-top:6px;padding-bottom:6px" data-cancelid="' . htmlspecialchars($row["id"]) .'">Cancel</a>
+                                          <a href = "../process/appointment-process.php?attendid=' . htmlspecialchars($row["id"]) .'" class="btn btn-success btn-sm" style="padding-top:6px;padding-bottom:6px" data-attendid="' . htmlspecialchars($row["id"]) .'">Attend</a>
+                                          <a href = "../process/appointment-process.php?cancelid=' . htmlspecialchars($row["id"]) .'" class="btn btn-danger btn-sm" style="padding-top:6px;padding-bottom:6px" data-cancelid="' . htmlspecialchars($row["id"]) .'">Cancel</a>
+
                                       </td>
                                   </tr>';
                             }
@@ -190,6 +193,86 @@
                         $stmt->close();
                         ?>
                     </div>
+
+
+
+
+
+                    <div class="col-12" style="margin-top:30px">
+                        <h3 class="page-title">Appointment History</h3> <br>
+                        <!-- Fetch appointments from the database -->
+                        <?php
+                        include "./includes/config.php"; // Database configuration
+
+                        $vetid = $_SESSION['id'];
+
+                        $stmt = $conn->prepare(
+                            "SELECT appointments.*, 
+                            vet_users.name as vet_name, 
+                            vet_users.address as vet_address, 
+                            pet_users.name as petowner_name, 
+                            pet_users.email as petowner_email, 
+                            pets.name as pet_name 
+                            FROM appointments 
+                            LEFT JOIN users AS vet_users ON appointments.vetid = vet_users.id
+                            LEFT JOIN users AS pet_users ON appointments.userid = pet_users.id
+                            LEFT JOIN pets ON appointments.petid = pets.id
+                            WHERE (appointments.status = 'cancelled' OR appointments.status = 'attended') 
+                              AND (appointments.type = 'online' OR appointments.type = 'visitvet')
+                              AND appointments.vetid = ?
+                            ORDER BY appointments.date DESC, appointments.time DESC"
+                        );
+                        
+                        $stmt->bind_param("i", $vetid); 
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        if ($result->num_rows > 0) {
+                            echo '<div class="card">
+                            <div class="card-body">
+                                <table class="table datatable table-bordered" id="dataTable-1">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Pet</th>
+                                            <th>Pet Owner</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>';
+                            while ($row = $result->fetch_assoc()) {
+
+                                $statusBadgeClass = ($row['status'] == 'attended') ? 'badge-success' : 'badge-danger';
+                                $statusBadgeText = ($row['status'] == 'attended') ? 'Success' : 'Danger';
+                                echo '<tr>
+                                <td>' . htmlspecialchars($row["id"]) . '</td>
+                                <td>' . htmlspecialchars($row["pet_name"]) . '</td>
+                                <td>' . htmlspecialchars($row["petowner_name"]) . '</td>
+                                <td>' . htmlspecialchars($row["date"]) . '</td>
+                                <td>' . htmlspecialchars($row["time"]) . '</td>
+                                <td> <span class="badge badge-pill p-1 px-2 ' . $statusBadgeClass . '" style="color:white">' . $row['status']  . '</span></td>
+                            </tr>';
+                            }
+                            echo '</tbody>
+                                </table>
+                            </div>
+                        </div>';
+                        } else {
+                            echo '<div class="card">
+                                    <div class="card-body">
+                                        No appointment history found.
+                                    </div>
+                                </div>';
+                        }
+                        $stmt->close();
+                        ?>
+                    </div>
+
+
+
+
+
                 </div>
             </div>
         </main>

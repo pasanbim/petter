@@ -119,6 +119,40 @@ elseif (isset($_GET['cancelid']) && !empty($_GET['cancelid'])) {
     $stmt->close();
     
 }
+elseif (isset($_GET['attendid']) && !empty($_GET['attendid'])) {
+
+    $appointmentId = $_GET['attendid'];
+    $status = "attended";
+
+
+    //getuseremail 
+    $sqltogetuseremail = "SELECT * FROM appointments WHERE id = ?";
+    $stmttogetuseremail = $conn->prepare($sqltogetuseremail);
+    $stmttogetuseremail->bind_param("i", $appointmentId);
+    $stmttogetuseremail->execute();
+    $resulttogetuseremail = $stmttogetuseremail->get_result();
+
+    if ($resulttogetuseremail && $resulttogetuseremail->num_rows > 0) {
+        $row = $resulttogetuseremail->fetch_assoc();
+        $useremail = $row['useremail'];
+    }
+
+    // Prepare SQL statement for cancelling appointment
+    $sql = "UPDATE appointments SET status = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $status, $appointmentId);
+    if ($stmt->execute()) {
+        if($_SESSION['user_type'] == 'user'){
+            header("Location: ../appointments.php");
+        }
+        elseif($_SESSION['user_type'] == 'vet'){
+            vetattendedtoappointmentemail($useremail,$appointmentId);
+            header("Location: ../vet/appointments.php");
+        }
+    }
+    $stmt->close();
+    
+}
 
 else {
     sendJsonResponse(0, "Invalid request");
