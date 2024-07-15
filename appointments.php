@@ -79,7 +79,7 @@
                                     '</td>
                                       <td><a href="' .
                                     htmlspecialchars($row["link"]) .
-                                    '" target="_blank">Join</a></td>
+                                    '" target="_blank" class="btn "><span class="fe fe-link fe-12 mr-2"></span>Join</a></td>
                                       <td> <span class="badge badge-pill p-1 px-2 badge-success" style="color:white">' .
                                     htmlspecialchars($row["status"]) .
                                     '</span></td>
