@@ -35,6 +35,7 @@
                                     <option value="20">Within 20 km</option>
                                     <option value="25">Within 25 km</option>
                                     <option value="50">Within 50 km</option>
+                                    <option value="150">Within 150 km</option>
                                 </select>
                             </div>
                         </div>
