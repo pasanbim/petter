@@ -56,4 +56,21 @@ function sessionvalidation($redirect){
         header("Location: ./login.php?redirect=$redirect");
     }
 }
+
+//function to display flash message
+function flashMessage() {
+    if (isset($_SESSION['flash_message'])) {
+        $flash = $_SESSION['flash_message'];
+        unset($_SESSION['flash_message']); 
+
+        $type = $flash['type'];
+        $message = $flash['message'];
+
+        if ($type == 'success') {
+            echo "<script>successalert('$message')</script>";
+        } else {
+            echo "<script>erroralert('$message')</script>";
+        }
+    }
+}
 ?>

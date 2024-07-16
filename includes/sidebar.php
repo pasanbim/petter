@@ -49,6 +49,12 @@
                 <span class="ml-3 item-text">Appointments</span>
               </a>
             </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="./labreports.php">
+                <i class="fe fe-file-text fe-16"></i>
+                <span class="ml-3 item-text">Lab Reports</span>
+              </a>
+            </li>
             <!-- <li class="nav-item dropdown">
               <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-credit-card fe-16"></i>
