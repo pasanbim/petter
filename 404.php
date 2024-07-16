@@ -40,7 +40,7 @@
           <h1 class="display-1 m-0 font-weight-bolder text-muted" style="font-size:80px;color:black !important">404</h1>
           <h1 class="mb-3 text-muted font-weight-bold"  style="color:black !important">We Looked Everyware!</h1>
           <h6 class="mb-5 text-muted"  style="color:black !important">We Couldn't Find the Page You Were Looking For </h6>
-          <a  href="../login.php" class="btn btn-lg btn-primary px-5 ">Back to Login</a>
+          <a  href="login.php" class="btn btn-lg btn-primary px-5 ">Back to Login</a>
         </div>
       </div>
     </div>
