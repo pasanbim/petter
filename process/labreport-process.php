@@ -3,6 +3,8 @@
 include '../process/send-mail.php'; 
 include '../process/functions.php'; 
 include '../includes/config.php';
+$uploadDir = "../uploads/";
+
 
 $user = $_SESSION['email'];
 $user_id = $_SESSION['id']; 
@@ -48,11 +50,48 @@ if(isset($_POST['petid']) && !empty($_POST['petid']) && isset($_POST['labreportt
 
 }
 
+//upload report
+ if(isset($_POST['reportid']) && !empty($_POST['reportid']) && isset($_POST['action']) && $_POST['action'] == 'upload' && isset($_FILES['labreport']) && !empty($_FILES['labreport'])) {
+
+
+    $reportid = $_POST['reportid'];
+    $report = $_FILES['labreport']['name'];
+
+    $fileTmpPath = $_FILES["labreport"]["tmp_name"];
+    $fileName = $_FILES["labreport"]["name"];
+    $fileSize = $_FILES["labreport"]["size"];
+    $fileType = $_FILES["labreport"]["type"];
+    $newFileName = md5(time() . $fileName) . "_" . $fileName;
+    $uploadPath = $uploadDir . $newFileName;
+
+    if (!move_uploaded_file($fileTmpPath, $uploadPath)) {
+
+        sendJsonResponse(0, "There was an error moving the uploaded file");
+    }
+    else{
+        $sql = "UPDATE labreports SET report = '$newFileName', status = 'Completed' WHERE id = '$reportid'";
+        $result = mysqli_query($conn, $sql);
+        if($result){
+            sendJsonResponse(1, "Report Uploaded Successfully");
+        }
+        else {
+            sendJsonResponse(0, "Failed to Upload Report");
+        }
+       
+    }
+   
+
+
+}
+
 else {
     // Handle the case where POST data is not set correctly
     $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Invalid Request'];
-    header('Location: ../vet/labreports.php');
+    if ($_SESSION['user_type'] == 'vet') {
+        header('Location: ../vet/labreports.php');
+    } else {
+        header('Location: ../labreports.php');
+    }
     exit();
 }
 ?>
-
