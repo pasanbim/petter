@@ -28,7 +28,7 @@ if(isset($_POST['petid']) && !empty($_POST['petid']) && isset($_POST['labreportt
     $result = mysqli_query($conn, $sql);
     if($result) {
         labreportrequestemail($owneremail, $labreporttype);
-        $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Vet has requested a report', '$dateandtime', '$owneremail')";
+        $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Vet has requested a lab report', '$dateandtime', '$owneremail')";
         $conn->query($sqlfornotification);
         sendJsonResponse(1, "Lab Report Requested Successfully");
     }
