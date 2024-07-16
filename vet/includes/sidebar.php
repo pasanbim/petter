@@ -22,19 +22,7 @@
                 <i class="fe fe-gitlab fe-16"></i>
                 <span class="ml-3 item-text">Pets</span>
               </a>
-              <a class="nav-link" href="./records.php">
-                <i class="fe fe-file-text fe-16"></i>
-                <span class="ml-3 item-text">Records</span>
-              </a>
 
-            </li>
-
-            <li class="nav-item w-100">
-              <a class="nav-link" href="./reminders.php">
-                <i class="fe fe-bell fe-16"></i>
-                <span class="ml-3 item-text">Reminders</span>
-
-              </a>
             </li>
             <li class="nav-item w-100">
               <a class="nav-link" href="./appointments.php">

@@ -3,6 +3,7 @@ include '../process/send-mail.php';
 include '../process/functions.php'; 
 include '../includes/config.php';
 
+$dateandtime = date("Y-m-d h:i A", time());
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_POST['pet']) && isset($_POST['appointment_date']) && isset($_POST['appointment_time']) && isset($_POST['appointment_type']) && isset($_SESSION['email']) && isset($_SESSION['id'])) {
     $vetId = $_POST['vetid'];
@@ -43,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
         $vetRow = $result->fetch_assoc();
         $address = $vetRow['address'];
         $vetname = $vetRow['name'];
+        $vetemail = $vetRow['email'];
     }
     $stmt->close();
 
@@ -61,7 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vetid']) && isset($_PO
     $stmt->bind_param("siiissssss", $uniqueMeetingId, $petId, $vetId, $userId, $userEmail, $appointmentDate, $appointmentTime, $appointmentType, $link, $status);
     if ($stmt->execute()) {
 
-        //add a reminder for the appointment
+        $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('You have a New Appointment', '$dateandtime', '$vetemail')";
+        $conn->query($sqlfornotification);
+
+
         $reminderDateTime = calculateReminder($appointmentDate, $appointmentTime, $remindPriorToHours);
         $reminderDate = $reminderDateTime['date'];
         $reminderTime = $reminderDateTime['time'];
