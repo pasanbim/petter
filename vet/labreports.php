@@ -22,22 +22,9 @@
                                 <h3 class="h3 page-title">Lab Report Requests</h3>
                             </div>
                         </div>
-                        <div class="card card-fill timeline" id="timeline">
-                            <div class="card-body">
-                                <table class="table datatables table-bordered" id="petsTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Request ID</th>
-                                            <th>Pet ID</th>
-                                            <th>Pet Name</th>
-                                            <th>Report Type</th>
-                                            <th>Status</th>
-                                            <th width="10%">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                    <?php
+
+                                <?php
                                     flashMessage();
 
                                     $vet_email = $_SESSION['email'];
@@ -52,13 +39,27 @@
                                         }
                                     }
 
- 
-                                    
+
                                 
                                     $sql = "SELECT * FROM labreports WHERE vetid = '$vet_id' ORDER BY status DESC";
                                     $result = mysqli_query($conn, $sql);
                                     $button = '';
                                     if(mysqli_num_rows($result) > 0) {
+
+                                        echo '                         <div class="card card-fill timeline" id="timeline">
+                                <div class="card-body"><table class="table datatables table-bordered" id="petsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Request ID</th>
+                                            <th>Pet ID</th>
+                                            <th>Pet Name</th>
+                                            <th>Report Type</th>
+                                            <th>Status</th>
+                                            <th width="10%">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+';
                                         while($row = mysqli_fetch_assoc($result)) {
 
                                             $statusBadgeClass = '';
@@ -100,11 +101,18 @@
                                             echo "</tr>";
                                         }
                                     }
+                                    else{
+                                        echo '<div class="card">
+                                                <div class="card-body">
+                                                    No lab report requests found
+                                                </div>
+                                            </div>';
+                                    }
                                     
                                     ?>
 
 
-                                    </tbody>
+                                </tbody>
                                 </table>
                             </div>
                         </div>

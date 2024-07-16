@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $license = $conn->real_escape_string($license);
     $password = $conn->real_escape_string($password);
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
-    $status = 'pending';
+    $status = 'active';
 
     if (!validateText($name)) {
         sendJsonResponse(3, "Invalid name");
@@ -71,7 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['name'] = $name;
                     
                     signupsuccess($email, $name);
-                    sendJsonResponse(1, "Account Pending Approval");
+                    // sendJsonResponse(1, "Account Pending Approval");
+                    sendJsonResponse(1, "Vet Account Created Successfully");
                 } else {
                     sendJsonResponse(2, "Error: " . $sql . "<br>" . $conn->error);
                 }
