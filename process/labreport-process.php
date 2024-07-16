@@ -25,6 +25,7 @@ if(isset($_POST['petid']) && !empty($_POST['petid']) && isset($_POST['labreportt
     $sql = "INSERT INTO labreports (petid, vetid, type, petowneremail,status) VALUES ('$petid', '$vet_id', '$labreporttype', '$owneremail', '$status')";
     $result = mysqli_query($conn, $sql);
     if($result) {
+        labreportrequestemail($owneremail, $labreporttype);
         sendJsonResponse(1, "Lab Report Requested Successfully");
     }
     else {
