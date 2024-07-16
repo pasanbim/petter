@@ -22,9 +22,7 @@
                                 <h3 class="h3 page-title">Lab Report Requests</h3>
                             </div>
                         </div>
-
-
-                                <?php
+                        <?php
                                     flashMessage();
 
                                     $vet_email = $_SESSION['email'];
@@ -58,8 +56,7 @@
                                             <th width="10%">Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-';
+                                    <tbody>';
                                         while($row = mysqli_fetch_assoc($result)) {
 
                                             $statusBadgeClass = '';
@@ -112,14 +109,14 @@
                                     ?>
 
 
-                                </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </main>
+    </div>
+    </div>
+    </main>
     </div>
 
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>404 Page Not Found | Petter </title>
-    <link rel="stylesheet" href="../assets/css/app-light.css" id="lightTheme">
+    <link rel="stylesheet" href="assets/css/app-light.css" id="lightTheme">
 
     <style>
         /* Basic styling for the container and image */
@@ -34,7 +34,7 @@
         <div class="mx-auto text-center">
 
         <div class="rotate-container">
-        <img src="../assets/images/icon.svg" alt="Rotating Image" class="rotate-image mb-1">
+        <img src="assets/images/icon.svg" alt="Rotating Image" class="rotate-image mb-1">
     </div>
 
           <h1 class="display-1 m-0 font-weight-bolder text-muted" style="font-size:80px;color:black !important">404</h1>
