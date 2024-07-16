@@ -37,7 +37,7 @@
                                                     <th>Breed</th>
                                                     <th>Color</th>
                                                     <th>Weight</th>
-                                                    <th>Birthday</th>
+                                                    <th>Birth Year</th>
                                                     <th>Sex</th>
                                                     <th>Socialability</th>
                                                     <th>User</th>
@@ -92,7 +92,7 @@
                             '<td>' +
                                 '<a href="../petprofile.php?id=' + pet.id + '" class="btn btn-success view-pet" data-id="' + pet.id + '"><span class="fe fe-external-link fe-12 mr-2 mb-2"></span>View Pet</a>' +
                                 ' ' +
-                                '<a class="btn btn-warning add-record" data-id="' + pet.id + '"><span class="fe fe-plus fe-12 mr-2 mb-2"></span>Add Record</a>' +
+                                '<a href="./add-record.php?id=' + pet.id + '" class="btn btn-warning add-record" data-id="' + pet.id + '"><span class="fe fe-plus fe-12 mr-2 mb-2"></span>Add Record</a>' +
                             '</td>' +
                             '</tr>';
                         tableBody.append(row);

@@ -11,7 +11,7 @@ if(isset($_SESSION['user'])) {
 if (isset($_POST['recordid']) && !empty($_POST['recordid']) && isset($_POST['action']) && !empty($_POST['action']) && $_POST['action'] == 'delete') {
 
     $recordid = $_POST['recordid'];
-    $sql = "DELETE FROM records WHERE id = '$recordid' AND user = '$user'";
+    $sql = "DELETE FROM records WHERE id = '$recordid'";
     if ($conn->query($sql) === TRUE) {
         sendJsonResponse(1, "Record deleted successfully");
     } else {

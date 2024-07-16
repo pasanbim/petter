@@ -16,6 +16,16 @@ if (isset($_SESSION['email'])) {
 
     $user = $_SESSION['email'];
 
+    if($_SESSION['user_type'] == 'vet') {
+        $user_type = 'vet';
+    } 
+    else if($_SESSION['user_type'] == 'admin') {
+        $user_type = 'admin';
+    } 
+    else {
+        $user_type = 'you';
+    }
+
     // delete pet
 
     
@@ -149,7 +159,7 @@ if (isset($_POST['deleteid']) && !empty($_POST['deleteid'])) {
             
         }
 
-        $sql = "INSERT INTO records (petid, type, record, proof, user,addedby, date) VALUES ('$petid', '$recordtype', '$record', '$newFileName', '$user', 'you', '$date')";
+        $sql = "INSERT INTO records (petid, type, record, proof, user,addedby, date) VALUES ('$petid', '$recordtype', '$record', '$newFileName', '$user', '$user_type', '$date')";
         if ($conn->query($sql) === TRUE) {
 
             $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('New Record Added Successfully', '$dateandtime', '$user')";

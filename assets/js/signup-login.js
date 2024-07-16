@@ -85,6 +85,8 @@ $(document).ready(function() {
                 $button.find('.button-text').text('Sign up');
                 
                 if (response.status == 1) {
+                    // hold 2 seconds before redirecting
+                    wait(2000);
                     successalert("Signup Successful");
                     window.location = './onboarding.php'; 
 

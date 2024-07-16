@@ -8,11 +8,18 @@
     <?php include './includes/cdn_include.php'; ?>
     <script>
 
-    // avoid data submision repeat on refresh
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
 </script>
+
+<style>
+    span.fa-solid.fa-circle-check.fe-12.mr-2.mb-2 {
+  color: #FF7C00;
+  font-size: 18px;
+  margin-left: 08px;
+}
+</style>
 </head>
 
 <body class="vertical light">
@@ -48,7 +55,7 @@
                                         <div class="col">
                                             <div class="row align-items-center">
                                                 <div class="col-md-7 mb-4">
-                                                    <h3 class="mb-1">Dr. <?php echo $_SESSION['name']?></h3>
+                                                    <h3 title="Verfied by Petter" class="mb-1">Dr. <?php echo $_SESSION['name']?><span class="fa-solid fa-circle-check fe-12 mr-2 mb-2"></span></h3>
                                                     <p class="small mb-3"><span class="badge badge-primary" style="padding:5px">Veterinarian</span></p>
                                                 </div>
                                             </div>
@@ -63,6 +70,16 @@
                                         <div class="form-group col-md-6">
                                             <label for="email">Email</label>
                                             <input type="text" id="email" name="email" class="form-control" value="<?php echo $_SESSION['email']?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" id="phone" name="phone" class="form-control" value="<?php echo $row['phone']?>">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="license">License</label>
+                                            <input type="text" id="license" name="license" class="form-control"value="<?php echo $row['license']?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -81,10 +98,10 @@
 
     <?php 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        //filter name
         
         $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+        $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING);
+        $license = filter_var($_POST['license'], FILTER_SANITIZE_STRING);
         $email = $_POST['email'];
 
         if($name == '' || $email == '' ) {
@@ -92,7 +109,7 @@
             exit();
         }
         
-        $updateProfileQuery = "UPDATE users SET name = '$name', email = '$email' WHERE email = '".$_SESSION['email']."'";
+        $updateProfileQuery = "UPDATE users SET name = '$name', email = '$email' , phone = '$phone' , license = '$license' WHERE email = '".$_SESSION['email']."'";
         if ($conn->query($updateProfileQuery) === TRUE) {
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
