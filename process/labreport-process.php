@@ -4,6 +4,8 @@ include '../process/send-mail.php';
 include '../process/functions.php'; 
 include '../includes/config.php';
 $uploadDir = "../uploads/";
+$dateandtime = date("Y-m-d h:i A", time());
+
 
 
 $user = $_SESSION['email'];
@@ -26,6 +28,8 @@ if(isset($_POST['petid']) && !empty($_POST['petid']) && isset($_POST['labreportt
     $result = mysqli_query($conn, $sql);
     if($result) {
         labreportrequestemail($owneremail, $labreporttype);
+        $sqlfornotification = "INSERT INTO notifications (message, time, user) VALUES ('Vet has requested a report', '$dateandtime', '$owneremail')";
+        $conn->query($sqlfornotification);
         sendJsonResponse(1, "Lab Report Requested Successfully");
     }
     else {
@@ -80,8 +84,6 @@ if(isset($_POST['petid']) && !empty($_POST['petid']) && isset($_POST['labreportt
         }
        
     }
-   
-
 
 }
 
