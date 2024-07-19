@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
         if ($row['status'] !== 'active') {
             sendJsonResponse(3, "User account is not active");
             
-        } else if (password_verify($password, $row['password'])) {
+        } else if ($row['status'] == 'active' && password_verify($password, $row['password'])) {
             $_SESSION['email'] = $email;
             $_SESSION['name'] = $row['name'];
             $_SESSION['id'] = $row['id'];

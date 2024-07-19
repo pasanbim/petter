@@ -1,0 +1,75 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.background-image {
+    background-image: url(/assets/images/vet.jpg);
+    background-size: cover;
+    filter: brightness(50%);
+}
+
+.signup-form, .login-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto;
+    width: 90%;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+.form-label {
+    color: #777;
+    font-size: .813rem;
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    
+}
+
+.title{
+    font-size: 1.3125rem;
+    font-weight: bold;
+}
+
+.signup-footer{
+    text-align: center;
+    font-size: 0.8em;
+    color: #666;
+    line-height: 1.3 !important;
+
+}
+
+.alreadyhave{
+    color: #777;
+    font-size: .813rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.alreadyhavespan{
+    color: #FF7C00 !important;
+
+}
+
+@media (min-width: 768px) {
+    .background-image {
+        min-height: 100%;
+    }
+
+    .signup-form, .login-form {
+        max-width: 350px;
+    }
+}

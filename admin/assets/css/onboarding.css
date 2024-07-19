@@ -1,0 +1,171 @@
+body {
+    background-color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    max-width: 400px;
+    margin: auto;
+}
+
+.form-label {
+    color: #576074;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #c5cdde;
+    padding: 10px;
+}
+
+.form-control::placeholder {
+    color: #A8B1C5;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #FF7C00;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+
+.subtext {
+    color: #7A859A;
+}
+
+.steps-indicator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 0px;
+}
+
+.step-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.step {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid #c5cdde;
+    text-align: center;
+    color: #58637C;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.step.active {
+    background-color: #FF7C00;
+    color: white;
+    border: none;
+}
+
+.line {
+    height: 1px;
+    background-color: #ccc;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    right: -50%;
+    z-index: 0;
+}
+
+.line.active {
+    background-color: #FF7C00;
+}
+
+.step-container:last-child .line {
+    display: none;
+}
+
+.pettype-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.pettype-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 120px;
+    border: 1px solid #c5cdde;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.peticon{
+    color: #c5cdde;
+}
+.peticon.selected{
+    color: #FF7C00;
+}
+
+.card.selected {
+    border-color: #FF7C00 ;
+}
+
+.card p {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #FF7C00 !important; 
+    color: white !important;
+    border: 1px solid #FF7C00 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: white !important;
+}
+
+.select2-container--default .select2-results>.select2-results__options .select2-results__option[role="option"] {
+    background-color: white; 
+    color: black;
+}
+
+.select2-container--default .select2-results>.select2-results__options .select2-results__option[role="option"]:hover {
+    background-color: #e56e00; 
+    color: white;
+} 
+
+ 
+
+
+

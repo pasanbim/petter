@@ -36,8 +36,10 @@ $(document).ready(function() {
         var longitude = $('.longitude').val();
         var password = $('.password').val();
         var otp = $('.otp').val();
-
-        if (name === '' || email === '' || address === '' || password === '' || (otp === '' && $('.otp').length > 0)) {
+        var phone = $('.phone').val();
+        var license = $('.license').val();
+        phone
+        if (name === '' || email === '' || address === '' || phone === '' || license === '' || password === '' || (otp === '' && $('.otp').length > 0)) {
             erroralert("Please fill all fields");
             return;
         } 
@@ -66,6 +68,8 @@ $(document).ready(function() {
         formData.append('latitude', latitude);
         formData.append('longitude', longitude);
         formData.append('password', password);
+        formData.append('phone', phone);
+        formData.append('license', license);
         if ($('.otp').length && otp !== '') {
             formData.append('otp', otp);
         }
@@ -84,12 +88,14 @@ $(document).ready(function() {
                 $button.find('.spinner-border').hide();
                 $button.find('.button-text').text('Sign up');
                 
-                if (response.status == 1) {
+                if (response.status == 11) {
                     successalert("Signup Successful");
-                    setTimeout(function() {
-                        window.location = './onboarding.php';
-                    }
-                    , 3000);
+                    window.location = './dashboard.php'; 
+
+                } 
+                if (response.status == 111) {
+                    successalert("Signup Successful");
+                    window.location = './dashboard.php'; 
 
                 } 
                 else if (response.status == 0) {
@@ -199,13 +205,22 @@ $(document).ready(function() {
                 } 
                 else if (response.status == 111) {
                     successalert("Login Successful");
-                    window.location.href = './admin/dashboard.php';
+                    let urlParams = new URLSearchParams(window.location.search);
+                    let redirectUrl = urlParams.get('redirect');
+
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl;
+                    }
+                    else {
+                        window.location.href = './admin/dashboard.php';
+                    }
+
                 } 
                  else if (response.status == 2) {
                     erroralert("User Not Found");
                 }
                  else if (response.status == 3) {
-                    erroralert("Your Accout is Deactivated or Not Approved Yet");
+                    erroralert("Your Accout is Deactivated");
                 }
 
                  else if (response.status == 4) {
