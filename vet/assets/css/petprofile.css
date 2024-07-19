@@ -20,10 +20,12 @@ header {
 
 .pet_image {
     width: 100px;
+    height: 100px;
     display: block;
     margin: auto;
-    margin-top: -50px;
-    border-radius: 100px;
+    margin-top: -75px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .pet_name {
