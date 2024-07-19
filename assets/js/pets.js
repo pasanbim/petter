@@ -48,7 +48,7 @@ $(document).ready(function() {
                                     </div>
                                     <div class="avatar avatar-lg mt-4">
                                         <a href="">
-                                            <img src="./uploads/${pet.petImage}" alt="..." class="avatar-img rounded-circle">
+                                            <img src="./uploads/${pet.petImage}" alt="..." class="avatar-img rounded-circle" style="object-fit: cover;">
                                         </a>
                                     </div>
                                     <div class="card-text my-2">
