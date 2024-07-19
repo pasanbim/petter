@@ -36,8 +36,10 @@ $(document).ready(function() {
         var longitude = $('.longitude').val();
         var password = $('.password').val();
         var otp = $('.otp').val();
-
-        if (name === '' || email === '' || address === '' || password === '' || (otp === '' && $('.otp').length > 0)) {
+        var phone = $('.phone').val();
+        var license = $('.license').val();
+        phone
+        if (name === '' || email === '' || address === '' || phone === '' || license === '' || password === '' || (otp === '' && $('.otp').length > 0)) {
             erroralert("Please fill all fields");
             return;
         } 
@@ -66,6 +68,8 @@ $(document).ready(function() {
         formData.append('latitude', latitude);
         formData.append('longitude', longitude);
         formData.append('password', password);
+        formData.append('phone', phone);
+        formData.append('license', license);
         if ($('.otp').length && otp !== '') {
             formData.append('otp', otp);
         }
