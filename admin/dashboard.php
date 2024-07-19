@@ -50,6 +50,11 @@
         $pendingvet = $resultforpendingvetapplications->fetch_assoc();
         $total_pending_vet_applications = $resultforpendingvetapplications->num_rows > 0 ? $resultforpendingvetapplications->num_rows : 0;
 
+        $totalusers = "SELECT * FROM users WHERE user_type = 'user' AND status = 'active'";
+        $resultforusers = $conn->query($totalusers);
+        $user = $resultforusers->fetch_assoc();
+        $total_users = $resultforusers->num_rows > 0 ? $resultforusers->num_rows : 0;
+
         
         ?>
 
@@ -120,7 +125,7 @@
                                                 </p>
                                             </div>
                                             <div class="col-4 text-right icon-container">
-                                                <i class="fe fe-gitlab"></i>
+                                                <i class="fe fe-user"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -131,16 +136,16 @@
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col">
-                                                <strong class="card-title">Total Pets</strong>
+                                                <strong class="card-title">Total Users</strong>
                                                 <p class="small mb-0 mt-1">
                                                     <span class="fe fe-12 fe-arrow-up text-success"></span>
                                                     <span class="text-muted" style="font-size:0.85rem"><a
                                                             style="color:#ADB5BD"
-                                                            href="./pets.php"><?php echo $total_pets;?></a></span>
+                                                            href="./pets.php"><?php echo $total_users;?></a></span>
                                                 </p>
                                             </div>
                                             <div class="col-4 text-right icon-container">
-                                                <i class="fe fe-gitlab"></i>
+                                                <i class="fe fe-users"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -235,7 +240,6 @@
                 return ['fc-day-inactive'];
             },
             eventClick: function(info) {
-                // Redirect to the appointments page when an event is clicked
                 window.location.href = './appointments.php';
             }
         });
