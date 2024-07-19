@@ -84,9 +84,9 @@ $(document).ready(function() {
                 $button.find('.spinner-border').hide();
                 $button.find('.button-text').text('Sign up');
                 
-                if (response.status == 1) {
+                if (response.status == 11) {
                     successalert("Signup Successful");
-                    window.location = './onboarding.php'; 
+                    window.location = './dashboard.php'; 
 
                 } 
                 else if (response.status == 0) {
