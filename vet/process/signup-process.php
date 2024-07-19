@@ -71,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['name'] = $name;
                     
                     signupsuccess($email, $name);
+                    $_SESSION['user_type'] = 'vet';
                     sendJsonResponse(11, "Vet Account Created Successfully");
                     
                 } else {
