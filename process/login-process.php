@@ -3,7 +3,7 @@ include '../process/send-mail.php';
 include '../process/functions.php'; 
 include '../includes/config.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
@@ -56,4 +56,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         sendJsonResponse(2, "User not found");
     }
 }
+
+
+if(isset($_POST['userid']) && isset($_POST['action']) && $_POST['action'] == 'deleteaccount') {
+    $userid = $_POST['userid'] ?? '';
+    $userid = $conn->real_escape_string($userid);
+
+    $sql = "DELETE FROM users WHERE id = '$userid'";
+    if ($conn->query($sql) === TRUE) {
+        sendJsonResponse(1, "Account deleted successfully");
+    } else {
+        sendJsonResponse(0, "Error deleting account");
+    }
+}
+
 ?>

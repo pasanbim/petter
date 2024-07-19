@@ -69,7 +69,10 @@
                                         <label for="image">Image</label>
                                         <input type="file" class="form-control" id="image" name="image">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <div class="form-row" style="display:flex; justify-content: space-between;align-items: center">
+                                    <button type="submit" class="btn btn-primary" style="margin-left:5px">Save Changes</button>
+                                    <a class="delete-account" style="margin-right:5px; color:red">Delete my account</a>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -140,6 +143,33 @@
     ?>
 
     <?php include './includes/scripts_include.php'; ?>
+
+    <script>
+    $(document).ready(function() {
+        $('.delete-account').click(function() {
+            confirmdelete(function() {
+            $.ajax({
+                url: "./process/login-process.php",
+                type: "POST",
+                data: { userid: <?php echo $_SESSION['id']; ?>, action: 'deleteaccount' },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status == 1) {
+                        successalert(response.message);
+                        setTimeout(function() {
+                            window.location.href = 'logout.php';
+                        }, 2000);
+                    }
+                    else{
+                        erroralert(response.message);
+                    }
+                    
+                }
+            });
+        });
+        });
+    });
+    </script>
 </body>
 
 </html>
