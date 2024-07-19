@@ -34,7 +34,9 @@ $stmt->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/petprofile.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
     .recordssection {
@@ -63,7 +65,9 @@ $stmt->close();
                         <div class="card-body text-center">
                             <div class="avatar avatar-xl mx-auto mb-4">
                                 <img src="./uploads/<?php echo htmlspecialchars($row['petImage']); ?>" alt="Pet Image"
+                                    style="width: 100px; height: 100px; display: block; margin: auto; margin-top: -50px; border-radius: 50%; object-fit: cover !important;"
                                     class="avatar-img rounded-circle pet_image">
+
                             </div>
                             <h3 class="pet_name"><?php echo htmlspecialchars($row['name']); ?></h3>
                             <p class="small mb-3"><span class="badge badge-primary"
@@ -104,7 +108,7 @@ $stmt->close();
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </main>
     <?php include './includes/scripts_include.php'; ?>
@@ -200,9 +204,9 @@ $stmt->close();
                 orientation: 'portrait'
             }
         });
-        
-     
-    
+
+
+
     });
     </script>
 
