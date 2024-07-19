@@ -45,11 +45,8 @@ if($user_type == 'admin') {
         $conn->query($sql);
         if($conn->affected_rows > 0) {
             $_SESSION['flash_message'] = ['type' => 'success', 'message' => 'Account Suspended successfully'];
-            if ($user == 'vet') {
-                header('Location: ../vets.php');
-            } else {
-                header('Location: ../users.php');
-            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 
         }
         else {
@@ -67,11 +64,8 @@ if($user_type == 'admin') {
         $conn->query($sql);
         if($conn->affected_rows > 0) {
             $_SESSION['flash_message'] = ['type' => 'success', 'message' => 'Account Reactivated successfully'];
-            if ($user == 'vet') {
-                header('Location: ../vets.php');
-            } else {
-                header('Location: ../users.php');
-            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 
         }
         else {
