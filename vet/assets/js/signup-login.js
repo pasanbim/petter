@@ -90,7 +90,9 @@ $(document).ready(function() {
                 
                 if (response.status == 11) {
                     successalert("Your Vet Account is pending for approval");
-                    window.location = '../login.php'; 
+                    setTimeout(function() {
+                        window.location.href = '../login.php';
+                    }, 2000);
 
                 } 
                 else if (response.status == 0) {
