@@ -89,8 +89,8 @@ $(document).ready(function() {
                 $button.find('.button-text').text('Sign up');
                 
                 if (response.status == 11) {
-                    successalert("Signup Successful");
-                    window.location = './dashboard.php'; 
+                    successalert("Your Vet Account is pending for approval");
+                    window.location = '../login.php'; 
 
                 } 
                 else if (response.status == 0) {

@@ -67,11 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $sql = "INSERT INTO users (name, email, address, latitude, longitude, phone, license, password, status, user_type) VALUES ('$name', '$email', '$address', '$latitude', '$longitude', '$phone', '$license', '$hashedpassword', '$status', '$user_type')";
                 if ($conn->query($sql) === TRUE) {
 
-                    $_SESSION['email'] = $email;
-                    $_SESSION['name'] = $name;
-                    
-                    signupsuccess($email, $name);
-                    $_SESSION['user_type'] = 'vet';
                     sendJsonResponse(11, "Vet Account Created Successfully");
                     
                 } else {

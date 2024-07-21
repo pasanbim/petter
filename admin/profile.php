@@ -72,16 +72,6 @@
                                             <input type="text" id="email" name="email" class="form-control" value="<?php echo $_SESSION['email']?>">
                                         </div>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="phone">Phone</label>
-                                            <input type="text" id="phone" name="phone" class="form-control" value="<?php echo $row['phone']?>">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="license">License</label>
-                                            <input type="text" id="license" name="license" class="form-control"value="<?php echo $row['license']?>">
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label for="image">Image</label>
                                         <input type="file" class="form-control" id="image" name="image">
