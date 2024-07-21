@@ -767,7 +767,7 @@ EMAIL;
 //vet attended to appointment email
 
 function vetattendedtoappointmentemail($to,$appointmentid) {
-    $subject = "Your appointment has been cancelled";
+    $subject = "Doctor has attended to your appointment";
     $headers = "From: Petter <noreply@petter.pasanb.me>\r\n";
     $headers .= "Content-type: text/html\r\n";
 
