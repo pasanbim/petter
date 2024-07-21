@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
             $date = date("Y/m/d");
 
             if ($row['user_type'] == 'user') {
+                loginemail($email, $row['name'], $time, $date, $device, $ip, $location);
                 sendJsonResponse(1, "Login successful");
             }
             else if ($row['user_type'] == 'vet') {
