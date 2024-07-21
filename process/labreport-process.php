@@ -87,14 +87,14 @@ if(isset($_POST['petid']) && !empty($_POST['petid']) && isset($_POST['labreportt
 
 }
 
-else {
-    // Handle the case where POST data is not set correctly
-    $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Invalid Request'];
-    if ($_SESSION['user_type'] == 'vet') {
-        header('Location: ../vet/labreports.php');
-    } else {
-        header('Location: ../labreports.php');
-    }
-    exit();
-}
+// else {
+//     // Handle the case where POST data is not set correctly
+//     $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Invalid Request'];
+//     if ($_SESSION['user_type'] == 'vet') {
+//         header('Location: ../vet/labreports.php');
+//     } else {
+//         header('Location: ../labreports.php');
+//     }
+//     exit();
+// }
 ?>
